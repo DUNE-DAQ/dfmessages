@@ -5,7 +5,11 @@
  * Licensing/copyright details are in the COPYING file that you should have
  * received with this code.
  */
-#include "Common.hpp"
+
+#ifndef DFMESSAGES_INCLUDE_DFMESSAGES_TIMESYNC_HPP_
+#define DFMESSAGES_INCLUDE_DFMESSAGES_TIMESYNC_HPP_
+
+#include "Types.hpp"
 
 namespace dunedaq {
 namespace dfmessages {
@@ -14,7 +18,7 @@ struct TimeSync
   timestamp_t DAQTime;
   system_time_t SystemTime;
 
-  TimeSync(timestamp_t daqTime, system_time_t sysTime = gettimeofday_us())
+  explicit TimeSync(timestamp_t daqTime, system_time_t sysTime = gettimeofday_us())
     : DAQTime(daqTime)
     , SystemTime(sysTime)
   {}
@@ -28,3 +32,5 @@ struct TimeSync
 };
 } // namespace dfmessages
 } // namespace dunedaq
+
+#endif // DFMESSAGES_INCLUDE_DFMESSAGES_TIMESYNC_HPP_

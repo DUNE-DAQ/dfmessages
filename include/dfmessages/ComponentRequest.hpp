@@ -6,7 +6,10 @@
  * received with this code.
  */
 
-#include "Common.hpp"
+#ifndef DFMESSAGES_INCLUDE_DFMESSAGES_COMPONENTREQUEST_HPP_
+#define DFMESSAGES_INCLUDE_DFMESSAGES_COMPONENTREQUEST_HPP_
+
+#include "Types.hpp"
 
 namespace dunedaq {
 namespace dfmessages {
@@ -18,3 +21,5 @@ struct ComponentRequest
 };
 } // namespace dfmessages
 } // namespace dunedaq
+
+#endif // DFMESSAGES_INCLUDE_DFMESSAGES_COMPONENTREQUEST_HPP_

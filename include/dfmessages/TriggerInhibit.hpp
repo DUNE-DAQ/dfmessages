@@ -6,6 +6,9 @@
  * received with this code.
  */
 
+#ifndef DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERINHIBIT_HPP_
+#define DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERINHIBIT_HPP_
+
 namespace dunedaq {
 namespace dfmessages {
 struct TriggerInhibit
@@ -14,3 +17,5 @@ struct TriggerInhibit
 };
 } // namespace dfmessages
 } // namespace dunedaq
+
+#endif // DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERINHIBIT_HPP_

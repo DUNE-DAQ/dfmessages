@@ -6,9 +6,12 @@
  * received with this code.
  */
 
-#include "Common.hpp"
+#ifndef DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERDECISION_HPP_
+#define DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERDECISION_HPP_
+
 #include "ComponentRequest.hpp"
 #include "GeoID.hpp"
+#include "Types.hpp"
 
 #include <map>
 #include <vector>
@@ -27,3 +30,5 @@ struct TriggerDecision
 };
 } // namespace dfmessages
 } // namespace dunedaq
+
+#endif // DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERDECISION_HPP_

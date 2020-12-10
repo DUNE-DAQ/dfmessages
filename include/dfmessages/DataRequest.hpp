@@ -6,7 +6,10 @@
  * received with this code.
  */
 
-#include "Common.hpp"
+#ifndef DFMESSAGES_INCLUDE_DFMESSAGES_DATAREQUEST_HPP_
+#define DFMESSAGES_INCLUDE_DFMESSAGES_DATAREQUEST_HPP_
+
+#include "Types.hpp"
 
 #include <vector>
 
@@ -16,8 +19,8 @@ struct DataRequest
 {
   enum class mode_t : int
   {
-	  LocalizedReadout,
-	  ExtendedReadout
+    LocalizedReadout,
+    ExtendedReadout
   };
 
   request_number_t RequestNumber;
@@ -33,3 +36,5 @@ struct DataRequest
 
 } // namespace dfmessages
 } // namespace dunedaq
+
+#endif // DFMESSAGES_INCLUDE_DFMESSAGES_DATAREQUEST_HPP_
