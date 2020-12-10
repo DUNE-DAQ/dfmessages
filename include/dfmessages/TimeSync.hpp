@@ -18,6 +18,13 @@ struct TimeSync
     : DAQTime(daqTime)
     , SystemTime(sysTime)
   {}
+
+  static system_time_t gettimeofday_us()
+  {
+    struct timeval tv;
+    gettimeofday(&tv, nullptr);
+    return static_cast<system_time_t>(tv.tv_sec) * 1000000 + tv.tv_usec;
+  }
 };
 } // namespace dfmessages
 } // namespace dunedaq

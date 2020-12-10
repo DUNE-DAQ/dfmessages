@@ -7,6 +7,8 @@
  */
 
 #include "Common.hpp"
+#include "ComponentRequest.hpp"
+#include "GeoID.hpp"
 
 #include <map>
 #include <vector>
@@ -21,7 +23,7 @@ struct TriggerDecision
   timestamp_t TriggerTimestamp;
   trigger_type_t TriggerType;
 
-  component_request_map_t Components;
+  std::map<GeoID, ComponentRequest> Components;
 };
 } // namespace dfmessages
 } // namespace dunedaq
