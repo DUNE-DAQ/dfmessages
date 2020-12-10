@@ -7,11 +7,13 @@ namespace dunedaq {
 namespace dfmessages {
 struct TriggerDecision
 {
-  size_t TriggerNumber;
+  trigger_number_t TriggerNumber;
+  run_number_t RunNumber;
+
   timestamp_t TriggerTimestamp;
-  timestamp_diff_t WindowOffset;
-  timestamp_t WindowWidth;
-  link_request_t Components;
+  trigger_type_t TriggerType;
+
+  component_request_map_t Components;
 };
 } // namespace dfmessages
 } // namespace dunedaq
