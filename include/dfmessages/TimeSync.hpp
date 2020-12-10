@@ -1,4 +1,10 @@
-
+/**
+ * @file TimeSync.hpp TimeSync Message Declaration
+ *
+ * This is part of the DUNE DAQ Application Framework, copyright 2020.
+ * Licensing/copyright details are in the COPYING file that you should have
+ * received with this code.
+ */
 #include "Common.hpp"
 
 namespace dunedaq {
