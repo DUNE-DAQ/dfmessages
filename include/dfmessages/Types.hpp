@@ -9,6 +9,9 @@
 #ifndef DFMESSAGES_INCLUDE_DFMESSAGES_TYPES_HPP_
 #define DFMESSAGES_INCLUDE_DFMESSAGES_TYPES_HPP_
 
+#include "cdf/GeoID.hpp"
+#include "cdf/Types.hpp"
+
 #include <cstdint>
 #include <map>
 #include <sys/time.h>
@@ -16,15 +19,16 @@
 
 namespace dunedaq {
 namespace dfmessages {
-using run_number_t = uint32_t;     // NOLINT(build/unsigned)
-using trigger_number_t = uint64_t; // NOLINT(build/unsigned)
+using GeoID = cdf::GeoID;
+using run_number_t = cdf::run_number_t;
+using trigger_number_t = cdf::trigger_number_t;
 using request_number_t = uint64_t; // NOLINT(build/unsigned)
 
-using timestamp_t = uint64_t;     // NOLINT(build/unsigned)
+using timestamp_t = cdf::timestamp_t;
 using timestamp_diff_t = int64_t; // NOLINT(build/unsigned)
 
-using trigger_type_t = uint32_t; // NOLINT(build/unsigned)
-using system_time_t = uint64_t;  // NOLINT(build/unsigned)
+using trigger_type_t = cdf::trigger_type_t;
+using system_time_t = uint64_t; // NOLINT(build/unsigned)
 
 } // namespace dfmessages
 } // namespace dunedaq

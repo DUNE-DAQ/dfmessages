@@ -6,6 +6,7 @@ find_package(daq-cmake 1.1.0 REQUIRED)
 daq_setup_environment()
 
 find_package(Boost 1.70.0 COMPONENTS unit_test_framework REQUIRED)
+find_package(cdf REQUIRED)
 
 # No sources, so we'll create an INTERFACE library
 daq_add_library()

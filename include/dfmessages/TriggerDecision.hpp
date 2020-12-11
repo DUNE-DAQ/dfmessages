@@ -9,9 +9,8 @@
 #ifndef DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERDECISION_HPP_
 #define DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERDECISION_HPP_
 
-#include "ComponentRequest.hpp"
-#include "GeoID.hpp"
-#include "Types.hpp"
+#include "dfmessages/ComponentRequest.hpp"
+#include "dfmessages/Types.hpp"
 
 #include <map>
 #include <vector>
