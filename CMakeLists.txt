@@ -11,9 +11,9 @@ find_package(cdf REQUIRED)
 # No sources, so we'll create an INTERFACE library
 daq_add_library()
 
-daq_add_unit_test(DataRequest_test)
-daq_add_unit_test(TimeSync_test)
-daq_add_unit_test(TriggerDecision_test)
-daq_add_unit_test(TriggerInhibit_test)
+daq_add_unit_test(DataRequest_test LINK_LIBRARIES cdf::cdf)
+daq_add_unit_test(TimeSync_test LINK_LIBRARIES cdf::cdf)
+daq_add_unit_test(TriggerDecision_test LINK_LIBRARIES cdf::cdf)
+daq_add_unit_test(TriggerInhibit_test LINK_LIBRARIES cdf::cdf)
 
 daq_install()
