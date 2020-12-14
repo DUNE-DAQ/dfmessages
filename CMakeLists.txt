@@ -9,7 +9,7 @@ find_package(Boost 1.70.0 COMPONENTS unit_test_framework REQUIRED)
 find_package(cdf REQUIRED)
 
 # No sources, so we'll create an INTERFACE library
-daq_add_library()
+daq_add_library(LINK_LIBRARIES cdf::cdf)
 
 daq_add_unit_test(DataRequest_test LINK_LIBRARIES cdf::cdf)
 daq_add_unit_test(TimeSync_test LINK_LIBRARIES cdf::cdf)
