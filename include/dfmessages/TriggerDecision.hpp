@@ -9,7 +9,6 @@
 #ifndef DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERDECISION_HPP_
 #define DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERDECISION_HPP_
 
-#include "dfmessages/ComponentRequest.hpp"
 #include "dfmessages/Types.hpp"
 
 #include <map>
