@@ -9,7 +9,7 @@
 #ifndef DFMESSAGES_INCLUDE_DFMESSAGES_DATAREQUEST_HPP_
 #define DFMESSAGES_INCLUDE_DFMESSAGES_DATAREQUEST_HPP_
 
-#include "Types.hpp"
+#include "dfmessages/Types.hpp"
 
 #include <vector>
 

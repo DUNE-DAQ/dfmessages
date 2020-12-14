@@ -9,7 +9,7 @@
 #ifndef DFMESSAGES_INCLUDE_DFMESSAGES_TIMESYNC_HPP_
 #define DFMESSAGES_INCLUDE_DFMESSAGES_TIMESYNC_HPP_
 
-#include "Types.hpp"
+#include "dfmessages/Types.hpp"
 
 namespace dunedaq {
 namespace dfmessages {
