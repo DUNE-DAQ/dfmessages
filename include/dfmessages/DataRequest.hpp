@@ -19,19 +19,19 @@ struct DataRequest
 {
   enum class mode_t : int
   {
-    LocalizedReadout,
-    ExtendedReadout
+    kLocalizedReadout,
+    kExtendedReadout
   };
 
-  request_number_t RequestNumber;
-  trigger_number_t TriggerNumber;
-  run_number_t RunNumber;
+  request_number_t request_number;
+  trigger_number_t trigger_number;
+  run_number_t run_number;
 
-  timestamp_t TriggerTimestamp;
-  timestamp_diff_t WindowOffset;
-  timestamp_t WindowWidth;
+  timestamp_t trigger_timestamp;
+  timestamp_diff_t window_offset;
+  timestamp_t window_width;
 
-  mode_t RequestMode;
+  mode_t request_mode;
 };
 
 } // namespace dfmessages
