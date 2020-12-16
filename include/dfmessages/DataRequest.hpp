@@ -29,7 +29,7 @@ struct DataRequest
 
   timestamp_t trigger_timestamp;
   timestamp_diff_t window_offset;
-  timestamp_t window_width;
+  timestamp_diff_t window_width;
 
   mode_t request_mode;
 };
