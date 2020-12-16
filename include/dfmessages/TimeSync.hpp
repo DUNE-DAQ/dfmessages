@@ -15,12 +15,12 @@ namespace dunedaq {
 namespace dfmessages {
 struct TimeSync
 {
-  timestamp_t DAQTime;
-  system_time_t SystemTime;
+  timestamp_t DAQ_time;
+  system_time_t system_time;
 
-  explicit TimeSync(timestamp_t daqTime, system_time_t sysTime = gettimeofday_us())
-    : DAQTime(daqTime)
-    , SystemTime(sysTime)
+  explicit TimeSync(timestamp_t daq_time, system_time_t sys_time = gettimeofday_us())
+    : DAQ_time(daq_time)
+    , system_time(sys_time)
   {}
 
   static system_time_t gettimeofday_us()

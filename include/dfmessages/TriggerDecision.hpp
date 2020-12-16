@@ -18,13 +18,13 @@ namespace dunedaq {
 namespace dfmessages {
 struct TriggerDecision
 {
-  trigger_number_t TriggerNumber;
-  run_number_t RunNumber;
+  trigger_number_t trigger_number;
+  run_number_t run_number;
 
-  timestamp_t TriggerTimestamp;
-  trigger_type_t TriggerType;
+  timestamp_t trigger_timestamp;
+  trigger_type_t trigger_type;
 
-  std::map<GeoID, ComponentRequest> Components;
+  std::map<GeoID, ComponentRequest> components;
 };
 } // namespace dfmessages
 } // namespace dunedaq

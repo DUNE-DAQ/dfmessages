@@ -13,7 +13,7 @@ namespace dunedaq {
 namespace dfmessages {
 struct TriggerInhibit
 {
-  bool Busy;
+  bool busy;
 };
 } // namespace dfmessages
 } // namespace dunedaq
