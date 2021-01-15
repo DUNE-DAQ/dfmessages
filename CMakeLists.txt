@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.12)
 project(dfmessages VERSION 1.0.0)
 
-find_package(daq-cmake 1.1.0 REQUIRED)
+find_package(daq-cmake REQUIRED)
 
 daq_setup_environment()
 
