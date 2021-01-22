@@ -1,5 +1,5 @@
 /**
- * @file TriggerDecision.hpp TriggerDecision Message Declaration
+ * @file dfmessages/TriggerDecision.hpp TriggerDecision Message Declaration
  *
  * This is part of the DUNE DAQ Application Framework, copyright 2020.
  * Licensing/copyright details are in the COPYING file that you should have
@@ -16,15 +16,18 @@
 
 namespace dunedaq {
 namespace dfmessages {
+/**
+ * @brief A message containing information about a Trigger from Data Selection (or a TriggerDecisionEmulator)
+*/
 struct TriggerDecision
 {
-  trigger_number_t trigger_number;
-  run_number_t run_number;
+  trigger_number_t trigger_number; ///< The trigger number assigned to this TriggerDecision
+  run_number_t run_number; ///< The current run number
 
-  timestamp_t trigger_timestamp;
-  trigger_type_t trigger_type;
+  timestamp_t trigger_timestamp; ///< The DAQ timestamp
+  trigger_type_t trigger_type; ///< The type of the trigger
 
-  std::map<GeoID, ComponentRequest> components;
+  std::map<GeoID, ComponentRequest> components; ///< The DAQ components which should be read out to create the TriggerRecord
 };
 } // namespace dfmessages
 } // namespace dunedaq
