@@ -18,7 +18,13 @@
 #include <sys/time.h>
 #include <utility>
 
+/**
+ * @brief The DUNE-DAQ namespace
+*/
 namespace dunedaq {
+	/**
+	 * @brief Dataflow Messages
+	*/
 	namespace dfmessages {
 		using GeoID = dataformats::GeoID; ///< Copy dataformats::GeoID
 		using ComponentRequest = dataformats::ComponentRequest;///< Copy dataformats::ComponentRequest
