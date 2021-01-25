@@ -23,7 +23,7 @@ BOOST_AUTO_TEST_SUITE(DataRequest_test)
 
 /**
  * @brief Check that DataRequests have appropriate Copy/Move semantics
-*/
+ */
 BOOST_AUTO_TEST_CASE(CopyAndMoveSemantics)
 {
   BOOST_REQUIRE(std::is_copy_constructible_v<DataRequest>);

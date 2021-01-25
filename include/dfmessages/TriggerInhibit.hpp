@@ -13,10 +13,10 @@ namespace dunedaq {
 namespace dfmessages {
 /**
  * @brief Represents a message indicating whether TriggerDecisions should be inhibited
-*/
+ */
 struct TriggerInhibit
 {
-  bool busy; ///< Whether the system is busy
+  bool m_busy; ///< Whether the system is busy
 };
 } // namespace dfmessages
 } // namespace dunedaq

@@ -17,27 +17,27 @@ namespace dunedaq {
 namespace dfmessages {
 /**
  * @brief This message represents a request for data sent to a single component of the DAQ
-*/
+ */
 struct DataRequest
 {
   /**
    * @brief The readout mode that should be used when fulfilling this request
-  */
+   */
   enum class mode_t : int
   {
     kLocalizedReadout, ///< Normal readout
-    kExtendedReadout ///< Special readout mode to be used for SNB
+    kExtendedReadout   ///< Special readout mode to be used for SNB
   };
 
-  request_number_t request_number; ///< The number of the request
-  trigger_number_t trigger_number; ///< Trigger number the request corresponds to
-  run_number_t run_number; ///< The current run number
+  request_number_t m_request_number; ///< The number of the request
+  trigger_number_t m_trigger_number; ///< Trigger number the request corresponds to
+  run_number_t m_run_number;         ///< The current run number
 
-  timestamp_t trigger_timestamp; ///< Timestamp of trigger
-  timestamp_diff_t window_offset; ///< Start readout window this many ticks before the trigger timestamp
-  timestamp_diff_t window_width; ///< Window should be open for a total of this many ticks
+  timestamp_t m_trigger_timestamp;  ///< Timestamp of trigger
+  timestamp_diff_t m_window_offset; ///< Start readout window this many ticks before the trigger timestamp
+  timestamp_diff_t m_window_width;  ///< Window should be open for a total of this many ticks
 
-  mode_t request_mode; ///< Mode of the request
+  mode_t m_request_mode; ///< Mode of the request
 };
 
 } // namespace dfmessages
