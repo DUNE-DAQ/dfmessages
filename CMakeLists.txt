@@ -16,6 +16,4 @@ daq_add_unit_test(TimeSync_test LINK_LIBRARIES dataformats::dataformats)
 daq_add_unit_test(TriggerDecision_test LINK_LIBRARIES dataformats::dataformats)
 daq_add_unit_test(TriggerInhibit_test LINK_LIBRARIES dataformats::dataformats)
 
-daq_create_documentation(DEPENDS dataformats)
-
 daq_install()
