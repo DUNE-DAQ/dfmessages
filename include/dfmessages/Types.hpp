@@ -14,6 +14,7 @@
 #include "dataformats/Types.hpp"
 
 #include <cstdint>
+#include <limits>
 #include <map>
 #include <sys/time.h>
 #include <utility>
@@ -49,7 +50,7 @@ class TypeDefaults : public dataformats::TypeDefaults
 {
 public:
   static constexpr request_number_t s_invalid_request_number =
-    std::numeric_limits<request_number_t>::max(); ///< An invalid request number
+    std::numeric_limits<request_number_t>::max();           ///< An invalid request number
   static constexpr system_time_t s_invalid_system_time = 0; ///< An invalid system time
 };
 
