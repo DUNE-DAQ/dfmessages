@@ -11,6 +11,8 @@
 
 #include "dfmessages/Types.hpp"
 
+#include <limits>
+
 namespace dunedaq {
 namespace dfmessages {
 /**
@@ -18,8 +20,8 @@ namespace dfmessages {
  */
 struct TimeSync
 {
-  timestamp_t m_daq_time;      ///< The current DAQ time
-  system_time_t m_system_time; ///< The current system time
+  timestamp_t m_daq_time = std::numeric_limits<timestamp_t>::max();      ///< The current DAQ time
+  system_time_t m_system_time = std::numeric_limits<system_time_t>::max(); ///< The current system time
 
   /**
    * @brief Construct a TimeSync message

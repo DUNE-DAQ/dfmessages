@@ -11,8 +11,8 @@
 
 #include "dfmessages/Types.hpp"
 
+#include <limits>
 #include <map>
-#include <vector>
 
 namespace dunedaq {
 namespace dfmessages {
@@ -21,11 +21,11 @@ namespace dfmessages {
  */
 struct TriggerDecision
 {
-  trigger_number_t m_trigger_number; ///< The trigger number assigned to this TriggerDecision
-  run_number_t m_run_number;         ///< The current run number
+  trigger_number_t m_trigger_number = std::numeric_limits<trigger_number_t>::max(); ///< The trigger number assigned to this TriggerDecision
+  run_number_t m_run_number = std::numeric_limits<run_number_t>::max();         ///< The current run number
 
-  timestamp_t m_trigger_timestamp; ///< The DAQ timestamp
-  trigger_type_t m_trigger_type;   ///< The type of the trigger
+  timestamp_t m_trigger_timestamp = std::numeric_limits<timestamp_t>::max(); ///< The DAQ timestamp
+  trigger_type_t m_trigger_type =  std::numeric_limits<trigger_type_t>::max();   ///< The type of the trigger
 
   std::map<GeoID, ComponentRequest>
     m_components; ///< The DAQ components which should be read out to create the TriggerRecord

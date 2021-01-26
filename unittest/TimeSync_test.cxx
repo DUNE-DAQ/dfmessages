@@ -14,8 +14,6 @@
 #define BOOST_TEST_MODULE TimeSync_test // NOLINT
 
 #include <boost/test/unit_test.hpp>
-#include <string>
-#include <vector>
 
 using namespace dunedaq::dfmessages;
 
