@@ -16,7 +16,7 @@ namespace dfmessages {
  */
 struct TriggerInhibit
 {
-  bool m_busy; ///< Whether the system is busy
+  bool m_busy {false}; ///< Whether the system is busy
 };
 } // namespace dfmessages
 } // namespace dunedaq

@@ -18,8 +18,8 @@ namespace dfmessages {
  */
 struct TimeSync
 {
-  timestamp_t m_daq_time;      ///< The current DAQ time
-  system_time_t m_system_time; ///< The current system time
+  timestamp_t m_daq_time{ TypeDefaults::s_invalid_timestamp };        ///< The current DAQ time
+  system_time_t m_system_time{ TypeDefaults::s_invalid_system_time }; ///< The current system time
 
   /**
    * @brief Construct a TimeSync message

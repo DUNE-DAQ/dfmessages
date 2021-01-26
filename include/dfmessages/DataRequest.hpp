@@ -26,18 +26,25 @@ struct DataRequest
   enum class mode_t : int
   {
     kLocalizedReadout, ///< Normal readout
-    kExtendedReadout   ///< Special readout mode to be used for SNB
+    kExtendedReadout,  ///< Special readout mode to be used for SNB
+    kInvalidMode       ///< Not a valid mode, used for initialization. Should always be last
   };
 
-  request_number_t m_request_number; ///< The number of the request
-  trigger_number_t m_trigger_number; ///< Trigger number the request corresponds to
-  run_number_t m_run_number;         ///< The current run number
+  request_number_t m_request_number{ TypeDefaults::s_invalid_request_number }; ///< The number of the request
+  trigger_number_t m_trigger_number{
+    TypeDefaults::s_invalid_trigger_number
+  };                                                               ///< Trigger number the request corresponds to
+  run_number_t m_run_number{ TypeDefaults::s_invalid_run_number }; ///< The current run number
 
-  timestamp_t m_trigger_timestamp;  ///< Timestamp of trigger
-  timestamp_diff_t m_window_offset; ///< Start readout window this many ticks before the trigger timestamp
-  timestamp_diff_t m_window_width;  ///< Window should be open for a total of this many ticks
+  timestamp_t m_trigger_timestamp{ TypeDefaults::s_invalid_timestamp }; ///< Timestamp of trigger
+  timestamp_diff_t m_window_offset{
+    TypeDefaults::s_invalid_timestamp_diff
+  }; ///< Start readout window this many ticks before the trigger timestamp
+  timestamp_diff_t m_window_width{
+    TypeDefaults::s_invalid_timestamp_diff
+  }; ///< Window should be open for a total of this many ticks
 
-  mode_t m_request_mode; ///< Mode of the request
+  mode_t m_request_mode{ mode_t::kInvalidMode }; ///< Mode of the request
 };
 
 } // namespace dfmessages
