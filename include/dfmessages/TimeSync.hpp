@@ -11,6 +11,8 @@
 
 #include "dfmessages/Types.hpp"
 
+#include <limits>
+
 namespace dunedaq {
 namespace dfmessages {
 /**
