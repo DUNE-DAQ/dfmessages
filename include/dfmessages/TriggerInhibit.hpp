@@ -1,5 +1,5 @@
 /**
- * @file TriggerInhibit.hpp TriggerInhibit Message Declaration
+ * @file dfmessages/TriggerInhibit.hpp TriggerInhibit Message Declaration
  *
  * This is part of the DUNE DAQ Application Framework, copyright 2020.
  * Licensing/copyright details are in the COPYING file that you should have
@@ -11,9 +11,12 @@
 
 namespace dunedaq {
 namespace dfmessages {
+/**
+ * @brief Represents a message indicating whether TriggerDecisions should be inhibited
+ */
 struct TriggerInhibit
 {
-  bool busy;
+  bool m_busy = false; ///< Whether the system is busy
 };
 } // namespace dfmessages
 } // namespace dunedaq
