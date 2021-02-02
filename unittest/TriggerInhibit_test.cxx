@@ -13,6 +13,7 @@
  */
 #define BOOST_TEST_MODULE TriggerInhibit_test // NOLINT
 
+#include "TRACE/trace.h"
 #include "boost/test/unit_test.hpp"
 
 #include <string>
@@ -31,6 +32,36 @@ BOOST_AUTO_TEST_CASE(CopyAndMoveSemantics)
   BOOST_REQUIRE(std::is_copy_assignable_v<TriggerInhibit>);
   BOOST_REQUIRE(std::is_move_constructible_v<TriggerInhibit>);
   BOOST_REQUIRE(std::is_move_assignable_v<TriggerInhibit>);
+}
+
+BOOST_AUTO_TEST_CASE(SerDes_JSON)
+{
+  TriggerInhibit ti;
+  ti.m_busy = true;
+
+  auto bytes = dunedaq::serialization::serialize(ti, dunedaq::serialization::kJSON);
+
+  std::ostringstream ostr;
+  for (auto& b : bytes) {
+    ostr << static_cast<char>(b);
+  }
+  TLOG(TLVL_INFO) << "Serialized string: " << ostr.str();
+
+  TriggerInhibit ti_deserialized = dunedaq::serialization::deserialize<TriggerInhibit>(bytes);
+
+  BOOST_REQUIRE_EQUAL(ti.m_busy, ti_deserialized.m_busy);
+}
+
+BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
+{
+
+  TriggerInhibit ti;
+  ti.m_busy = true;
+
+  auto bytes = dunedaq::serialization::serialize(ti, dunedaq::serialization::kMsgPack);
+  TriggerInhibit ti_deserialized = dunedaq::serialization::deserialize<TriggerInhibit>(bytes);
+
+  BOOST_REQUIRE_EQUAL(ti.m_busy, ti_deserialized.m_busy);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

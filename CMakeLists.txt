@@ -7,13 +7,14 @@ daq_setup_environment()
 
 find_package(Boost 1.70.0 COMPONENTS unit_test_framework REQUIRED)
 find_package(dataformats REQUIRED)
+find_package(serialization REQUIRED)
 
 # No sources, so we'll create an INTERFACE library
 daq_add_library(LINK_LIBRARIES dataformats::dataformats)
 
-daq_add_unit_test(DataRequest_test LINK_LIBRARIES dataformats::dataformats)
-daq_add_unit_test(TimeSync_test LINK_LIBRARIES dataformats::dataformats)
-daq_add_unit_test(TriggerDecision_test LINK_LIBRARIES dataformats::dataformats)
-daq_add_unit_test(TriggerInhibit_test LINK_LIBRARIES dataformats::dataformats)
+daq_add_unit_test(DataRequest_test LINK_LIBRARIES dataformats::dataformats serialization::serialization)
+daq_add_unit_test(TimeSync_test LINK_LIBRARIES dataformats::dataformats serialization::serialization)
+daq_add_unit_test(TriggerDecision_test LINK_LIBRARIES dataformats::dataformats serialization::serialization)
+daq_add_unit_test(TriggerInhibit_test LINK_LIBRARIES dataformats::dataformats serialization::serialization)
 
 daq_install()

@@ -9,6 +9,8 @@
 #ifndef DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERINHIBIT_HPP_
 #define DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERINHIBIT_HPP_
 
+#include "serialization/Serialization.hpp"
+
 namespace dunedaq {
 namespace dfmessages {
 /**
@@ -17,6 +19,9 @@ namespace dfmessages {
 struct TriggerInhibit
 {
   bool m_busy = false; ///< Whether the system is busy
+
+  MSGPACK_DEFINE(m_busy)
+  NLOHMANN_DEFINE_TYPE_INTRUSIVE(TriggerInhibit, m_busy);
 };
 } // namespace dfmessages
 } // namespace dunedaq

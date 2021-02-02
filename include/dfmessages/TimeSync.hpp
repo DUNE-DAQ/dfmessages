@@ -11,6 +11,8 @@
 
 #include "dfmessages/Types.hpp"
 
+#include "serialization/Serialization.hpp"
+
 #include <limits>
 
 namespace dunedaq {
@@ -22,6 +24,11 @@ struct TimeSync
 {
   timestamp_t m_daq_time{ TypeDefaults::s_invalid_timestamp };        ///< The current DAQ time
   system_time_t m_system_time{ TypeDefaults::s_invalid_system_time }; ///< The current system time
+
+  TimeSync()
+    : m_daq_time(TypeDefaults::s_invalid_timestamp)
+    , m_system_time(TypeDefaults::s_invalid_system_time)
+  {}
 
   /**
    * @brief Construct a TimeSync message
@@ -45,6 +52,10 @@ struct TimeSync
     gettimeofday(&tv, nullptr);
     return static_cast<system_time_t>(tv.tv_sec) * 1000000 + tv.tv_usec;
   }
+
+  
+  MSGPACK_DEFINE(m_daq_time, m_system_time)
+  NLOHMANN_DEFINE_TYPE_INTRUSIVE(TimeSync, m_daq_time, m_system_time);
 };
 } // namespace dfmessages
 } // namespace dunedaq
