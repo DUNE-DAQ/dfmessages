@@ -121,6 +121,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
 
 
   auto bytes = dunedaq::serialization::serialize(td, dunedaq::serialization::kMsgPack);
+  TLOG(TLVL_INFO) << "MsgPack message size: " << bytes.size() << " bytes";
   TriggerDecision td_deserialized = dunedaq::serialization::deserialize<TriggerDecision>(bytes);
 
   BOOST_REQUIRE_EQUAL(td.m_trigger_number, td_deserialized.m_trigger_number);

@@ -71,6 +71,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   dr.m_request_mode = DataRequest::mode_t::kLocalizedReadout;
 
   auto bytes = dunedaq::serialization::serialize(dr, dunedaq::serialization::kMsgPack);
+  TLOG(TLVL_INFO) << "MsgPack message size: " << bytes.size() << " bytes";
   DataRequest dr_deserialized = dunedaq::serialization::deserialize<DataRequest>(bytes);
 
   BOOST_REQUIRE_EQUAL(dr.m_request_number, dr_deserialized.m_request_number);

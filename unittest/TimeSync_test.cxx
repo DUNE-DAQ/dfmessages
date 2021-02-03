@@ -55,6 +55,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   TimeSync ts(0x123456789ABCDEF0);
 
   auto bytes = dunedaq::serialization::serialize(ts, dunedaq::serialization::kMsgPack);
+  TLOG(TLVL_INFO) << "MsgPack message size: " << bytes.size() << " bytes";
   TimeSync ts_deserialized = dunedaq::serialization::deserialize<TimeSync>(bytes);
 
   BOOST_REQUIRE_EQUAL(ts.m_daq_time, ts_deserialized.m_daq_time);

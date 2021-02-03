@@ -59,6 +59,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   ti.m_busy = true;
 
   auto bytes = dunedaq::serialization::serialize(ti, dunedaq::serialization::kMsgPack);
+  TLOG(TLVL_INFO) << "MsgPack message size: " << bytes.size() << " bytes";
   TriggerInhibit ti_deserialized = dunedaq::serialization::deserialize<TriggerInhibit>(bytes);
 
   BOOST_REQUIRE_EQUAL(ti.m_busy, ti_deserialized.m_busy);
