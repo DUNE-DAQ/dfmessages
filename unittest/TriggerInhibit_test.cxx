@@ -8,9 +8,13 @@
 
 #include "dfmessages/TriggerInhibit.hpp"
 
+/**
+ * @brief Name of this test module
+ */
 #define BOOST_TEST_MODULE TriggerInhibit_test // NOLINT
 
-#include <boost/test/unit_test.hpp>
+#include "boost/test/unit_test.hpp"
+
 #include <string>
 #include <vector>
 
@@ -18,6 +22,9 @@ using namespace dunedaq::dfmessages;
 
 BOOST_AUTO_TEST_SUITE(TriggerInhibit_test)
 
+/**
+ * @brief Check that TriggerInhibits have appropriate Copy/Move semantics
+ */
 BOOST_AUTO_TEST_CASE(CopyAndMoveSemantics)
 {
   BOOST_REQUIRE(std::is_copy_constructible_v<TriggerInhibit>);
