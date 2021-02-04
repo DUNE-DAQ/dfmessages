@@ -20,8 +20,7 @@ struct TriggerInhibit
 {
   bool m_busy = false; ///< Whether the system is busy
 
-  MSGPACK_DEFINE(m_busy)
-  NLOHMANN_DEFINE_TYPE_INTRUSIVE(TriggerInhibit, m_busy);
+  DUNE_DAQ_SERIALIZE(TriggerInhibit, m_busy);
 };
 } // namespace dfmessages
 } // namespace dunedaq

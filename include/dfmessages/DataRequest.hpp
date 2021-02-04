@@ -48,19 +48,13 @@ struct DataRequest
 
   mode_t m_request_mode{ mode_t::kInvalidMode }; ///< Mode of the request
 
-  MSGPACK_DEFINE(m_request_number,
-                 m_trigger_number,
-                 m_trigger_timestamp,
-                 m_window_offset,
-                 m_window_width,
-                 m_request_mode)
-  NLOHMANN_DEFINE_TYPE_INTRUSIVE(DataRequest,
-                                 m_request_number,
-                                 m_trigger_number,
-                                 m_trigger_timestamp,
-                                 m_window_offset,
-                                 m_window_width,
-                                 m_request_mode);
+  DUNE_DAQ_SERIALIZE(DataRequest,
+                     m_request_number,
+                     m_trigger_number,
+                     m_trigger_timestamp,
+                     m_window_offset,
+                     m_window_width,
+                     m_request_mode);
 };
 
 } // namespace dfmessages
