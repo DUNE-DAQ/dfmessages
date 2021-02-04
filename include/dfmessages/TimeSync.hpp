@@ -54,8 +54,7 @@ struct TimeSync
   }
 
   
-  MSGPACK_DEFINE(m_daq_time, m_system_time)
-  NLOHMANN_DEFINE_TYPE_INTRUSIVE(TimeSync, m_daq_time, m_system_time);
+  DUNE_DAQ_SERIALIZE(TimeSync, m_daq_time, m_system_time);
 };
 } // namespace dfmessages
 } // namespace dunedaq

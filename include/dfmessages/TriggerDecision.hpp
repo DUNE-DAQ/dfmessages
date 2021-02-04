@@ -34,13 +34,12 @@ struct TriggerDecision
   std::map<GeoID, ComponentRequest>
     m_components; ///< The DAQ components which should be read out to create the TriggerRecord
 
-  MSGPACK_DEFINE(m_trigger_number, m_run_number, m_trigger_timestamp, m_trigger_type, m_components)
-  NLOHMANN_DEFINE_TYPE_INTRUSIVE(TriggerDecision,
-                                 m_trigger_number,
-                                 m_run_number,
-                                 m_trigger_timestamp,
-                                 m_trigger_type,
-                                 m_components);
+  DUNE_DAQ_SERIALIZE(TriggerDecision,
+                     m_trigger_number,
+                     m_run_number,
+                     m_trigger_timestamp,
+                     m_trigger_type,
+                     m_components);
 };
 } // namespace dfmessages
 } // namespace dunedaq
