@@ -30,6 +30,9 @@ BOOST_AUTO_TEST_CASE(CopyAndMoveSemantics)
   BOOST_REQUIRE(std::is_move_assignable_v<TimeSync>);
 }
 
+/**
+ * @brief Test the TimeSync constructor 
+*/
 BOOST_AUTO_TEST_CASE(Constructor)
 {
   TimeSync ts(100);
