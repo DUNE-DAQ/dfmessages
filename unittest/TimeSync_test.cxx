@@ -30,4 +30,14 @@ BOOST_AUTO_TEST_CASE(CopyAndMoveSemantics)
   BOOST_REQUIRE(std::is_move_assignable_v<TimeSync>);
 }
 
+BOOST_AUTO_TEST_CASE(Constructor)
+{
+  TimeSync ts(100);
+  auto now = TimeSync::gettimeofday_us();
+
+  BOOST_REQUIRE_EQUAL(ts.m_daq_time, 100);
+  // Check that they are the same to within 1000 us.
+  BOOST_REQUIRE_EQUAL(ts.m_system_time / 1000, now / 1000);
+}
+
 BOOST_AUTO_TEST_SUITE_END()
