@@ -46,6 +46,9 @@ using trigger_type_t = dataformats::trigger_type_t; ///< Copy dataformats::trigg
  */
 using system_time_t = uint64_t; // NOLINT(build/unsigned)
 
+/**
+ * @brief Default values for dfmessages types
+ */
 class TypeDefaults : public dataformats::TypeDefaults
 {
 public:
