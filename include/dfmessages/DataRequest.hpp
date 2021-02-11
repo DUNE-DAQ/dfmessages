@@ -11,6 +11,8 @@
 
 #include "dfmessages/Types.hpp"
 
+#include "serialization/Serialization.hpp"
+
 #include <limits>
 
 namespace dunedaq {
@@ -45,9 +47,19 @@ struct DataRequest
   }; ///< Window should be open for a total of this many ticks
 
   mode_t m_request_mode{ mode_t::kInvalidMode }; ///< Mode of the request
+
+  DUNE_DAQ_SERIALIZE(DataRequest,
+                     m_request_number,
+                     m_trigger_number,
+                     m_trigger_timestamp,
+                     m_window_offset,
+                     m_window_width,
+                     m_request_mode);
 };
 
 } // namespace dfmessages
 } // namespace dunedaq
+
+MSGPACK_ADD_ENUM(dunedaq::dfmessages::DataRequest::mode_t)
 
 #endif // DFMESSAGES_INCLUDE_DFMESSAGES_DATAREQUEST_HPP_
