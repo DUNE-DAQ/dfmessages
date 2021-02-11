@@ -13,6 +13,7 @@
  */
 #define BOOST_TEST_MODULE TimeSync_test // NOLINT
 
+#include "TRACE/trace.h"
 #include "boost/test/unit_test.hpp"
 
 using namespace dunedaq::dfmessages;
@@ -28,6 +29,37 @@ BOOST_AUTO_TEST_CASE(CopyAndMoveSemantics)
   BOOST_REQUIRE(std::is_copy_assignable_v<TimeSync>);
   BOOST_REQUIRE(std::is_move_constructible_v<TimeSync>);
   BOOST_REQUIRE(std::is_move_assignable_v<TimeSync>);
+}
+
+BOOST_AUTO_TEST_CASE(SerDes_JSON)
+{
+  TimeSync ts(0x123456789ABCDEF0);
+
+  auto bytes = dunedaq::serialization::serialize(ts, dunedaq::serialization::kJSON);
+
+  std::ostringstream ostr;
+  for (auto& b : bytes) {
+    ostr << static_cast<char>(b);
+  }
+  TLOG(TLVL_INFO) << "Serialized string: " << ostr.str();
+
+  TimeSync ts_deserialized = dunedaq::serialization::deserialize<TimeSync>(bytes);
+
+  BOOST_REQUIRE_EQUAL(ts.m_daq_time, ts_deserialized.m_daq_time);
+  BOOST_REQUIRE_EQUAL(ts.m_system_time, ts_deserialized.m_system_time);
+}
+
+BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
+{
+
+  TimeSync ts(0x123456789ABCDEF0);
+
+  auto bytes = dunedaq::serialization::serialize(ts, dunedaq::serialization::kMsgPack);
+  TLOG(TLVL_INFO) << "MsgPack message size: " << bytes.size() << " bytes";
+  TimeSync ts_deserialized = dunedaq::serialization::deserialize<TimeSync>(bytes);
+
+  BOOST_REQUIRE_EQUAL(ts.m_daq_time, ts_deserialized.m_daq_time);
+  BOOST_REQUIRE_EQUAL(ts.m_system_time, ts_deserialized.m_system_time);
 }
 
 /**
