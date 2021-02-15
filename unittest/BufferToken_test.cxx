@@ -37,8 +37,7 @@ BOOST_AUTO_TEST_CASE(CopyAndMoveSemantics)
 BOOST_AUTO_TEST_CASE(SerDes_JSON)
 {
   BufferToken bt;
-  bt.sequence_number = 1;
-  bt.run_number = 2;
+  bt.run_number = 1;
 
   auto bytes = dunedaq::serialization::serialize(bt, dunedaq::serialization::kJSON);
 
@@ -50,22 +49,21 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
 
   BufferToken bt_deserialized = dunedaq::serialization::deserialize<BufferToken>(bytes);
 
-  BOOST_REQUIRE_EQUAL(bt.sequence_number, bt_deserialized.sequence_number);
   BOOST_REQUIRE_EQUAL(bt.run_number, bt_deserialized.run_number);
+  BOOST_REQUIRE_EQUAL(bt.buffer_token_marker, bt_deserialized.buffer_token_marker);
 }
 
 BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
 {
   BufferToken bt;
-  bt.sequence_number = 1;
-  bt.run_number = 2;
+  bt.run_number = 1;
 
   auto bytes = dunedaq::serialization::serialize(bt, dunedaq::serialization::kMsgPack);
   TLOG(TLVL_INFO) << "MsgPack message size: " << bytes.size() << " bytes";
   BufferToken bt_deserialized = dunedaq::serialization::deserialize<BufferToken>(bytes);
 
-  BOOST_REQUIRE_EQUAL(bt.sequence_number, bt_deserialized.sequence_number);
   BOOST_REQUIRE_EQUAL(bt.run_number, bt_deserialized.run_number);
+  BOOST_REQUIRE_EQUAL(bt.buffer_token_marker, bt_deserialized.buffer_token_marker);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

@@ -20,10 +20,19 @@ namespace dfmessages {
  */
 struct BufferToken
 {
-  run_number_t run_number; ///< The run number that this token corresponds to
-  request_number_t sequence_number; ///< A sequence number for tokens sent by this process
+  /**
+   * @brief Magic bytes to identify a BufferToken entry in a raw data stream
+   */
+  static constexpr uint32_t s_buffer_token_magic = 0xBBBB7777; // NOLINT(build/unsigned)
 
-  DUNE_DAQ_SERIALIZE(BufferToken, run_number, sequence_number);
+  /**
+   * @brief Magic Bytes used to identify BufferToken in a raw data stream
+   */
+  uint32_t buffer_token_marker = s_buffer_token_magic; // NOLINT(build/unsigned)
+
+  run_number_t run_number; ///< The run number that this token corresponds to
+
+  DUNE_DAQ_SERIALIZE(BufferToken, buffer_token_marker, run_number);
 };
 } // namespace dfmessages
 } // namespace dunedaq
