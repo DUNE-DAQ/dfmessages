@@ -45,8 +45,8 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
 
   TimeSync ts_deserialized = dunedaq::serialization::deserialize<TimeSync>(bytes);
 
-  BOOST_REQUIRE_EQUAL(ts.m_daq_time, ts_deserialized.m_daq_time);
-  BOOST_REQUIRE_EQUAL(ts.m_system_time, ts_deserialized.m_system_time);
+  BOOST_REQUIRE_EQUAL(ts.daq_time, ts_deserialized.daq_time);
+  BOOST_REQUIRE_EQUAL(ts.system_time, ts_deserialized.system_time);
 }
 
 BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
@@ -58,8 +58,8 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   TLOG(TLVL_INFO) << "MsgPack message size: " << bytes.size() << " bytes";
   TimeSync ts_deserialized = dunedaq::serialization::deserialize<TimeSync>(bytes);
 
-  BOOST_REQUIRE_EQUAL(ts.m_daq_time, ts_deserialized.m_daq_time);
-  BOOST_REQUIRE_EQUAL(ts.m_system_time, ts_deserialized.m_system_time);
+  BOOST_REQUIRE_EQUAL(ts.daq_time, ts_deserialized.daq_time);
+  BOOST_REQUIRE_EQUAL(ts.system_time, ts_deserialized.system_time);
 }
 
 /**
@@ -70,9 +70,9 @@ BOOST_AUTO_TEST_CASE(Constructor)
   TimeSync ts(100);
   auto now = TimeSync::gettimeofday_us();
 
-  BOOST_REQUIRE_EQUAL(ts.m_daq_time, 100);
+  BOOST_REQUIRE_EQUAL(ts.daq_time, 100);
   // Check that they are the same to within 1000 us.
-  BOOST_REQUIRE_EQUAL(ts.m_system_time / 1000, now / 1000);
+  BOOST_REQUIRE_EQUAL(ts.system_time / 1000, now / 1000);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

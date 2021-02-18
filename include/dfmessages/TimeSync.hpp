@@ -22,12 +22,12 @@ namespace dfmessages {
  */
 struct TimeSync
 {
-  timestamp_t m_daq_time{ TypeDefaults::s_invalid_timestamp };        ///< The current DAQ time
-  system_time_t m_system_time{ TypeDefaults::s_invalid_system_time }; ///< The current system time
+  timestamp_t daq_time{ TypeDefaults::s_invalid_timestamp };        ///< The current DAQ time
+  system_time_t system_time{ TypeDefaults::s_invalid_system_time }; ///< The current system time
 
   TimeSync()
-    : m_daq_time(TypeDefaults::s_invalid_timestamp)
-    , m_system_time(TypeDefaults::s_invalid_system_time)
+    : daq_time(TypeDefaults::s_invalid_timestamp)
+    , system_time(TypeDefaults::s_invalid_system_time)
   {}
 
   /**
@@ -36,8 +36,8 @@ struct TimeSync
    * @param sys_time The current system time. Will be initialized to gettimeofday_us() if unset
    */
   explicit TimeSync(timestamp_t daq_time, system_time_t sys_time = gettimeofday_us())
-    : m_daq_time(daq_time)
-    , m_system_time(sys_time)
+    : daq_time(daq_time)
+    , system_time(sys_time)
   {}
 
   /**
@@ -54,7 +54,7 @@ struct TimeSync
   }
 
   
-  DUNE_DAQ_SERIALIZE(TimeSync, m_daq_time, m_system_time);
+  DUNE_DAQ_SERIALIZE(TimeSync, daq_time, system_time);
 };
 } // namespace dfmessages
 } // namespace dunedaq
