@@ -55,8 +55,8 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   another_cr.window_start = 7;
   another_cr.window_end = 8;
 
-  td.components[gid] = cr;
-  td.components[another_gid] = another_cr;
+  td.components.push_back(cr);
+  td.components.push_back(another_cr);
 
   auto bytes = dunedaq::serialization::serialize(td, dunedaq::serialization::kJSON);
 
@@ -75,21 +75,17 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
 
   BOOST_REQUIRE_EQUAL(td.components.size(), td_deserialized.components.size());
 
-  BOOST_REQUIRE_EQUAL(td.components[gid].component.apa_number,
-                      td_deserialized.components[gid].component.apa_number);
-  BOOST_REQUIRE_EQUAL(td.components[gid].component.link_number,
-                      td_deserialized.components[gid].component.link_number);
-  BOOST_REQUIRE_EQUAL(td.components[gid].window_start, td_deserialized.components[gid].window_start);
-  BOOST_REQUIRE_EQUAL(td.components[gid].window_end, td_deserialized.components[gid].window_end);
+  BOOST_REQUIRE_EQUAL(td.components[0].component.apa_number, td_deserialized.components[0].component.apa_number);
+  BOOST_REQUIRE_EQUAL(td.components[0].component.link_number, td_deserialized.components[0].component.link_number);
+  BOOST_REQUIRE_EQUAL(td.components[0].window_start, td_deserialized.components[0].window_start);
+  BOOST_REQUIRE_EQUAL(td.components[0].window_end, td_deserialized.components[0].window_end);
 
-  BOOST_REQUIRE_EQUAL(td.components[another_gid].component.apa_number,
-                      td_deserialized.components[another_gid].component.apa_number);
-  BOOST_REQUIRE_EQUAL(td.components[another_gid].component.link_number,
-                      td_deserialized.components[another_gid].component.link_number);
-  BOOST_REQUIRE_EQUAL(td.components[another_gid].window_start,
-                      td_deserialized.components[another_gid].window_start);
-  BOOST_REQUIRE_EQUAL(td.components[another_gid].window_end,
-                      td_deserialized.components[another_gid].window_end);
+  BOOST_REQUIRE_EQUAL(td.components[1].component.apa_number,
+                      td_deserialized.components[1].component.apa_number);
+  BOOST_REQUIRE_EQUAL(td.components[1].component.link_number,
+                      td_deserialized.components[1].component.link_number);
+  BOOST_REQUIRE_EQUAL(td.components[1].window_start, td_deserialized.components[1].window_start);
+  BOOST_REQUIRE_EQUAL(td.components[1].window_end, td_deserialized.components[1].window_end);
 }
 
 BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
@@ -116,9 +112,8 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   another_cr.window_start = 7;
   another_cr.window_end = 8;
 
-  td.components[gid] = cr;
-  td.components[another_gid] = another_cr;
-
+  td.components.push_back(cr);
+  td.components.push_back(another_cr);
 
   auto bytes = dunedaq::serialization::serialize(td, dunedaq::serialization::kMsgPack);
   TLOG(TLVL_INFO) << "MsgPack message size: " << bytes.size() << " bytes";
@@ -131,21 +126,17 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
 
   BOOST_REQUIRE_EQUAL(td.components.size(), td_deserialized.components.size());
 
-  BOOST_REQUIRE_EQUAL(td.components[gid].component.apa_number,
-                      td_deserialized.components[gid].component.apa_number);
-  BOOST_REQUIRE_EQUAL(td.components[gid].component.link_number,
-                      td_deserialized.components[gid].component.link_number);
-  BOOST_REQUIRE_EQUAL(td.components[gid].window_start, td_deserialized.components[gid].window_start);
-  BOOST_REQUIRE_EQUAL(td.components[gid].window_end, td_deserialized.components[gid].window_end);
+  BOOST_REQUIRE_EQUAL(td.components[0].component.apa_number, td_deserialized.components[0].component.apa_number);
+  BOOST_REQUIRE_EQUAL(td.components[0].component.link_number, td_deserialized.components[0].component.link_number);
+  BOOST_REQUIRE_EQUAL(td.components[0].window_start, td_deserialized.components[0].window_start);
+  BOOST_REQUIRE_EQUAL(td.components[0].window_end, td_deserialized.components[0].window_end);
 
-  BOOST_REQUIRE_EQUAL(td.components[another_gid].component.apa_number,
-                      td_deserialized.components[another_gid].component.apa_number);
-  BOOST_REQUIRE_EQUAL(td.components[another_gid].component.link_number,
-                      td_deserialized.components[another_gid].component.link_number);
-  BOOST_REQUIRE_EQUAL(td.components[another_gid].window_start,
-                      td_deserialized.components[another_gid].window_start);
-  BOOST_REQUIRE_EQUAL(td.components[another_gid].window_end,
-                      td_deserialized.components[another_gid].window_end);
+  BOOST_REQUIRE_EQUAL(td.components[1].component.apa_number,
+                      td_deserialized.components[1].component.apa_number);
+  BOOST_REQUIRE_EQUAL(td.components[1].component.link_number,
+                      td_deserialized.components[1].component.link_number);
+  BOOST_REQUIRE_EQUAL(td.components[1].window_start, td_deserialized.components[1].window_start);
+  BOOST_REQUIRE_EQUAL(td.components[1].window_end, td_deserialized.components[1].window_end);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
