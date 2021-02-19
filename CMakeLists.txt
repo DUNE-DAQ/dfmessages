@@ -13,10 +13,10 @@ find_package(networkqueue REQUIRED)
 # No sources, so we'll create an INTERFACE library
 daq_add_library(LINK_LIBRARIES dataformats::dataformats)
 
-daq_add_unit_test(BufferToken_test LINK_LIBRARIES dataformats::dataformats serialization::serialization)
 daq_add_unit_test(DataRequest_test LINK_LIBRARIES dataformats::dataformats serialization::serialization)
 daq_add_unit_test(TimeSync_test LINK_LIBRARIES dataformats::dataformats serialization::serialization)
 daq_add_unit_test(TriggerDecision_test LINK_LIBRARIES dataformats::dataformats serialization::serialization)
+daq_add_unit_test(TriggerDecisionToken_test LINK_LIBRARIES dataformats::dataformats serialization::serialization)
 daq_add_unit_test(TriggerInhibit_test LINK_LIBRARIES dataformats::dataformats serialization::serialization)
 
 # Plugins to make types networkqueue-able
