@@ -34,12 +34,20 @@ BOOST_AUTO_TEST_CASE(CopyAndMoveSemantics)
   BOOST_REQUIRE(std::is_move_assignable_v<TriggerDecisionToken>);
 }
 
+BOOST_AUTO_TEST_CASE(DefaultConstruction)
+{
+  TriggerDecisionToken tdt;
+  BOOST_REQUIRE_EQUAL(tdt.run_number, TypeDefaults::s_invalid_run_number);
+  BOOST_REQUIRE_EQUAL(tdt.trigger_number, TypeDefaults::s_invalid_trigger_number);
+}
+
 BOOST_AUTO_TEST_CASE(SerDes_JSON)
 {
-  TriggerDecisionToken bt;
-  bt.run_number = 1;
+  TriggerDecisionToken tdt;
+  tdt.run_number = 1;
+  tdt.trigger_number = 2;
 
-  auto bytes = dunedaq::serialization::serialize(bt, dunedaq::serialization::kJSON);
+  auto bytes = dunedaq::serialization::serialize(tdt, dunedaq::serialization::kJSON);
 
   std::ostringstream ostr;
   for (auto& b : bytes) {
@@ -47,21 +55,24 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   }
   TLOG(TLVL_INFO) << "Serialized string: " << ostr.str();
 
-  TriggerDecisionToken bt_deserialized = dunedaq::serialization::deserialize<TriggerDecisionToken>(bytes);
+  TriggerDecisionToken tdt_deserialized = dunedaq::serialization::deserialize<TriggerDecisionToken>(bytes);
 
-  BOOST_REQUIRE_EQUAL(bt.run_number, bt_deserialized.run_number);
+  BOOST_REQUIRE_EQUAL(tdt.run_number, tdt_deserialized.run_number);
+  BOOST_REQUIRE_EQUAL(tdt.trigger_number, tdt_deserialized.trigger_number);
 }
 
 BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
 {
-  TriggerDecisionToken bt;
-  bt.run_number = 1;
+  TriggerDecisionToken tdt;
+  tdt.run_number = 1;
+  tdt.trigger_number = 2;
 
-  auto bytes = dunedaq::serialization::serialize(bt, dunedaq::serialization::kMsgPack);
+  auto bytes = dunedaq::serialization::serialize(tdt, dunedaq::serialization::kMsgPack);
   TLOG(TLVL_INFO) << "MsgPack message size: " << bytes.size() << " bytes";
-  TriggerDecisionToken bt_deserialized = dunedaq::serialization::deserialize<TriggerDecisionToken>(bytes);
+  TriggerDecisionToken tdt_deserialized = dunedaq::serialization::deserialize<TriggerDecisionToken>(bytes);
 
-  BOOST_REQUIRE_EQUAL(bt.run_number, bt_deserialized.run_number);
+  BOOST_REQUIRE_EQUAL(tdt.run_number, tdt_deserialized.run_number);
+  BOOST_REQUIRE_EQUAL(tdt.trigger_number, tdt_deserialized.trigger_number);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
