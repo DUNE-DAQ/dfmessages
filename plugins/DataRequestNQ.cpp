@@ -1,4 +1,4 @@
-#include "networkqueue/NetworkQueueMacros.hpp"
+#include "nwqueueadapters/AdapterMacros.hpp"
 #include "dfmessages/DataRequest.hpp"
 
-DEFINE_DUNE_NETWORKQUEUE(dunedaq::dfmessages::DataRequest)
+DEFINE_DUNE_NWQUEUEADAPTERS(dunedaq::dfmessages::DataRequest)

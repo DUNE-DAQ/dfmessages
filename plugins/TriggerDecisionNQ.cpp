@@ -1,4 +1,4 @@
-#include "networkqueue/NetworkQueueMacros.hpp"
+#include "nwqueueadapters/AdapterMacros.hpp"
 #include "dfmessages/TriggerDecision.hpp"
 
-DEFINE_DUNE_NETWORKQUEUE(dunedaq::dfmessages::TriggerDecision)
+DEFINE_DUNE_NWQUEUEADAPTERS(dunedaq::dfmessages::TriggerDecision)
