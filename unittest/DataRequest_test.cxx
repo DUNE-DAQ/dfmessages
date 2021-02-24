@@ -37,7 +37,7 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   dr.request_number = 1;
   dr.trigger_number = 2;
   dr.trigger_timestamp = 3;
-  dr.window_start = 4;
+  dr.window_begin = 4;
   dr.window_end = 5;
   dr.request_mode = DataRequest::mode_t::kLocalizedReadout;
 
@@ -54,7 +54,7 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   BOOST_REQUIRE_EQUAL(dr.request_number, dr_deserialized.request_number);
   BOOST_REQUIRE_EQUAL(dr.trigger_number, dr_deserialized.trigger_number);
   BOOST_REQUIRE_EQUAL(dr.trigger_timestamp, dr_deserialized.trigger_timestamp);
-  BOOST_REQUIRE_EQUAL(dr.window_start, dr_deserialized.window_start);
+  BOOST_REQUIRE_EQUAL(dr.window_begin, dr_deserialized.window_begin);
   BOOST_REQUIRE_EQUAL(dr.window_end, dr_deserialized.window_end);
   BOOST_REQUIRE_EQUAL(static_cast<int>(dr.request_mode), static_cast<int>(dr_deserialized.request_mode));
 }
@@ -66,7 +66,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   dr.request_number = 1;
   dr.trigger_number = 2;
   dr.trigger_timestamp = 3;
-  dr.window_start = 4;
+  dr.window_begin = 4;
   dr.window_end = 5;
   dr.request_mode = DataRequest::mode_t::kLocalizedReadout;
 
@@ -77,7 +77,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   BOOST_REQUIRE_EQUAL(dr.request_number, dr_deserialized.request_number);
   BOOST_REQUIRE_EQUAL(dr.trigger_number, dr_deserialized.trigger_number);
   BOOST_REQUIRE_EQUAL(dr.trigger_timestamp, dr_deserialized.trigger_timestamp);
-  BOOST_REQUIRE_EQUAL(dr.window_start, dr_deserialized.window_start);
+  BOOST_REQUIRE_EQUAL(dr.window_begin, dr_deserialized.window_begin);
   BOOST_REQUIRE_EQUAL(dr.window_end, dr_deserialized.window_end);
   BOOST_REQUIRE_EQUAL(static_cast<int>(dr.request_mode), static_cast<int>(dr_deserialized.request_mode));
 }

@@ -39,7 +39,7 @@ struct DataRequest
   run_number_t run_number{ TypeDefaults::s_invalid_run_number }; ///< The current run number
 
   timestamp_t trigger_timestamp{ TypeDefaults::s_invalid_timestamp }; ///< Timestamp of trigger
-  timestamp_t window_start{ TypeDefaults::s_invalid_timestamp };      ///< Start of readout window
+  timestamp_t window_begin{ TypeDefaults::s_invalid_timestamp };      ///< Start of readout window
   timestamp_t window_end{ TypeDefaults::s_invalid_timestamp };        ///< End of readout window
 
   mode_t request_mode{ mode_t::kInvalidMode }; ///< Mode of the request
@@ -48,7 +48,7 @@ struct DataRequest
                      request_number,
                      trigger_number,
                      trigger_timestamp,
-                     window_start,
+                     window_begin,
                      window_end,
                      request_mode);
 };

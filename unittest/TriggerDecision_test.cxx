@@ -44,7 +44,7 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   gid.link_number = 2;
   ComponentRequest cr;
   cr.component = gid;
-  cr.window_start = 5;
+  cr.window_begin = 5;
   cr.window_end = 6;
 
   GeoID another_gid;
@@ -52,7 +52,7 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   another_gid.link_number = 1;
   ComponentRequest another_cr;
   another_cr.component = another_gid;
-  another_cr.window_start = 7;
+  another_cr.window_begin = 7;
   another_cr.window_end = 8;
 
   td.components.push_back(cr);
@@ -77,14 +77,14 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
 
   BOOST_REQUIRE_EQUAL(td.components[0].component.apa_number, td_deserialized.components[0].component.apa_number);
   BOOST_REQUIRE_EQUAL(td.components[0].component.link_number, td_deserialized.components[0].component.link_number);
-  BOOST_REQUIRE_EQUAL(td.components[0].window_start, td_deserialized.components[0].window_start);
+  BOOST_REQUIRE_EQUAL(td.components[0].window_begin, td_deserialized.components[0].window_begin);
   BOOST_REQUIRE_EQUAL(td.components[0].window_end, td_deserialized.components[0].window_end);
 
   BOOST_REQUIRE_EQUAL(td.components[1].component.apa_number,
                       td_deserialized.components[1].component.apa_number);
   BOOST_REQUIRE_EQUAL(td.components[1].component.link_number,
                       td_deserialized.components[1].component.link_number);
-  BOOST_REQUIRE_EQUAL(td.components[1].window_start, td_deserialized.components[1].window_start);
+  BOOST_REQUIRE_EQUAL(td.components[1].window_begin, td_deserialized.components[1].window_begin);
   BOOST_REQUIRE_EQUAL(td.components[1].window_end, td_deserialized.components[1].window_end);
 }
 
@@ -101,7 +101,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   gid.link_number = 2;
   ComponentRequest cr;
   cr.component = gid;
-  cr.window_start = 5;
+  cr.window_begin = 5;
   cr.window_end = 6;
 
   GeoID another_gid;
@@ -109,7 +109,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   another_gid.link_number = 1;
   ComponentRequest another_cr;
   another_cr.component = another_gid;
-  another_cr.window_start = 7;
+  another_cr.window_begin = 7;
   another_cr.window_end = 8;
 
   td.components.push_back(cr);
@@ -128,14 +128,14 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
 
   BOOST_REQUIRE_EQUAL(td.components[0].component.apa_number, td_deserialized.components[0].component.apa_number);
   BOOST_REQUIRE_EQUAL(td.components[0].component.link_number, td_deserialized.components[0].component.link_number);
-  BOOST_REQUIRE_EQUAL(td.components[0].window_start, td_deserialized.components[0].window_start);
+  BOOST_REQUIRE_EQUAL(td.components[0].window_begin, td_deserialized.components[0].window_begin);
   BOOST_REQUIRE_EQUAL(td.components[0].window_end, td_deserialized.components[0].window_end);
 
   BOOST_REQUIRE_EQUAL(td.components[1].component.apa_number,
                       td_deserialized.components[1].component.apa_number);
   BOOST_REQUIRE_EQUAL(td.components[1].component.link_number,
                       td_deserialized.components[1].component.link_number);
-  BOOST_REQUIRE_EQUAL(td.components[1].window_start, td_deserialized.components[1].window_start);
+  BOOST_REQUIRE_EQUAL(td.components[1].window_begin, td_deserialized.components[1].window_begin);
   BOOST_REQUIRE_EQUAL(td.components[1].window_end, td_deserialized.components[1].window_end);
 }
 
