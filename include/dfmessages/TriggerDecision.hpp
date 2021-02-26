@@ -23,23 +23,18 @@ namespace dfmessages {
  */
 struct TriggerDecision
 {
-  trigger_number_t m_trigger_number{
+  trigger_number_t trigger_number{
     TypeDefaults::s_invalid_trigger_number
   }; ///< The trigger number assigned to this TriggerDecision
-  run_number_t m_run_number{ TypeDefaults::s_invalid_run_number }; ///< The current run number
+  run_number_t run_number{ TypeDefaults::s_invalid_run_number }; ///< The current run number
 
-  timestamp_t m_trigger_timestamp{ TypeDefaults::s_invalid_timestamp };  ///< The DAQ timestamp
-  trigger_type_t m_trigger_type{ TypeDefaults::s_invalid_trigger_type }; ///< The type of the trigger
+  timestamp_t trigger_timestamp{ TypeDefaults::s_invalid_timestamp };  ///< The DAQ timestamp
+  trigger_type_t trigger_type{ TypeDefaults::s_invalid_trigger_type }; ///< The type of the trigger
 
-  std::map<GeoID, ComponentRequest>
-    m_components; ///< The DAQ components which should be read out to create the TriggerRecord
+  std::vector<ComponentRequest>
+    components; ///< The DAQ components which should be read out to create the TriggerRecord
 
-  DUNE_DAQ_SERIALIZE(TriggerDecision,
-                     m_trigger_number,
-                     m_run_number,
-                     m_trigger_timestamp,
-                     m_trigger_type,
-                     m_components);
+  DUNE_DAQ_SERIALIZE(TriggerDecision, trigger_number, run_number, trigger_timestamp, trigger_type, components);
 };
 } // namespace dfmessages
 } // namespace dunedaq

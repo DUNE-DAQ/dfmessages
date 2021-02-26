@@ -18,9 +18,9 @@ namespace dfmessages {
  */
 struct TriggerInhibit
 {
-  bool m_busy = false; ///< Whether the system is busy
+  bool busy = false; ///< Whether the system is busy
 
-  DUNE_DAQ_SERIALIZE(TriggerInhibit, m_busy);
+  DUNE_DAQ_SERIALIZE(TriggerInhibit, busy);
 };
 } // namespace dfmessages
 } // namespace dunedaq

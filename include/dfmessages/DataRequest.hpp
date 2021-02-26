@@ -32,29 +32,25 @@ struct DataRequest
     kInvalidMode       ///< Not a valid mode, used for initialization. Should always be last
   };
 
-  request_number_t m_request_number{ TypeDefaults::s_invalid_request_number }; ///< The number of the request
-  trigger_number_t m_trigger_number{
+  request_number_t request_number{ TypeDefaults::s_invalid_request_number }; ///< The number of the request
+  trigger_number_t trigger_number{
     TypeDefaults::s_invalid_trigger_number
-  };                                                               ///< Trigger number the request corresponds to
-  run_number_t m_run_number{ TypeDefaults::s_invalid_run_number }; ///< The current run number
+  };                                                             ///< Trigger number the request corresponds to
+  run_number_t run_number{ TypeDefaults::s_invalid_run_number }; ///< The current run number
 
-  timestamp_t m_trigger_timestamp{ TypeDefaults::s_invalid_timestamp }; ///< Timestamp of trigger
-  timestamp_diff_t m_window_offset{
-    TypeDefaults::s_invalid_timestamp_diff
-  }; ///< Start readout window this many ticks before the trigger timestamp
-  timestamp_diff_t m_window_width{
-    TypeDefaults::s_invalid_timestamp_diff
-  }; ///< Window should be open for a total of this many ticks
+  timestamp_t trigger_timestamp{ TypeDefaults::s_invalid_timestamp }; ///< Timestamp of trigger
+  timestamp_t window_begin{ TypeDefaults::s_invalid_timestamp };      ///< Start of readout window
+  timestamp_t window_end{ TypeDefaults::s_invalid_timestamp };        ///< End of readout window
 
-  mode_t m_request_mode{ mode_t::kInvalidMode }; ///< Mode of the request
+  mode_t request_mode{ mode_t::kInvalidMode }; ///< Mode of the request
 
   DUNE_DAQ_SERIALIZE(DataRequest,
-                     m_request_number,
-                     m_trigger_number,
-                     m_trigger_timestamp,
-                     m_window_offset,
-                     m_window_width,
-                     m_request_mode);
+                     request_number,
+                     trigger_number,
+                     trigger_timestamp,
+                     window_begin,
+                     window_end,
+                     request_mode);
 };
 
 } // namespace dfmessages
