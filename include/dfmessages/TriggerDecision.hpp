@@ -10,6 +10,7 @@
 #define DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERDECISION_HPP_
 
 #include "dfmessages/Types.hpp"
+#include "dfmessages/ComponentRequest_serialization.hpp"
 
 #include "serialization/Serialization.hpp"
 
