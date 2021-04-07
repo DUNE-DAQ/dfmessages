@@ -50,6 +50,37 @@ MSGPACK_API_VERSION_NAMESPACE(MSGPACK_DEFAULT_API_NS)
     }
   };
 
+  template<>
+  struct pack<std::unique_ptr<dunedaq::dataformats::Fragment>>
+  {
+    template<typename Stream>
+    packer<Stream>& operator()(msgpack::packer<Stream>& o,
+                               std::unique_ptr<dunedaq::dataformats::Fragment> const& frag) const
+    {
+      o.pack_bin(frag->get_size());                                                             // pack header and size
+      o.pack_bin_body(static_cast<const char*>(frag->get_storage_location()), frag->get_size()); // pack payload
+      return o;
+    }
+  };
+
+  // Typically we use convert<> for deserialization, but Fragment isn't
+  // default constructible, so we have to use as<>. See:
+  // https://github.com/msgpack/msgpack-c/wiki/v2_0_cpp_adaptor#non-default-constructible-class-support-c11-only-since-120
+  template<>
+  struct as<std::unique_ptr<dunedaq::dataformats::Fragment>>
+  {
+    std::unique_ptr<dunedaq::dataformats::Fragment> operator()(msgpack::object const& o) const
+    {
+      // The second argument to the Fragment ctor is whether to copy
+      // the data array into the Fragment's own storage. Putting false
+      // here would be faster, but we have to copy, since the returned
+      // Fragment might outlast the msgpack::object which owns/points
+      // to the underlying data.
+      return std::make_unique<dunedaq::dataformats::Fragment>(
+        const_cast<char*>(o.via.bin.ptr),
+                                            dunedaq::dataformats::Fragment::BufferAdoptionMode::kCopyFromBuffer);
+    }
+  };
   } // namespace adaptor
 } // namespace MSGPACK_DEFAULT_API_NS
 } // namespace msgpack
@@ -81,6 +112,32 @@ struct adl_serializer<dunedaq::dataformats::Fragment>
   {
     const uint8_t* storage = static_cast<const uint8_t*>(frag.get_storage_location());
     std::vector<uint8_t> bytes(storage, storage + frag.get_size());
+    j = bytes;
+  }
+};
+template<>
+struct adl_serializer<std::unique_ptr<dunedaq::dataformats::Fragment>>
+{
+  // note: the return type is no longer 'void', and the method only takes
+  // one argument
+  static std::unique_ptr<dunedaq::dataformats::Fragment> from_json(const json& j)
+  {
+    std::vector<uint8_t> tmp;
+    for (auto const& it : j.items()) {
+      if (!it.value().is_number_integer()) {
+        throw std::runtime_error("Foo");
+      }
+      tmp.push_back(it.value().get<uint8_t>());
+    }
+    return std::make_unique<dunedaq::dataformats::Fragment>(
+      tmp.data(),
+                                          dunedaq::dataformats::Fragment::BufferAdoptionMode::kCopyFromBuffer);
+  }
+
+  static void to_json(json& j, const std::unique_ptr<dunedaq::dataformats::Fragment>& frag)
+  {
+    const uint8_t* storage = static_cast<const uint8_t*>(frag->get_storage_location());
+    std::vector<uint8_t> bytes(storage, storage + frag->get_size());
     j = bytes;
   }
 };
