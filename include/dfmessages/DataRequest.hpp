@@ -47,6 +47,7 @@ struct DataRequest
   DUNE_DAQ_SERIALIZE(DataRequest,
                      request_number,
                      trigger_number,
+                     run_number,
                      trigger_timestamp,
                      window_begin,
                      window_end,

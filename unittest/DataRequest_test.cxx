@@ -40,6 +40,7 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   dr.window_begin = 4;
   dr.window_end = 5;
   dr.request_mode = DataRequest::mode_t::kLocalizedReadout;
+  dr.run_number = 6;
 
   auto bytes = dunedaq::serialization::serialize(dr, dunedaq::serialization::kJSON);
 
@@ -56,6 +57,7 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   BOOST_REQUIRE_EQUAL(dr.trigger_timestamp, dr_deserialized.trigger_timestamp);
   BOOST_REQUIRE_EQUAL(dr.window_begin, dr_deserialized.window_begin);
   BOOST_REQUIRE_EQUAL(dr.window_end, dr_deserialized.window_end);
+  BOOST_REQUIRE_EQUAL(dr.run_number, dr_deserialized.run_number);
   BOOST_REQUIRE_EQUAL(static_cast<int>(dr.request_mode), static_cast<int>(dr_deserialized.request_mode));
 }
 
@@ -69,6 +71,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   dr.window_begin = 4;
   dr.window_end = 5;
   dr.request_mode = DataRequest::mode_t::kLocalizedReadout;
+  dr.run_number = 6;
 
   auto bytes = dunedaq::serialization::serialize(dr, dunedaq::serialization::kMsgPack);
   TLOG(TLVL_INFO) << "MsgPack message size: " << bytes.size() << " bytes";
@@ -79,6 +82,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   BOOST_REQUIRE_EQUAL(dr.trigger_timestamp, dr_deserialized.trigger_timestamp);
   BOOST_REQUIRE_EQUAL(dr.window_begin, dr_deserialized.window_begin);
   BOOST_REQUIRE_EQUAL(dr.window_end, dr_deserialized.window_end);
+  BOOST_REQUIRE_EQUAL(dr.run_number, dr_deserialized.run_number);
   BOOST_REQUIRE_EQUAL(static_cast<int>(dr.request_mode), static_cast<int>(dr_deserialized.request_mode));
 }
 BOOST_AUTO_TEST_SUITE_END()
