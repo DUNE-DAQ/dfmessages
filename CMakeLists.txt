@@ -22,6 +22,7 @@ daq_add_unit_test(TriggerInhibit_test LINK_LIBRARIES dataformats::dataformats se
 daq_add_unit_test(Fragment_serialization_test LINK_LIBRARIES dataformats::dataformats serialization::serialization)
 daq_add_unit_test(TriggerRecord_serialization_test LINK_LIBRARIES dataformats::dataformats serialization::serialization)
 daq_add_unit_test(TriggerRecordHeader_serialization_test LINK_LIBRARIES dataformats::dataformats serialization::serialization)
+daq_add_unit_test(ComponentRequest_serialization_test LINK_LIBRARIES dataformats::dataformats serialization::serialization)
 
 # Plugins to make types nwqueueadapters-able
 daq_add_plugin(TimeSyncNQ             duneNetworkQueue LINK_LIBRARIES dfmessages nwqueueadapters::nwqueueadapters)
