@@ -30,6 +30,7 @@ daq_add_plugin(TriggerDecisionNQ      duneNetworkQueue LINK_LIBRARIES dfmessages
 daq_add_plugin(TriggerDecisionTokenNQ duneNetworkQueue LINK_LIBRARIES dfmessages nwqueueadapters::nwqueueadapters)
 daq_add_plugin(TriggerInhibitNQ       duneNetworkQueue LINK_LIBRARIES dfmessages nwqueueadapters::nwqueueadapters)
 daq_add_plugin(DataRequestNQ          duneNetworkQueue LINK_LIBRARIES dfmessages nwqueueadapters::nwqueueadapters)
+daq_add_plugin(HSIEventNQ             duneNetworkQueue LINK_LIBRARIES dfmessages nwqueueadapters::nwqueueadapters)
 
 #daq_add_plugin(TriggerRecordNQ        duneNetworkQueue LINK_LIBRARIES dfmessages nwqueueadapters::nwqueueadapters)
 daq_add_plugin(FragmentNQ             duneNetworkQueue LINK_LIBRARIES dfmessages nwqueueadapters::nwqueueadapters)
