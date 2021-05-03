@@ -27,9 +27,10 @@ struct DataRequest
    */
   enum class mode_t : int
   {
-    kLocalizedReadout, ///< Normal readout
-    kExtendedReadout,  ///< Special readout mode to be used for SNB
-    kInvalidMode       ///< Not a valid mode, used for initialization. Should always be last
+    kDFReadout,  ///< Readout request from DataFlow
+    kDQMReadout, ///< Readout request for Data Quality Monitoring
+    kSNBRequest, ///< SNB request
+    kInvalidMode ///< Not a valid mode, used for initialization. Should always be last
   };
 
   request_number_t request_number{ TypeDefaults::s_invalid_request_number }; ///< The number of the request

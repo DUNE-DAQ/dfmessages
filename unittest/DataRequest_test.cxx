@@ -39,7 +39,7 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   dr.trigger_timestamp = 3;
   dr.window_begin = 4;
   dr.window_end = 5;
-  dr.request_mode = DataRequest::mode_t::kLocalizedReadout;
+  dr.request_mode = DataRequest::mode_t::kDFReadout;
   dr.run_number = 6;
 
   auto bytes = dunedaq::serialization::serialize(dr, dunedaq::serialization::kJSON);
@@ -70,7 +70,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   dr.trigger_timestamp = 3;
   dr.window_begin = 4;
   dr.window_end = 5;
-  dr.request_mode = DataRequest::mode_t::kLocalizedReadout;
+  dr.request_mode = DataRequest::mode_t::kDFReadout;
   dr.run_number = 6;
 
   auto bytes = dunedaq::serialization::serialize(dr, dunedaq::serialization::kMsgPack);

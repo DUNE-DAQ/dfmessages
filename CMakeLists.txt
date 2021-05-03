@@ -13,6 +13,8 @@ find_package(nwqueueadapters REQUIRED)
 # No sources, so we'll create an INTERFACE library
 daq_add_library(LINK_LIBRARIES dataformats::dataformats serialization::serialization)
 
+daq_codegen(*.jsonnet TEMPLATES Structs.hpp.j2 Nljs.hpp.j2 )
+
 daq_add_unit_test(DataRequest_test LINK_LIBRARIES dataformats::dataformats serialization::serialization)
 daq_add_unit_test(TimeSync_test LINK_LIBRARIES dataformats::dataformats serialization::serialization)
 daq_add_unit_test(TriggerDecision_test LINK_LIBRARIES dataformats::dataformats serialization::serialization)
