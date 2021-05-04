@@ -27,17 +27,18 @@ namespace dunedaq {
  * @brief Dataflow Messages
  */
 namespace dfmessages {
-using GeoID = dataformats::GeoID;                       ///< Copy dataformats::GeoID
-using ComponentRequest = dataformats::ComponentRequest; ///< Copy dataformats::ComponentRequest
-using run_number_t = dataformats::run_number_t;         ///< Copy dataformats::run_number_t
-using trigger_number_t = dataformats::trigger_number_t; ///< Copy dataformats::trigger_number_t
+using GeoID = dataformats::GeoID;                           ///< Copy dataformats::GeoID
+using GeoIDComponentType = dataformats::GeoIDComponentType; ///< Copy dataformats::GeoIDComponentType
+using ComponentRequest = dataformats::ComponentRequest;     ///< Copy dataformats::ComponentRequest
+using run_number_t = dataformats::run_number_t;             ///< Copy dataformats::run_number_t
+using trigger_number_t = dataformats::trigger_number_t;     ///< Copy dataformats::trigger_number_t
 /**
  * @brief A request number is represented using a 64-bit unsigned integer
  */
 using request_number_t = uint64_t; // NOLINT(build/unsigned)
 
 using timestamp_t = dataformats::timestamp_t;           ///< Copy dataformats::timestamp_t
-using timestamp_diff_t = dataformats::timestamp_diff_t;           ///< Copy dataformats::timestamp_diff_t
+using timestamp_diff_t = dataformats::timestamp_diff_t; ///< Copy dataformats::timestamp_diff_t
 
 using trigger_type_t = dataformats::trigger_type_t; ///< Copy dataformats::trigger_type_t
 /**

@@ -12,6 +12,7 @@
 #include "dataformats/GeoID.hpp"
 #include "serialization/Serialization.hpp"
 
-DUNE_DAQ_SERIALIZE_NON_INTRUSIVE(dunedaq::dataformats, GeoID, apa_number, link_number) 
+MSGPACK_ADD_ENUM(dunedaq::dataformats::GeoIDComponentType)
+DUNE_DAQ_SERIALIZE_NON_INTRUSIVE(dunedaq::dataformats, GeoID, component_type, region_id, element_id) 
 
 #endif // DFMESSAGES_INCLUDE_DFMESSAGES_GEOID_SERIALIZATION_HPP_

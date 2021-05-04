@@ -26,7 +26,7 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
 BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
 {
   ComponentRequest component_request;
-  component_request.component = GeoID{ 1, 5 };
+  component_request.component = GeoID{ GeoIDComponentType::kTPC, 1, 5 };
   component_request.window_begin = 12345;
   component_request.window_end = 45678;
   auto bytes = dunedaq::serialization::serialize(component_request, dunedaq::serialization::kMsgPack);
@@ -35,14 +35,15 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
 
   BOOST_REQUIRE_EQUAL(component_request.window_begin, cr_deserialized.window_begin);
   BOOST_REQUIRE_EQUAL(component_request.window_end, cr_deserialized.window_end);
-  BOOST_REQUIRE_EQUAL(component_request.component.apa_number, cr_deserialized.component.apa_number);
-  BOOST_REQUIRE_EQUAL(component_request.component.link_number, cr_deserialized.component.link_number);
+  BOOST_REQUIRE_EQUAL(component_request.component.component_type, cr_deserialized.component.component_type);
+  BOOST_REQUIRE_EQUAL(component_request.component.region_id, cr_deserialized.component.region_id);
+  BOOST_REQUIRE_EQUAL(component_request.component.element_id, cr_deserialized.component.element_id);
 }
 
 BOOST_AUTO_TEST_CASE(SerDes_JSON)
 {
   ComponentRequest component_request;
-  component_request.component = GeoID{ 1, 5 };
+  component_request.component = GeoID{GeoIDComponentType::kTPC, 1, 5 };
   component_request.window_begin = 12345;
   component_request.window_end = 45678;
   auto bytes = dunedaq::serialization::serialize(component_request, dunedaq::serialization::kJSON);
@@ -51,8 +52,9 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
 
   BOOST_REQUIRE_EQUAL(component_request.window_begin, cr_deserialized.window_begin);
   BOOST_REQUIRE_EQUAL(component_request.window_end, cr_deserialized.window_end);
-  BOOST_REQUIRE_EQUAL(component_request.component.apa_number, cr_deserialized.component.apa_number);
-  BOOST_REQUIRE_EQUAL(component_request.component.link_number, cr_deserialized.component.link_number);
+  BOOST_REQUIRE_EQUAL(component_request.component.component_type, cr_deserialized.component.component_type);
+  BOOST_REQUIRE_EQUAL(component_request.component.region_id, cr_deserialized.component.region_id);
+  BOOST_REQUIRE_EQUAL(component_request.component.element_id, cr_deserialized.component.element_id);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
