@@ -10,6 +10,7 @@
 #define DFMESSAGES_INCLUDE_DFMESSAGES_DATAREQUEST_HPP_
 
 #include "dfmessages/Types.hpp"
+#inlcude "dfmessages/request_modes/request_modes.hpp"
 
 #include "serialization/Serialization.hpp"
 

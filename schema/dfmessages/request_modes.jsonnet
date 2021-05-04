@@ -2,11 +2,11 @@
 //
 
 local moo = import "moo.jsonnet";
-local s = moo.oschema.schema("dunedaq.dfmessages.requesttypes");
+local s = moo.oschema.schema("dunedaq.dfmessages.request_modes");
 
 // A temporary schema construction context.
 local cs = {
-    requesttype: s.enum("RequestType",
+    request_mode: s.enum("mode_t",
                         ["kDFReadout", "kDQMReadout", "kSNBRequest", "kInvalidMode"],
                         "kInvalidMode",
                         doc="The different request types")
