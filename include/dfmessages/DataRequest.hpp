@@ -10,7 +10,7 @@
 #define DFMESSAGES_INCLUDE_DFMESSAGES_DATAREQUEST_HPP_
 
 #include "dfmessages/Types.hpp"
-#inlcude "dfmessages/request_modes/request_modes.hpp"
+#include "dfmessages/request_modes/Structs.hpp"
 
 #include "serialization/Serialization.hpp"
 
@@ -18,21 +18,15 @@
 
 namespace dunedaq {
 namespace dfmessages {
+
+
 /**
  * @brief This message represents a request for data sent to a single component of the DAQ
  */
 struct DataRequest
 {
-  /**
-   * @brief The readout mode that should be used when fulfilling this request
-   */
-  enum class mode_t : int
-  {
-    kDFReadout,  ///< Readout request from DataFlow
-    kDQMReadout, ///< Readout request for Data Quality Monitoring
-    kSNBRequest, ///< SNB request
-    kInvalidMode ///< Not a valid mode, used for initialization. Should always be last
-  };
+
+  using mode_t = request_modes::mode_t ;
 
   request_number_t request_number{ TypeDefaults::s_invalid_request_number }; ///< The number of the request
   trigger_number_t trigger_number{
