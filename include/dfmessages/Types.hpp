@@ -39,19 +39,19 @@ using trigger_number_t = dataformats::trigger_number_t; ///< Copy dataformats::t
 using request_number_t = uint64_t; // NOLINT(build/unsigned)
 
 using timestamp_t = dataformats::timestamp_t;           ///< Copy dataformats::timestamp_t
-using timestamp_diff_t = dataformats::timestamp_diff_t;           ///< Copy dataformats::timestamp_diff_t
+using timestamp_diff_t = dataformats::timestamp_diff_t; ///< Copy dataformats::timestamp_diff_t
 
 using trigger_type_t = dataformats::trigger_type_t; ///< Copy dataformats::trigger_type_t
 
 /**
  * @brief Which type of readout to use for TriggerDecision and DataRequest
-*/
+ */
 enum class ReadoutType : uint16_t
 {
-kInvalid = 0, ///< Invalid type, used for initialization
-kLocalized = 1, ///< Local readout, send Fragments to dataflow
-kExtended = 2, ///< Extended readout, write data to local storage
-kMonitoring = 3, ///< Monitoring readout
+  kInvalid = 0,    ///< Invalid type, used for initialization
+  kLocalized = 1,  ///< Local readout, send Fragments to dataflow
+  kExtended = 2,   ///< Extended readout, write data to local storage
+  kMonitoring = 3, ///< Monitoring readout
 };
 
 /**

@@ -82,10 +82,8 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   BOOST_REQUIRE_EQUAL(td.components[0].window_begin, td_deserialized.components[0].window_begin);
   BOOST_REQUIRE_EQUAL(td.components[0].window_end, td_deserialized.components[0].window_end);
 
-  BOOST_REQUIRE_EQUAL(td.components[1].component.apa_number,
-                      td_deserialized.components[1].component.apa_number);
-  BOOST_REQUIRE_EQUAL(td.components[1].component.link_number,
-                      td_deserialized.components[1].component.link_number);
+  BOOST_REQUIRE_EQUAL(td.components[1].component.apa_number, td_deserialized.components[1].component.apa_number);
+  BOOST_REQUIRE_EQUAL(td.components[1].component.link_number, td_deserialized.components[1].component.link_number);
   BOOST_REQUIRE_EQUAL(td.components[1].window_begin, td_deserialized.components[1].window_begin);
   BOOST_REQUIRE_EQUAL(td.components[1].window_end, td_deserialized.components[1].window_end);
 }
@@ -135,10 +133,8 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   BOOST_REQUIRE_EQUAL(td.components[0].window_begin, td_deserialized.components[0].window_begin);
   BOOST_REQUIRE_EQUAL(td.components[0].window_end, td_deserialized.components[0].window_end);
 
-  BOOST_REQUIRE_EQUAL(td.components[1].component.apa_number,
-                      td_deserialized.components[1].component.apa_number);
-  BOOST_REQUIRE_EQUAL(td.components[1].component.link_number,
-                      td_deserialized.components[1].component.link_number);
+  BOOST_REQUIRE_EQUAL(td.components[1].component.apa_number, td_deserialized.components[1].component.apa_number);
+  BOOST_REQUIRE_EQUAL(td.components[1].component.link_number, td_deserialized.components[1].component.link_number);
   BOOST_REQUIRE_EQUAL(td.components[1].window_begin, td_deserialized.components[1].window_begin);
   BOOST_REQUIRE_EQUAL(td.components[1].window_end, td_deserialized.components[1].window_end);
 }

@@ -9,8 +9,8 @@
 #ifndef DFMESSAGES_INCLUDE_DFMESSAGES_HSIEVENT_HPP_
 #define DFMESSAGES_INCLUDE_DFMESSAGES_HSIEVENT_HPP_
 
-#include "dfmessages/Types.hpp"
 #include "dataformats/Types.hpp"
+#include "dfmessages/Types.hpp"
 
 #include "serialization/Serialization.hpp"
 
@@ -23,10 +23,10 @@ namespace dfmessages {
  */
 struct HSIEvent
 {
-  uint32_t header {0};                                                                 ///< Header field. Only contains HSI device ID at the moment
-  uint32_t signal_map {0};                                                             ///< Bit map of signals. 1 bit, 1 signal
+  uint32_t header{ 0 };     ///< Header field. Only contains HSI device ID at the moment
+  uint32_t signal_map{ 0 }; ///< Bit map of signals. 1 bit, 1 signal
   dataformats::timestamp_t timestamp{ dfmessages::TypeDefaults::s_invalid_timestamp }; ///< Timestamp of HSI event
-  uint32_t sequence_counter{0};                                                        ///< Event sequence number
+  uint32_t sequence_counter{ 0 };                                                      ///< Event sequence number
 
   HSIEvent()
     : header(0)
@@ -48,7 +48,7 @@ struct HSIEvent
     , timestamp(ts)
     , sequence_counter(seq_count)
   {}
-  
+
   DUNE_DAQ_SERIALIZE(HSIEvent, header, signal_map, timestamp, sequence_counter);
 };
 } // namespace dfmessages

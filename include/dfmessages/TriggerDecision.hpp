@@ -9,8 +9,8 @@
 #ifndef DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERDECISION_HPP_
 #define DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERDECISION_HPP_
 
-#include "dfmessages/Types.hpp"
 #include "dfmessages/ComponentRequest_serialization.hpp"
+#include "dfmessages/Types.hpp"
 
 #include "serialization/Serialization.hpp"
 
@@ -33,10 +33,15 @@ struct TriggerDecision
   trigger_type_t trigger_type{ TypeDefaults::s_invalid_trigger_type }; ///< The type of the trigger
   ReadoutType readout_type{ ReadoutType::kInvalid }; ///< The type of readout to use (i.e. where to route data)
 
-  std::vector<ComponentRequest>
-    components; ///< The DAQ components which should be read out to create the TriggerRecord
+  std::vector<ComponentRequest> components; ///< The DAQ components which should be read out to create the TriggerRecord
 
-  DUNE_DAQ_SERIALIZE(TriggerDecision, trigger_number, run_number, trigger_timestamp, trigger_type,readout_type, components);
+  DUNE_DAQ_SERIALIZE(TriggerDecision,
+                     trigger_number,
+                     run_number,
+                     trigger_timestamp,
+                     trigger_type,
+                     readout_type,
+                     components);
 };
 } // namespace dfmessages
 } // namespace dunedaq

@@ -20,8 +20,10 @@ namespace dfmessages {
  */
 struct TriggerDecisionToken
 {
-  run_number_t run_number{TypeDefaults::s_invalid_run_number}; ///< The run number that this token corresponds to
-  trigger_number_t trigger_number { TypeDefaults::s_invalid_trigger_number}; ///< An optional trigger number that this token represents completion of
+  run_number_t run_number{ TypeDefaults::s_invalid_run_number }; ///< The run number that this token corresponds to
+  trigger_number_t trigger_number{
+    TypeDefaults::s_invalid_trigger_number
+  }; ///< An optional trigger number that this token represents completion of
 
   DUNE_DAQ_SERIALIZE(TriggerDecisionToken, run_number, trigger_number);
 };
