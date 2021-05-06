@@ -28,7 +28,6 @@ namespace dunedaq {
  */
 namespace dfmessages {
 using GeoID = dataformats::GeoID;                           ///< Copy dataformats::GeoID
-using GeoIDComponentType = dataformats::GeoIDComponentType; ///< Copy dataformats::GeoIDComponentType
 using ComponentRequest = dataformats::ComponentRequest;     ///< Copy dataformats::ComponentRequest
 using run_number_t = dataformats::run_number_t;             ///< Copy dataformats::run_number_t
 using trigger_number_t = dataformats::trigger_number_t;     ///< Copy dataformats::trigger_number_t

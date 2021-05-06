@@ -40,7 +40,7 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   td.trigger_type = 4;
 
   GeoID gid;
-  gid.component_type = GeoIDComponentType::kTPC;
+  gid.system_type = GeoID::SystemType::kTPC;
   gid.region_id = 1;
   gid.element_id = 2;
   ComponentRequest cr;
@@ -49,7 +49,7 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   cr.window_end = 6;
 
   GeoID another_gid;
-  another_gid.component_type = GeoIDComponentType::kTPC;
+  another_gid.system_type = GeoID::SystemType::kTPC;
   another_gid.region_id = 2;
   another_gid.element_id = 1;
   ComponentRequest another_cr;
@@ -77,15 +77,13 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
 
   BOOST_REQUIRE_EQUAL(td.components.size(), td_deserialized.components.size());
 
-  BOOST_REQUIRE_EQUAL(td.components[0].component.component_type,
-                      td_deserialized.components[0].component.component_type);
+  BOOST_REQUIRE_EQUAL(td.components[0].component.system_type, td_deserialized.components[0].component.system_type);
   BOOST_REQUIRE_EQUAL(td.components[0].component.region_id, td_deserialized.components[0].component.region_id);
   BOOST_REQUIRE_EQUAL(td.components[0].component.element_id, td_deserialized.components[0].component.element_id);
   BOOST_REQUIRE_EQUAL(td.components[0].window_begin, td_deserialized.components[0].window_begin);
   BOOST_REQUIRE_EQUAL(td.components[0].window_end, td_deserialized.components[0].window_end);
 
-  BOOST_REQUIRE_EQUAL(td.components[1].component.component_type,
-                      td_deserialized.components[1].component.component_type);
+  BOOST_REQUIRE_EQUAL(td.components[1].component.system_type, td_deserialized.components[1].component.system_type);
   BOOST_REQUIRE_EQUAL(td.components[1].component.region_id, td_deserialized.components[1].component.region_id);
   BOOST_REQUIRE_EQUAL(td.components[1].component.element_id, td_deserialized.components[1].component.element_id);
   BOOST_REQUIRE_EQUAL(td.components[1].window_begin, td_deserialized.components[1].window_begin);
@@ -101,7 +99,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   td.trigger_type = 4;
 
   GeoID gid;
-  gid.component_type = GeoIDComponentType::kTPC;
+  gid.system_type = GeoID::SystemType::kTPC;
   gid.region_id = 1;
   gid.element_id = 2;
   ComponentRequest cr;
@@ -110,7 +108,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   cr.window_end = 6;
 
   GeoID another_gid;
-  another_gid.component_type = GeoIDComponentType::kTPC;
+  another_gid.system_type = GeoID::SystemType::kTPC;
   another_gid.region_id = 2;
   another_gid.element_id = 1;
   ComponentRequest another_cr;
@@ -132,15 +130,13 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
 
   BOOST_REQUIRE_EQUAL(td.components.size(), td_deserialized.components.size());
 
-  BOOST_REQUIRE_EQUAL(td.components[0].component.component_type,
-                      td_deserialized.components[0].component.component_type);
+  BOOST_REQUIRE_EQUAL(td.components[0].component.system_type, td_deserialized.components[0].component.system_type);
   BOOST_REQUIRE_EQUAL(td.components[0].component.region_id, td_deserialized.components[0].component.region_id);
   BOOST_REQUIRE_EQUAL(td.components[0].component.element_id, td_deserialized.components[0].component.element_id);
   BOOST_REQUIRE_EQUAL(td.components[0].window_begin, td_deserialized.components[0].window_begin);
   BOOST_REQUIRE_EQUAL(td.components[0].window_end, td_deserialized.components[0].window_end);
 
-  BOOST_REQUIRE_EQUAL(td.components[1].component.component_type,
-                      td_deserialized.components[1].component.component_type);
+  BOOST_REQUIRE_EQUAL(td.components[1].component.system_type, td_deserialized.components[1].component.system_type);
   BOOST_REQUIRE_EQUAL(td.components[1].component.region_id, td_deserialized.components[1].component.region_id);
   BOOST_REQUIRE_EQUAL(td.components[1].component.element_id, td_deserialized.components[1].component.element_id);
   BOOST_REQUIRE_EQUAL(td.components[1].window_begin, td_deserialized.components[1].window_begin);
