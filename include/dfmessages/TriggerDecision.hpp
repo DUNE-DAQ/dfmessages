@@ -31,11 +31,12 @@ struct TriggerDecision
 
   timestamp_t trigger_timestamp{ TypeDefaults::s_invalid_timestamp };  ///< The DAQ timestamp
   trigger_type_t trigger_type{ TypeDefaults::s_invalid_trigger_type }; ///< The type of the trigger
+  ReadoutType readout_type{ ReadoutType::kInvalid }; ///< The type of readout to use (i.e. where to route data)
 
   std::vector<ComponentRequest>
     components; ///< The DAQ components which should be read out to create the TriggerRecord
 
-  DUNE_DAQ_SERIALIZE(TriggerDecision, trigger_number, run_number, trigger_timestamp, trigger_type, components);
+  DUNE_DAQ_SERIALIZE(TriggerDecision, trigger_number, run_number, trigger_timestamp, trigger_type,readout_type, components);
 };
 } // namespace dfmessages
 } // namespace dunedaq
