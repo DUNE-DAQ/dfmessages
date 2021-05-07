@@ -38,6 +38,7 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   td.run_number = 2;
   td.trigger_timestamp = 3;
   td.trigger_type = 4;
+  td.readout_type = ReadoutType::kLocalized;
 
   GeoID gid;
   gid.apa_number = 1;
@@ -72,6 +73,7 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   BOOST_REQUIRE_EQUAL(td.run_number, td_deserialized.run_number);
   BOOST_REQUIRE_EQUAL(td.trigger_timestamp, td_deserialized.trigger_timestamp);
   BOOST_REQUIRE_EQUAL(td.trigger_type, td_deserialized.trigger_type);
+  BOOST_REQUIRE_EQUAL(static_cast<uint16_t>(td.readout_type), static_cast<uint16_t>(td_deserialized.readout_type));
 
   BOOST_REQUIRE_EQUAL(td.components.size(), td_deserialized.components.size());
 
@@ -80,10 +82,8 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   BOOST_REQUIRE_EQUAL(td.components[0].window_begin, td_deserialized.components[0].window_begin);
   BOOST_REQUIRE_EQUAL(td.components[0].window_end, td_deserialized.components[0].window_end);
 
-  BOOST_REQUIRE_EQUAL(td.components[1].component.apa_number,
-                      td_deserialized.components[1].component.apa_number);
-  BOOST_REQUIRE_EQUAL(td.components[1].component.link_number,
-                      td_deserialized.components[1].component.link_number);
+  BOOST_REQUIRE_EQUAL(td.components[1].component.apa_number, td_deserialized.components[1].component.apa_number);
+  BOOST_REQUIRE_EQUAL(td.components[1].component.link_number, td_deserialized.components[1].component.link_number);
   BOOST_REQUIRE_EQUAL(td.components[1].window_begin, td_deserialized.components[1].window_begin);
   BOOST_REQUIRE_EQUAL(td.components[1].window_end, td_deserialized.components[1].window_end);
 }
@@ -95,6 +95,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   td.run_number = 2;
   td.trigger_timestamp = 3;
   td.trigger_type = 4;
+  td.readout_type = ReadoutType::kLocalized;
 
   GeoID gid;
   gid.apa_number = 1;
@@ -123,6 +124,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   BOOST_REQUIRE_EQUAL(td.run_number, td_deserialized.run_number);
   BOOST_REQUIRE_EQUAL(td.trigger_timestamp, td_deserialized.trigger_timestamp);
   BOOST_REQUIRE_EQUAL(td.trigger_type, td_deserialized.trigger_type);
+  BOOST_REQUIRE_EQUAL(static_cast<uint16_t>(td.readout_type), static_cast<uint16_t>(td_deserialized.readout_type));
 
   BOOST_REQUIRE_EQUAL(td.components.size(), td_deserialized.components.size());
 
@@ -131,10 +133,8 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   BOOST_REQUIRE_EQUAL(td.components[0].window_begin, td_deserialized.components[0].window_begin);
   BOOST_REQUIRE_EQUAL(td.components[0].window_end, td_deserialized.components[0].window_end);
 
-  BOOST_REQUIRE_EQUAL(td.components[1].component.apa_number,
-                      td_deserialized.components[1].component.apa_number);
-  BOOST_REQUIRE_EQUAL(td.components[1].component.link_number,
-                      td_deserialized.components[1].component.link_number);
+  BOOST_REQUIRE_EQUAL(td.components[1].component.apa_number, td_deserialized.components[1].component.apa_number);
+  BOOST_REQUIRE_EQUAL(td.components[1].component.link_number, td_deserialized.components[1].component.link_number);
   BOOST_REQUIRE_EQUAL(td.components[1].window_begin, td_deserialized.components[1].window_begin);
   BOOST_REQUIRE_EQUAL(td.components[1].window_end, td_deserialized.components[1].window_end);
 }

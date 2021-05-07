@@ -25,7 +25,7 @@ BOOST_AUTO_TEST_SUITE(TriggerRecord_serialization_test)
 
 BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
 {
-	/** TODO: Implement SerDes_MsgPack test for TriggerRecord */
+  /** TODO: Implement SerDes_MsgPack test for TriggerRecord */
 }
 
 BOOST_AUTO_TEST_CASE(SerDes_JSON)

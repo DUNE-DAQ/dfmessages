@@ -22,15 +22,6 @@ namespace dfmessages {
  */
 struct DataRequest
 {
-  /**
-   * @brief The readout mode that should be used when fulfilling this request
-   */
-  enum class mode_t : int
-  {
-    kLocalizedReadout, ///< Normal readout
-    kExtendedReadout,  ///< Special readout mode to be used for SNB
-    kInvalidMode       ///< Not a valid mode, used for initialization. Should always be last
-  };
 
   request_number_t request_number{ TypeDefaults::s_invalid_request_number }; ///< The number of the request
   trigger_number_t trigger_number{
@@ -42,7 +33,7 @@ struct DataRequest
   timestamp_t window_begin{ TypeDefaults::s_invalid_timestamp };      ///< Start of readout window
   timestamp_t window_end{ TypeDefaults::s_invalid_timestamp };        ///< End of readout window
 
-  mode_t request_mode{ mode_t::kInvalidMode }; ///< Mode of the request
+  ReadoutType readout_type{ ReadoutType::kInvalid }; ///< Mode of the request
 
   DUNE_DAQ_SERIALIZE(DataRequest,
                      request_number,
@@ -51,12 +42,10 @@ struct DataRequest
                      trigger_timestamp,
                      window_begin,
                      window_end,
-                     request_mode);
+                     readout_type);
 };
 
 } // namespace dfmessages
 } // namespace dunedaq
-
-MSGPACK_ADD_ENUM(dunedaq::dfmessages::DataRequest::mode_t)
 
 #endif // DFMESSAGES_INCLUDE_DFMESSAGES_DATAREQUEST_HPP_

@@ -13,6 +13,8 @@
 #include "dataformats/GeoID.hpp"
 #include "dataformats/Types.hpp"
 
+#include "serialization/Serialization.hpp"
+
 #include <cstdint>
 #include <limits>
 #include <map>
@@ -37,9 +39,21 @@ using trigger_number_t = dataformats::trigger_number_t; ///< Copy dataformats::t
 using request_number_t = uint64_t; // NOLINT(build/unsigned)
 
 using timestamp_t = dataformats::timestamp_t;           ///< Copy dataformats::timestamp_t
-using timestamp_diff_t = dataformats::timestamp_diff_t;           ///< Copy dataformats::timestamp_diff_t
+using timestamp_diff_t = dataformats::timestamp_diff_t; ///< Copy dataformats::timestamp_diff_t
 
 using trigger_type_t = dataformats::trigger_type_t; ///< Copy dataformats::trigger_type_t
+
+/**
+ * @brief Which type of readout to use for TriggerDecision and DataRequest
+ */
+enum class ReadoutType : uint16_t
+{
+  kInvalid = 0,    ///< Invalid type, used for initialization
+  kLocalized = 1,  ///< Local readout, send Fragments to dataflow
+  kExtended = 2,   ///< Extended readout, write data to local storage
+  kMonitoring = 3, ///< Monitoring readout
+};
+
 /**
  * @brief System times are represented using a 64-bit unsigned integer
  * This number is defined as the number of microseconds since the system epoch
@@ -59,5 +73,7 @@ public:
 
 } // namespace dfmessages
 } // namespace dunedaq
+
+MSGPACK_ADD_ENUM(dunedaq::dfmessages::ReadoutType)
 
 #endif // DFMESSAGES_INCLUDE_DFMESSAGES_TYPES_HPP_

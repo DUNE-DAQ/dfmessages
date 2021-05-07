@@ -57,7 +57,7 @@ MSGPACK_API_VERSION_NAMESPACE(MSGPACK_DEFAULT_API_NS)
     packer<Stream>& operator()(msgpack::packer<Stream>& o,
                                std::unique_ptr<dunedaq::dataformats::Fragment> const& frag) const
     {
-      o.pack_bin(frag->get_size());                                                             // pack header and size
+      o.pack_bin(frag->get_size());                                                              // pack header and size
       o.pack_bin_body(static_cast<const char*>(frag->get_storage_location()), frag->get_size()); // pack payload
       return o;
     }
@@ -77,8 +77,7 @@ MSGPACK_API_VERSION_NAMESPACE(MSGPACK_DEFAULT_API_NS)
       // Fragment might outlast the msgpack::object which owns/points
       // to the underlying data.
       return std::make_unique<dunedaq::dataformats::Fragment>(
-        const_cast<char*>(o.via.bin.ptr),
-                                            dunedaq::dataformats::Fragment::BufferAdoptionMode::kCopyFromBuffer);
+        const_cast<char*>(o.via.bin.ptr), dunedaq::dataformats::Fragment::BufferAdoptionMode::kCopyFromBuffer);
     }
   };
   } // namespace adaptor
@@ -130,8 +129,7 @@ struct adl_serializer<std::unique_ptr<dunedaq::dataformats::Fragment>>
       tmp.push_back(it.value().get<uint8_t>());
     }
     return std::make_unique<dunedaq::dataformats::Fragment>(
-      tmp.data(),
-                                          dunedaq::dataformats::Fragment::BufferAdoptionMode::kCopyFromBuffer);
+      tmp.data(), dunedaq::dataformats::Fragment::BufferAdoptionMode::kCopyFromBuffer);
   }
 
   static void to_json(json& j, const std::unique_ptr<dunedaq::dataformats::Fragment>& frag)
