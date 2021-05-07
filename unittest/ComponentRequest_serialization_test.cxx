@@ -43,7 +43,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
 BOOST_AUTO_TEST_CASE(SerDes_JSON)
 {
   ComponentRequest component_request;
-  component_request.component = GeoID{GeoID::SystemType::kTPC, 1, 5 };
+  component_request.component = GeoID{ GeoID::SystemType::kTPC, 1, 5 };
   component_request.window_begin = 12345;
   component_request.window_end = 45678;
   auto bytes = dunedaq::serialization::serialize(component_request, dunedaq::serialization::kJSON);
