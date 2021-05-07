@@ -63,8 +63,8 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
 }
 
 /**
- * @brief Test the TimeSync constructor 
-*/
+ * @brief Test the TimeSync constructor
+ */
 BOOST_AUTO_TEST_CASE(Constructor)
 {
   TimeSync ts(100);

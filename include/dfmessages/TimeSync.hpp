@@ -53,7 +53,6 @@ struct TimeSync
     return static_cast<system_time_t>(tv.tv_sec) * 1000000 + tv.tv_usec;
   }
 
-  
   DUNE_DAQ_SERIALIZE(TimeSync, daq_time, system_time);
 };
 } // namespace dfmessages
