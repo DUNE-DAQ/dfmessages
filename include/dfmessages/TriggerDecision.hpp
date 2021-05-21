@@ -16,6 +16,7 @@
 
 #include <limits>
 #include <map>
+#include <vector>
 
 namespace dunedaq {
 namespace dfmessages {

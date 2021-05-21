@@ -12,6 +12,8 @@
 #include "dataformats/TriggerRecordHeader.hpp"
 #include "serialization/Serialization.hpp"
 
+#include <vector>
+
 // MsgPack serialization functions (which just put the raw bytes of
 // the fragment array into a MsgPack message)
 namespace msgpack {
@@ -60,20 +62,20 @@ struct adl_serializer<dunedaq::dataformats::TriggerRecordHeader>
   // one argument
   static dunedaq::dataformats::TriggerRecordHeader from_json(const json& j)
   {
-    std::vector<uint8_t> tmp;
+    std::vector<uint8_t> tmp; // NOLINT(build/unsigned)
     for (auto const& it : j.items()) {
       if (!it.value().is_number_integer()) {
         throw std::runtime_error("Foo");
       }
-      tmp.push_back(it.value().get<uint8_t>());
+      tmp.push_back(it.value().get<uint8_t>()); // NOLINT(build/unsigned)
     }
     return dunedaq::dataformats::TriggerRecordHeader(tmp.data(), true);
   }
 
   static void to_json(json& j, const dunedaq::dataformats::TriggerRecordHeader& trh)
   {
-    const uint8_t* storage = static_cast<const uint8_t*>(trh.get_storage_location());
-    std::vector<uint8_t> bytes(storage, storage + trh.get_total_size_bytes());
+    const uint8_t* storage = static_cast<const uint8_t*>(trh.get_storage_location()); // NOLINT(build/unsigned)
+    std::vector<uint8_t> bytes(storage, storage + trh.get_total_size_bytes());        // NOLINT(build/unsigned)
     j = bytes;
   }
 };

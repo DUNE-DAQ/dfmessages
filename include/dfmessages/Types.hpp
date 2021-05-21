@@ -46,7 +46,7 @@ using trigger_type_t = dataformats::trigger_type_t; ///< Copy dataformats::trigg
 /**
  * @brief Which type of readout to use for TriggerDecision and DataRequest
  */
-enum class ReadoutType : uint16_t
+enum class ReadoutType : uint16_t // NOLINT(build/unsigned)
 {
   kInvalid = 0,    ///< Invalid type, used for initialization
   kLocalized = 1,  ///< Local readout, send Fragments to dataflow
