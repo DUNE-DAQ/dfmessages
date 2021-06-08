@@ -13,6 +13,9 @@
 #include "dataformats/Fragment.hpp"
 #include "serialization/Serialization.hpp"
 
+#include <memory>
+#include <vector>
+
 // MsgPack serialization functions (which just put the raw bytes of
 // the fragment array into a MsgPack message)
 namespace msgpack {
@@ -96,12 +99,12 @@ struct adl_serializer<dunedaq::dataformats::Fragment>
   // one argument
   static dunedaq::dataformats::Fragment from_json(const json& j)
   {
-    std::vector<uint8_t> tmp;
+    std::vector<uint8_t> tmp; // NOLINT(build/unsigned)
     for (auto const& it : j.items()) {
       if (!it.value().is_number_integer()) {
         throw std::runtime_error("Foo");
       }
-      tmp.push_back(it.value().get<uint8_t>());
+      tmp.push_back(it.value().get<uint8_t>()); // NOLINT(build/unsigned)
     }
     return dunedaq::dataformats::Fragment(tmp.data(),
                                           dunedaq::dataformats::Fragment::BufferAdoptionMode::kCopyFromBuffer);
@@ -109,8 +112,8 @@ struct adl_serializer<dunedaq::dataformats::Fragment>
 
   static void to_json(json& j, const dunedaq::dataformats::Fragment& frag)
   {
-    const uint8_t* storage = static_cast<const uint8_t*>(frag.get_storage_location());
-    std::vector<uint8_t> bytes(storage, storage + frag.get_size());
+    const uint8_t* storage = static_cast<const uint8_t*>(frag.get_storage_location()); // NOLINT(build/unsigned)
+    std::vector<uint8_t> bytes(storage, storage + frag.get_size());                    // NOLINT(build/unsigned)
     j = bytes;
   }
 };
@@ -121,12 +124,12 @@ struct adl_serializer<std::unique_ptr<dunedaq::dataformats::Fragment>>
   // one argument
   static std::unique_ptr<dunedaq::dataformats::Fragment> from_json(const json& j)
   {
-    std::vector<uint8_t> tmp;
+    std::vector<uint8_t> tmp; // NOLINT(build/unsigned)
     for (auto const& it : j.items()) {
       if (!it.value().is_number_integer()) {
         throw std::runtime_error("Foo");
       }
-      tmp.push_back(it.value().get<uint8_t>());
+      tmp.push_back(it.value().get<uint8_t>()); // NOLINT(build/unsigned)
     }
     return std::make_unique<dunedaq::dataformats::Fragment>(
       tmp.data(), dunedaq::dataformats::Fragment::BufferAdoptionMode::kCopyFromBuffer);
@@ -134,8 +137,8 @@ struct adl_serializer<std::unique_ptr<dunedaq::dataformats::Fragment>>
 
   static void to_json(json& j, const std::unique_ptr<dunedaq::dataformats::Fragment>& frag)
   {
-    const uint8_t* storage = static_cast<const uint8_t*>(frag->get_storage_location());
-    std::vector<uint8_t> bytes(storage, storage + frag->get_size());
+    const uint8_t* storage = static_cast<const uint8_t*>(frag->get_storage_location()); // NOLINT(build/unsigned)
+    std::vector<uint8_t> bytes(storage, storage + frag->get_size());                    // NOLINT(build/unsigned)
     j = bytes;
   }
 };

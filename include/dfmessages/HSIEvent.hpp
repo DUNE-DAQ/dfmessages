@@ -23,10 +23,10 @@ namespace dfmessages {
  */
 struct HSIEvent
 {
-  uint32_t header{ 0 };     ///< Header field. Only contains HSI device ID at the moment
-  uint32_t signal_map{ 0 }; ///< Bit map of signals. 1 bit, 1 signal
+  uint32_t header{ 0 };     ///< Header field. Only contains HSI device ID at the moment // NOLINT(build/unsigned)
+  uint32_t signal_map{ 0 }; ///< Bit map of signals. 1 bit, 1 signal // NOLINT(build/unsigned)
   dataformats::timestamp_t timestamp{ dfmessages::TypeDefaults::s_invalid_timestamp }; ///< Timestamp of HSI event
-  uint32_t sequence_counter{ 0 };                                                      ///< Event sequence number
+  uint32_t sequence_counter{ 0 }; ///< Event sequence number // NOLINT(build/unsigned)
 
   HSIEvent()
     : header(0)
@@ -42,7 +42,10 @@ struct HSIEvent
    * @param timestamp Timestamp of edge(s)
    * @param sequence_counter Sequence counter of generated HSI messages
    */
-  explicit HSIEvent(uint32_t head, uint32_t signals, dataformats::timestamp_t ts, uint32_t seq_count)
+  explicit HSIEvent(uint32_t head,    // NOLINT(build/unsigned)
+                    uint32_t signals, // NOLINT(build/unsigned)
+                    dataformats::timestamp_t ts,
+                    uint32_t seq_count) // NOLINT(build/unsigned)
     : header(head)
     , signal_map(signals)
     , timestamp(ts)
@@ -54,4 +57,4 @@ struct HSIEvent
 } // namespace dfmessages
 } // namespace dunedaq
 
-#endif // DFMESSAGES_INCLUDE_DFMESSAGES_HSIEVENT_HPP_o
+#endif // DFMESSAGES_INCLUDE_DFMESSAGES_HSIEVENT_HPP_

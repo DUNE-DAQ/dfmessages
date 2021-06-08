@@ -50,19 +50,19 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   BOOST_REQUIRE_EQUAL(frag_deserialized.get_trigger_timestamp(), test_frag.get_trigger_timestamp());
   BOOST_REQUIRE_EQUAL(frag_deserialized.get_window_begin(), test_frag.get_window_begin());
   BOOST_REQUIRE_EQUAL(frag_deserialized.get_window_end(), test_frag.get_window_end());
-  BOOST_REQUIRE_EQUAL(frag_deserialized.get_link_id().system_type, test_frag.get_link_id().system_type);
-  BOOST_REQUIRE_EQUAL(frag_deserialized.get_link_id().region_id, test_frag.get_link_id().region_id);
-  BOOST_REQUIRE_EQUAL(frag_deserialized.get_link_id().element_id, test_frag.get_link_id().element_id);
+  BOOST_REQUIRE_EQUAL(frag_deserialized.get_element_id().system_type, test_frag.get_element_id().system_type);
+  BOOST_REQUIRE_EQUAL(frag_deserialized.get_element_id().region_id, test_frag.get_element_id().region_id);
+  BOOST_REQUIRE_EQUAL(frag_deserialized.get_element_id().element_id, test_frag.get_element_id().element_id);
   BOOST_REQUIRE_EQUAL(frag_deserialized.get_error_bits(), test_frag.get_error_bits());
   BOOST_REQUIRE_EQUAL(frag_deserialized.get_fragment_type_code(), test_frag.get_fragment_type_code());
   BOOST_REQUIRE_EQUAL(frag_deserialized.get_size(), test_frag.get_size());
 
-  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized.get_data()) + 0),
-                      *(static_cast<uint8_t*>(test_frag.get_data()) + 0));
-  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized.get_data()) + 1),
-                      *(static_cast<uint8_t*>(test_frag.get_data()) + 1));
-  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized.get_data()) + 2),
-                      *(static_cast<uint8_t*>(test_frag.get_data()) + 2));
+  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized.get_data()) + 0), // NOLINT(build/unsigned)
+                      *(static_cast<uint8_t*>(test_frag.get_data()) + 0));        // NOLINT(build/unsigned)
+  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized.get_data()) + 1), // NOLINT(build/unsigned)
+                      *(static_cast<uint8_t*>(test_frag.get_data()) + 1));        // NOLINT(build/unsigned)
+  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized.get_data()) + 2), // NOLINT(build/unsigned)
+                      *(static_cast<uint8_t*>(test_frag.get_data()) + 2));        // NOLINT(build/unsigned)
 }
 
 BOOST_AUTO_TEST_CASE(SerDes_JSON)
@@ -94,19 +94,19 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   BOOST_REQUIRE_EQUAL(frag_deserialized.get_trigger_timestamp(), test_frag.get_trigger_timestamp());
   BOOST_REQUIRE_EQUAL(frag_deserialized.get_window_begin(), test_frag.get_window_begin());
   BOOST_REQUIRE_EQUAL(frag_deserialized.get_window_end(), test_frag.get_window_end());
-  BOOST_REQUIRE_EQUAL(frag_deserialized.get_link_id().system_type, test_frag.get_link_id().system_type);
-  BOOST_REQUIRE_EQUAL(frag_deserialized.get_link_id().region_id, test_frag.get_link_id().region_id);
-  BOOST_REQUIRE_EQUAL(frag_deserialized.get_link_id().element_id, test_frag.get_link_id().element_id);
+  BOOST_REQUIRE_EQUAL(frag_deserialized.get_element_id().system_type, test_frag.get_element_id().system_type);
+  BOOST_REQUIRE_EQUAL(frag_deserialized.get_element_id().region_id, test_frag.get_element_id().region_id);
+  BOOST_REQUIRE_EQUAL(frag_deserialized.get_element_id().element_id, test_frag.get_element_id().element_id);
   BOOST_REQUIRE_EQUAL(frag_deserialized.get_error_bits(), test_frag.get_error_bits());
   BOOST_REQUIRE_EQUAL(frag_deserialized.get_fragment_type_code(), test_frag.get_fragment_type_code());
   BOOST_REQUIRE_EQUAL(frag_deserialized.get_size(), test_frag.get_size());
 
-  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized.get_data()) + 0),
-                      *(static_cast<uint8_t*>(test_frag.get_data()) + 0));
-  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized.get_data()) + 1),
-                      *(static_cast<uint8_t*>(test_frag.get_data()) + 1));
-  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized.get_data()) + 2),
-                      *(static_cast<uint8_t*>(test_frag.get_data()) + 2));
+  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized.get_data()) + 0), // NOLINT(build/unsigned)
+                      *(static_cast<uint8_t*>(test_frag.get_data()) + 0));        // NOLINT(build/unsigned)
+  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized.get_data()) + 1), // NOLINT(build/unsigned)
+                      *(static_cast<uint8_t*>(test_frag.get_data()) + 1));        // NOLINT(build/unsigned)
+  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized.get_data()) + 2), // NOLINT(build/unsigned)
+                      *(static_cast<uint8_t*>(test_frag.get_data()) + 2));        // NOLINT(build/unsigned)
 }
 
 BOOST_AUTO_TEST_SUITE_END()

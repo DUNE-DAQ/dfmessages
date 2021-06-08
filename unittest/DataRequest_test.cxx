@@ -58,7 +58,8 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   BOOST_REQUIRE_EQUAL(dr.window_begin, dr_deserialized.window_begin);
   BOOST_REQUIRE_EQUAL(dr.window_end, dr_deserialized.window_end);
   BOOST_REQUIRE_EQUAL(dr.run_number, dr_deserialized.run_number);
-  BOOST_REQUIRE_EQUAL(static_cast<uint16_t>(dr.readout_type), static_cast<uint16_t>(dr_deserialized.readout_type));
+  BOOST_REQUIRE_EQUAL(static_cast<uint16_t>(dr.readout_type),               // NOLINT(build/unsigned)
+                      static_cast<uint16_t>(dr_deserialized.readout_type)); // NOLINT(build/unsigned)
 }
 
 BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
@@ -83,6 +84,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   BOOST_REQUIRE_EQUAL(dr.window_begin, dr_deserialized.window_begin);
   BOOST_REQUIRE_EQUAL(dr.window_end, dr_deserialized.window_end);
   BOOST_REQUIRE_EQUAL(dr.run_number, dr_deserialized.run_number);
-  BOOST_REQUIRE_EQUAL(static_cast<uint16_t>(dr.readout_type), static_cast<uint16_t>(dr_deserialized.readout_type));
+  BOOST_REQUIRE_EQUAL(static_cast<uint16_t>(dr.readout_type),               // NOLINT(build/unsigned)
+                      static_cast<uint16_t>(dr_deserialized.readout_type)); // NOLINT(build/unsigned)
 }
 BOOST_AUTO_TEST_SUITE_END()
