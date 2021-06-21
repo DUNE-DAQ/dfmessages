@@ -14,6 +14,7 @@ find_package(nwqueueadapters REQUIRED)
 daq_add_library(LINK_LIBRARIES dataformats::dataformats serialization::serialization)
 
 daq_add_unit_test(DataRequest_test LINK_LIBRARIES dataformats::dataformats serialization::serialization)
+daq_add_unit_test(HSIEvent_test LINK_LIBRARIES dataformats::dataformats serialization::serialization)
 daq_add_unit_test(TimeSync_test LINK_LIBRARIES dataformats::dataformats serialization::serialization)
 daq_add_unit_test(TriggerDecision_test LINK_LIBRARIES dataformats::dataformats serialization::serialization)
 daq_add_unit_test(TriggerDecisionToken_test LINK_LIBRARIES dataformats::dataformats serialization::serialization)

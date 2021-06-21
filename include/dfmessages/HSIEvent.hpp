@@ -28,12 +28,7 @@ struct HSIEvent
   dataformats::timestamp_t timestamp{ dfmessages::TypeDefaults::s_invalid_timestamp }; ///< Timestamp of HSI event
   uint32_t sequence_counter{ 0 }; ///< Event sequence number // NOLINT(build/unsigned)
 
-  HSIEvent()
-    : header(0)
-    , signal_map(0)
-    , timestamp(dfmessages::TypeDefaults::s_invalid_timestamp)
-    , sequence_counter(0)
-  {}
+  HSIEvent() = default;
 
   /**
    * @brief Construct a HSIEvent message

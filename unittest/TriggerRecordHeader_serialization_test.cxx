@@ -244,4 +244,12 @@ BOOST_AUTO_TEST_CASE(Header_SerDes_JSON)
   BOOST_REQUIRE_EQUAL(header_orig.at(1).window_begin, header_deserialized.at(1).window_begin);
 }
 
+BOOST_AUTO_TEST_CASE(Header_SerDes_JSON_BadData)
+{
+  std::string test_string = "J{ \"test_value\": \"test string\" }";
+  std::vector<unsigned char> bytes(test_string.begin(), test_string.end());
+  BOOST_REQUIRE_EXCEPTION(
+    dunedaq::serialization::deserialize<TriggerRecordHeader>(bytes), std::runtime_error, [&](std::runtime_error) { return true; });
+}
+
 BOOST_AUTO_TEST_SUITE_END()
