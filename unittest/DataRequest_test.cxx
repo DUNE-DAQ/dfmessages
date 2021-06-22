@@ -41,6 +41,7 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   dr.window_end = 5;
   dr.readout_type = ReadoutType::kLocalized;
   dr.run_number = 6;
+  dr.sequence_number = 10;
 
   auto bytes = dunedaq::serialization::serialize(dr, dunedaq::serialization::kJSON);
 
@@ -58,6 +59,7 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   BOOST_REQUIRE_EQUAL(dr.window_begin, dr_deserialized.window_begin);
   BOOST_REQUIRE_EQUAL(dr.window_end, dr_deserialized.window_end);
   BOOST_REQUIRE_EQUAL(dr.run_number, dr_deserialized.run_number);
+  BOOST_REQUIRE_EQUAL(dr.sequence_number, dr_deserialized.sequence_number);
   BOOST_REQUIRE_EQUAL(static_cast<uint16_t>(dr.readout_type),               // NOLINT(build/unsigned)
                       static_cast<uint16_t>(dr_deserialized.readout_type)); // NOLINT(build/unsigned)
 }
@@ -73,6 +75,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   dr.window_end = 5;
   dr.readout_type = ReadoutType::kLocalized;
   dr.run_number = 6;
+  dr.sequence_number = 10;
 
   auto bytes = dunedaq::serialization::serialize(dr, dunedaq::serialization::kMsgPack);
   TLOG(TLVL_INFO) << "MsgPack message size: " << bytes.size() << " bytes";
@@ -84,6 +87,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   BOOST_REQUIRE_EQUAL(dr.window_begin, dr_deserialized.window_begin);
   BOOST_REQUIRE_EQUAL(dr.window_end, dr_deserialized.window_end);
   BOOST_REQUIRE_EQUAL(dr.run_number, dr_deserialized.run_number);
+  BOOST_REQUIRE_EQUAL(dr.sequence_number, dr_deserialized.sequence_number);
   BOOST_REQUIRE_EQUAL(static_cast<uint16_t>(dr.readout_type),               // NOLINT(build/unsigned)
                       static_cast<uint16_t>(dr_deserialized.readout_type)); // NOLINT(build/unsigned)
 }

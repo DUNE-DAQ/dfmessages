@@ -34,6 +34,7 @@ struct DataRequest
   timestamp_t window_end{ TypeDefaults::s_invalid_timestamp };        ///< End of readout window
 
   ReadoutType readout_type{ ReadoutType::kInvalid }; ///< Mode of the request
+  sequence_number_t sequence_number{ TypeDefaults::s_invalid_sequence_number }; ///< Sequence Number of the request
 
   DUNE_DAQ_SERIALIZE(DataRequest,
                      request_number,
@@ -42,7 +43,8 @@ struct DataRequest
                      trigger_timestamp,
                      window_begin,
                      window_end,
-                     readout_type);
+                     readout_type,
+                     sequence_number);
 };
 
 } // namespace dfmessages
