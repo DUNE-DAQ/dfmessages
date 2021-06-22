@@ -21,7 +21,6 @@ daq_add_unit_test(TriggerDecisionToken_test LINK_LIBRARIES dataformats::dataform
 daq_add_unit_test(TriggerInhibit_test LINK_LIBRARIES dataformats::dataformats serialization::serialization)
 
 daq_add_unit_test(Fragment_serialization_test LINK_LIBRARIES dataformats::dataformats serialization::serialization)
-daq_add_unit_test(TriggerRecord_serialization_test LINK_LIBRARIES dataformats::dataformats serialization::serialization)
 daq_add_unit_test(TriggerRecordHeader_serialization_test LINK_LIBRARIES dataformats::dataformats serialization::serialization)
 daq_add_unit_test(ComponentRequest_serialization_test LINK_LIBRARIES dataformats::dataformats serialization::serialization)
 
@@ -33,7 +32,6 @@ daq_add_plugin(TriggerInhibitNQ       duneNetworkQueue LINK_LIBRARIES dfmessages
 daq_add_plugin(DataRequestNQ          duneNetworkQueue LINK_LIBRARIES dfmessages nwqueueadapters::nwqueueadapters)
 daq_add_plugin(HSIEventNQ             duneNetworkQueue LINK_LIBRARIES dfmessages nwqueueadapters::nwqueueadapters)
 
-#daq_add_plugin(TriggerRecordNQ        duneNetworkQueue LINK_LIBRARIES dfmessages nwqueueadapters::nwqueueadapters)
 daq_add_plugin(FragmentNQ             duneNetworkQueue LINK_LIBRARIES dfmessages nwqueueadapters::nwqueueadapters)
 
 daq_install()
