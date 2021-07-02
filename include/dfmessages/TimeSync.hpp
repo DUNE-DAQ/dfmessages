@@ -25,10 +25,7 @@ struct TimeSync
   timestamp_t daq_time{ TypeDefaults::s_invalid_timestamp };        ///< The current DAQ time
   system_time_t system_time{ TypeDefaults::s_invalid_system_time }; ///< The current system time
 
-  TimeSync()
-    : daq_time(TypeDefaults::s_invalid_timestamp)
-    , system_time(TypeDefaults::s_invalid_system_time)
-  {}
+  TimeSync() = default;
 
   /**
    * @brief Construct a TimeSync message
