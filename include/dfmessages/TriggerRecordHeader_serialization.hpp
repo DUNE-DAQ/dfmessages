@@ -65,7 +65,7 @@ struct adl_serializer<dunedaq::dataformats::TriggerRecordHeader>
     std::vector<uint8_t> tmp; // NOLINT(build/unsigned)
     for (auto const& it : j.items()) {
       if (!it.value().is_number_integer()) {
-          // TODO, Eric Flumerfelt <eflumerf@fnal.gov> June 21, 2021: Replace with ERS exception
+        // TODO, Eric Flumerfelt <eflumerf@fnal.gov> June-21-2021: Replace with ERS exception
         throw std::runtime_error("Foo");
       }
       tmp.push_back(it.value().get<uint8_t>()); // NOLINT(build/unsigned)
