@@ -36,7 +36,7 @@ using trigger_number_t = dataformats::trigger_number_t; ///< Copy dataformats::t
 /**
  * @brief A request number is represented using a 64-bit unsigned integer
  */
-using request_number_t = uint64_t; // NOLINT(build/unsigned)
+using request_number_t = uint64_t;                        // NOLINT(build/unsigned)
 using sequence_number_t = dataformats::sequence_number_t; ///< Copy dataformats::sequence_number_t
 
 using timestamp_t = dataformats::timestamp_t;           ///< Copy dataformats::timestamp_t

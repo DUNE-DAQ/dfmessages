@@ -31,7 +31,8 @@ BOOST_AUTO_TEST_CASE(CopyAndMoveSemantics)
   BOOST_REQUIRE(std::is_move_assignable_v<HSIEvent>);
 }
 
-BOOST_AUTO_TEST_CASE(DefaultConstructor) {
+BOOST_AUTO_TEST_CASE(DefaultConstructor)
+{
   HSIEvent test_hsievent;
   BOOST_REQUIRE_EQUAL(test_hsievent.header, 0);
   BOOST_REQUIRE_EQUAL(test_hsievent.signal_map, 0);
@@ -41,7 +42,7 @@ BOOST_AUTO_TEST_CASE(DefaultConstructor) {
 
 BOOST_AUTO_TEST_CASE(SerDes_JSON)
 {
-  HSIEvent he(0x12345678,0x11111111, 0x1234123456785678, 0x22222222);
+  HSIEvent he(0x12345678, 0x11111111, 0x1234123456785678, 0x22222222);
 
   auto bytes = dunedaq::serialization::serialize(he, dunedaq::serialization::kJSON);
 

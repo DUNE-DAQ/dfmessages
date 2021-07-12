@@ -15,6 +15,7 @@
 
 #include "boost/test/unit_test.hpp"
 
+#include <memory>
 #include <string>
 #include <utility>
 #include <vector>
@@ -148,7 +149,7 @@ BOOST_AUTO_TEST_CASE(Ptr_SerDes_MsgPack)
   BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized->get_data()) + 1), // NOLINT(build/unsigned)
                       *(static_cast<uint8_t*>(test_frag->get_data()) + 1));        // NOLINT(build/unsigned)
   BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized->get_data()) + 2), // NOLINT(build/unsigned)
-                      *(static_cast<uint8_t*>(test_frag->get_data()) + 2));         // NOLINT(build/unsigned)
+                      *(static_cast<uint8_t*>(test_frag->get_data()) + 2));        // NOLINT(build/unsigned)
 }
 
 BOOST_AUTO_TEST_CASE(Ptr_SerDes_JSON)
@@ -195,12 +196,12 @@ BOOST_AUTO_TEST_CASE(Ptr_SerDes_JSON)
                       *(static_cast<uint8_t*>(test_frag->get_data()) + 2));        // NOLINT(build/unsigned)
 }
 
-BOOST_AUTO_TEST_CASE(Bad_JSON) {
-      std::string test_string = "J{ \"test_value\": \"test string\" }";
+BOOST_AUTO_TEST_CASE(Bad_JSON)
+{
+  std::string test_string = "J{ \"test_value\": \"test string\" }";
   std::vector<unsigned char> bytes(test_string.begin(), test_string.end());
-  BOOST_REQUIRE_EXCEPTION(dunedaq::serialization::deserialize<Fragment>(bytes),
-                          std::runtime_error,
-                          [&](std::runtime_error) { return true; });
+  BOOST_REQUIRE_EXCEPTION(
+    dunedaq::serialization::deserialize<Fragment>(bytes), std::runtime_error, [&](std::runtime_error) { return true; });
   BOOST_REQUIRE_EXCEPTION(dunedaq::serialization::deserialize<std::unique_ptr<Fragment>>(bytes),
                           std::runtime_error,
                           [&](std::runtime_error) { return true; });
