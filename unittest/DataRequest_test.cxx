@@ -37,8 +37,15 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   dr.request_number = 1;
   dr.trigger_number = 2;
   dr.trigger_timestamp = 3;
-  dr.window_begin = 4;
-  dr.window_end = 5;
+  GeoID gid;
+  gid.system_type = GeoID::SystemType::kTPC;
+  gid.region_id = 1;
+  gid.element_id = 2;
+  ComponentRequest cr;
+  cr.component = gid;
+  cr.window_begin = 4;
+  cr.window_end = 5;
+  dr.request_information = cr;
   dr.readout_type = ReadoutType::kLocalized;
   dr.run_number = 6;
   dr.sequence_number = 10;
@@ -56,8 +63,8 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   BOOST_REQUIRE_EQUAL(dr.request_number, dr_deserialized.request_number);
   BOOST_REQUIRE_EQUAL(dr.trigger_number, dr_deserialized.trigger_number);
   BOOST_REQUIRE_EQUAL(dr.trigger_timestamp, dr_deserialized.trigger_timestamp);
-  BOOST_REQUIRE_EQUAL(dr.window_begin, dr_deserialized.window_begin);
-  BOOST_REQUIRE_EQUAL(dr.window_end, dr_deserialized.window_end);
+  BOOST_REQUIRE_EQUAL(dr.request_information.window_begin, dr_deserialized.request_information.window_begin);
+  BOOST_REQUIRE_EQUAL(dr.request_information.window_end, dr_deserialized.request_information.window_end);
   BOOST_REQUIRE_EQUAL(dr.run_number, dr_deserialized.run_number);
   BOOST_REQUIRE_EQUAL(dr.sequence_number, dr_deserialized.sequence_number);
   BOOST_REQUIRE_EQUAL(static_cast<uint16_t>(dr.readout_type),               // NOLINT(build/unsigned)
@@ -71,8 +78,15 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   dr.request_number = 1;
   dr.trigger_number = 2;
   dr.trigger_timestamp = 3;
-  dr.window_begin = 4;
-  dr.window_end = 5;
+  GeoID gid;
+  gid.system_type = GeoID::SystemType::kTPC;
+  gid.region_id = 1;
+  gid.element_id = 2;
+  ComponentRequest cr;
+  cr.component = gid;
+  cr.window_begin = 4;
+  cr.window_end = 5;
+  dr.request_information = cr;
   dr.readout_type = ReadoutType::kLocalized;
   dr.run_number = 6;
   dr.sequence_number = 10;
@@ -84,8 +98,8 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   BOOST_REQUIRE_EQUAL(dr.request_number, dr_deserialized.request_number);
   BOOST_REQUIRE_EQUAL(dr.trigger_number, dr_deserialized.trigger_number);
   BOOST_REQUIRE_EQUAL(dr.trigger_timestamp, dr_deserialized.trigger_timestamp);
-  BOOST_REQUIRE_EQUAL(dr.window_begin, dr_deserialized.window_begin);
-  BOOST_REQUIRE_EQUAL(dr.window_end, dr_deserialized.window_end);
+  BOOST_REQUIRE_EQUAL(dr.request_information.window_begin, dr_deserialized.request_information.window_begin);
+  BOOST_REQUIRE_EQUAL(dr.request_information.window_end, dr_deserialized.request_information.window_end);
   BOOST_REQUIRE_EQUAL(dr.run_number, dr_deserialized.run_number);
   BOOST_REQUIRE_EQUAL(dr.sequence_number, dr_deserialized.sequence_number);
   BOOST_REQUIRE_EQUAL(static_cast<uint16_t>(dr.readout_type),               // NOLINT(build/unsigned)

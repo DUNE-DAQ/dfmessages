@@ -9,6 +9,7 @@
 #ifndef DFMESSAGES_INCLUDE_DFMESSAGES_DATAREQUEST_HPP_
 #define DFMESSAGES_INCLUDE_DFMESSAGES_DATAREQUEST_HPP_
 
+#include "dfmessages/ComponentRequest_serialization.hpp"
 #include "dfmessages/Types.hpp"
 
 #include "serialization/Serialization.hpp"
