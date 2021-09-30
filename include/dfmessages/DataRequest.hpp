@@ -30,8 +30,7 @@ struct DataRequest
   run_number_t run_number{ TypeDefaults::s_invalid_run_number }; ///< The current run number
 
   timestamp_t trigger_timestamp{ TypeDefaults::s_invalid_timestamp }; ///< Timestamp of trigger
-  timestamp_t window_begin{ TypeDefaults::s_invalid_timestamp };      ///< Start of readout window
-  timestamp_t window_end{ TypeDefaults::s_invalid_timestamp };        ///< End of readout window
+  ComponentRequest request_information;
 
   ReadoutType readout_type{ ReadoutType::kInvalid };                            ///< Mode of the request
   sequence_number_t sequence_number{ TypeDefaults::s_invalid_sequence_number }; ///< Sequence Number of the request
@@ -41,8 +40,7 @@ struct DataRequest
                      trigger_number,
                      run_number,
                      trigger_timestamp,
-                     window_begin,
-                     window_end,
+                     request_information,
                      readout_type,
                      sequence_number);
 };
