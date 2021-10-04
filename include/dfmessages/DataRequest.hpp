@@ -36,6 +36,8 @@ struct DataRequest
   ReadoutType readout_type{ ReadoutType::kInvalid };                            ///< Mode of the request
   sequence_number_t sequence_number{ TypeDefaults::s_invalid_sequence_number }; ///< Sequence Number of the request
 
+  std::string requester_name ; 
+
   DUNE_DAQ_SERIALIZE(DataRequest,
                      request_number,
                      trigger_number,
@@ -43,7 +45,8 @@ struct DataRequest
                      trigger_timestamp,
                      request_information,
                      readout_type,
-                     sequence_number);
+                     sequence_number, 
+		     requester_name);
 };
 
 } // namespace dfmessages
