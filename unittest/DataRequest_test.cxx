@@ -49,7 +49,7 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   dr.readout_type = ReadoutType::kLocalized;
   dr.run_number = 6;
   dr.sequence_number = 10;
-  dr.requester_name = "test";
+  dr.data_destination = "test";
 
   auto bytes = dunedaq::serialization::serialize(dr, dunedaq::serialization::kJSON);
 
@@ -68,7 +68,7 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   BOOST_REQUIRE_EQUAL(dr.request_information.window_end, dr_deserialized.request_information.window_end);
   BOOST_REQUIRE_EQUAL(dr.run_number, dr_deserialized.run_number);
   BOOST_REQUIRE_EQUAL(dr.sequence_number, dr_deserialized.sequence_number);
-  BOOST_REQUIRE_EQUAL(dr.requester_name, dr_deserialized.requester_name);
+  BOOST_REQUIRE_EQUAL(dr.data_destination, dr_deserialized.data_destination);
   BOOST_REQUIRE_EQUAL(static_cast<uint16_t>(dr.readout_type),               // NOLINT(build/unsigned)
                       static_cast<uint16_t>(dr_deserialized.readout_type)); // NOLINT(build/unsigned)
 }
@@ -92,7 +92,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   dr.readout_type = ReadoutType::kLocalized;
   dr.run_number = 6;
   dr.sequence_number = 10;
-  dr.requester_name = "test";
+  dr.data_destination = "test";
 
   auto bytes = dunedaq::serialization::serialize(dr, dunedaq::serialization::kMsgPack);
   TLOG(TLVL_INFO) << "MsgPack message size: " << bytes.size() << " bytes";
@@ -105,7 +105,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   BOOST_REQUIRE_EQUAL(dr.request_information.window_end, dr_deserialized.request_information.window_end);
   BOOST_REQUIRE_EQUAL(dr.run_number, dr_deserialized.run_number);
   BOOST_REQUIRE_EQUAL(dr.sequence_number, dr_deserialized.sequence_number);
-  BOOST_REQUIRE_EQUAL(dr.requester_name, dr_deserialized.requester_name);
+  BOOST_REQUIRE_EQUAL(dr.data_destination, dr_deserialized.data_destination);
   BOOST_REQUIRE_EQUAL(static_cast<uint16_t>(dr.readout_type),               // NOLINT(build/unsigned)
                       static_cast<uint16_t>(dr_deserialized.readout_type)); // NOLINT(build/unsigned)
 }

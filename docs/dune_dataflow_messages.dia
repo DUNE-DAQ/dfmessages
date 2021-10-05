@@ -406,7 +406,7 @@
         </dia:composite>
         <dia:composite type="umlattribute">
           <dia:attribute name="name">
-            <dia:string>#requester_name#</dia:string>
+            <dia:string>#data_destination#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
             <dia:string>#std::string#</dia:string>
@@ -1156,7 +1156,7 @@ class TypeDefaults : public dataformats::TypeDefaults {};#</dia:string>
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="43.3,29.1941"/>
+            <dia:point val="43.3,29.1325"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000"/>
@@ -1731,7 +1731,7 @@ class TypeDefaults : public dataformats::TypeDefaults {};#</dia:string>
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="43.25,16.4441"/>
+            <dia:point val="43.25,16.3825"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000"/>
@@ -1786,7 +1786,7 @@ class TypeDefaults : public dataformats::TypeDefaults {};#</dia:string>
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="43.3,19.5941"/>
+            <dia:point val="43.3,19.5325"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000"/>
@@ -1841,7 +1841,7 @@ class TypeDefaults : public dataformats::TypeDefaults {};#</dia:string>
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="43.35,22.8441"/>
+            <dia:point val="43.35,22.7825"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000"/>
@@ -1896,7 +1896,7 @@ class TypeDefaults : public dataformats::TypeDefaults {};#</dia:string>
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="43.35,26.0441"/>
+            <dia:point val="43.35,25.9825"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000"/>
