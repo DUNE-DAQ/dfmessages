@@ -9,9 +9,9 @@
 #ifndef DFMESSAGES_INCLUDE_DFMESSAGES_TYPES_HPP_
 #define DFMESSAGES_INCLUDE_DFMESSAGES_TYPES_HPP_
 
-#include "dataformats/ComponentRequest.hpp"
-#include "dataformats/GeoID.hpp"
-#include "dataformats/Types.hpp"
+#include "daqdataformats/ComponentRequest.hpp"
+#include "daqdataformats/GeoID.hpp"
+#include "daqdataformats/Types.hpp"
 
 #include "serialization/Serialization.hpp"
 
@@ -29,20 +29,20 @@ namespace dunedaq {
  * @brief Dataflow Messages
  */
 namespace dfmessages {
-using GeoID = dataformats::GeoID;                       ///< Copy dataformats::GeoID
-using ComponentRequest = dataformats::ComponentRequest; ///< Copy dataformats::ComponentRequest
-using run_number_t = dataformats::run_number_t;         ///< Copy dataformats::run_number_t
-using trigger_number_t = dataformats::trigger_number_t; ///< Copy dataformats::trigger_number_t
+using GeoID = daqdataformats::GeoID;                       ///< Copy daqdataformats::GeoID
+using ComponentRequest = daqdataformats::ComponentRequest; ///< Copy daqdataformats::ComponentRequest
+using run_number_t = daqdataformats::run_number_t;         ///< Copy daqdataformats::run_number_t
+using trigger_number_t = daqdataformats::trigger_number_t; ///< Copy daqdataformats::trigger_number_t
 /**
  * @brief A request number is represented using a 64-bit unsigned integer
  */
 using request_number_t = uint64_t;                        // NOLINT(build/unsigned)
-using sequence_number_t = dataformats::sequence_number_t; ///< Copy dataformats::sequence_number_t
+using sequence_number_t = daqdataformats::sequence_number_t; ///< Copy daqdataformats::sequence_number_t
 
-using timestamp_t = dataformats::timestamp_t;           ///< Copy dataformats::timestamp_t
-using timestamp_diff_t = dataformats::timestamp_diff_t; ///< Copy dataformats::timestamp_diff_t
+using timestamp_t = daqdataformats::timestamp_t;           ///< Copy daqdataformats::timestamp_t
+using timestamp_diff_t = daqdataformats::timestamp_diff_t; ///< Copy daqdataformats::timestamp_diff_t
 
-using trigger_type_t = dataformats::trigger_type_t; ///< Copy dataformats::trigger_type_t
+using trigger_type_t = daqdataformats::trigger_type_t; ///< Copy daqdataformats::trigger_type_t
 
 /**
  * @brief Which type of readout to use for TriggerDecision and DataRequest
@@ -64,7 +64,7 @@ using system_time_t = uint64_t; // NOLINT(build/unsigned)
 /**
  * @brief Default values for dfmessages types
  */
-class TypeDefaults : public dataformats::TypeDefaults
+class TypeDefaults : public daqdataformats::TypeDefaults
 {
 public:
   static constexpr request_number_t s_invalid_request_number =

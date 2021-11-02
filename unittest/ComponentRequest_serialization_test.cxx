@@ -19,7 +19,7 @@
 #include <utility>
 #include <vector>
 
-using namespace dunedaq::dataformats;
+using namespace dunedaq::daqdataformats;
 
 BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
 

@@ -18,7 +18,7 @@
 #include <string>
 #include <vector>
 
-using namespace dunedaq::dataformats;
+using namespace dunedaq::daqdataformats;
 
 BOOST_AUTO_TEST_SUITE(TriggerRecordHeader_test)
 
@@ -60,10 +60,8 @@ BOOST_AUTO_TEST_CASE(ExistingHeader)
   header->set_error_bit(TriggerRecordErrorBits::kMismatch, true);
   header->set_error_bit(TriggerRecordErrorBits::kUnassigned3, true);
 
-  BOOST_REQUIRE_THROW(header->at(header->get_header().num_requested_components),
-                      dunedaq::dataformats::ComponentRequestIndexError);
-  BOOST_REQUIRE_THROW((*header)[header->get_header().num_requested_components],
-                      dunedaq::dataformats::ComponentRequestIndexError);
+  BOOST_REQUIRE_THROW(header->at(header->get_header().num_requested_components), std::range_error);
+  BOOST_REQUIRE_THROW((*header)[header->get_header().num_requested_components], std::range_error);
 
   void* buff = malloc(header->get_total_size_bytes());
   memcpy(buff, header->get_storage_location(), header->get_total_size_bytes());
