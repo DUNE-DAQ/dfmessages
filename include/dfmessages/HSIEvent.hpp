@@ -9,7 +9,7 @@
 #ifndef DFMESSAGES_INCLUDE_DFMESSAGES_HSIEVENT_HPP_
 #define DFMESSAGES_INCLUDE_DFMESSAGES_HSIEVENT_HPP_
 
-#include "dataformats/Types.hpp"
+#include "daqdataformats/Types.hpp"
 #include "dfmessages/Types.hpp"
 
 #include "serialization/Serialization.hpp"
@@ -25,7 +25,7 @@ struct HSIEvent
 {
   uint32_t header{ 0 };     ///< Header field. Only contains HSI device ID at the moment // NOLINT(build/unsigned)
   uint32_t signal_map{ 0 }; ///< Bit map of signals. 1 bit, 1 signal // NOLINT(build/unsigned)
-  dataformats::timestamp_t timestamp{ dfmessages::TypeDefaults::s_invalid_timestamp }; ///< Timestamp of HSI event
+  daqdataformats::timestamp_t timestamp{ dfmessages::TypeDefaults::s_invalid_timestamp }; ///< Timestamp of HSI event
   uint32_t sequence_counter{ 0 }; ///< Event sequence number // NOLINT(build/unsigned)
 
   HSIEvent() = default;
@@ -39,7 +39,7 @@ struct HSIEvent
    */
   explicit HSIEvent(uint32_t head,    // NOLINT(build/unsigned)
                     uint32_t signals, // NOLINT(build/unsigned)
-                    dataformats::timestamp_t ts,
+                    daqdataformats::timestamp_t ts,
                     uint32_t seq_count) // NOLINT(build/unsigned)
     : header(head)
     , signal_map(signals)

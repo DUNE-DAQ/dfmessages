@@ -11,4 +11,4 @@
 
 #include <memory>
 
-DEFINE_DUNE_NWQUEUEADAPTERS(std::unique_ptr<dunedaq::dataformats::Fragment>)
+DEFINE_DUNE_NWQUEUEADAPTERS(std::unique_ptr<dunedaq::daqdataformats::Fragment>)

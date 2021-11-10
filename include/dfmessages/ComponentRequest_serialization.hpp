@@ -9,9 +9,9 @@
 #ifndef DFMESSAGES_INCLUDE_DFMESSAGES_COMPONENTREQUEST_SERIALIZATION_HPP_
 #define DFMESSAGES_INCLUDE_DFMESSAGES_COMPONENTREQUEST_SERIALIZATION_HPP_
 
-#include "dataformats/ComponentRequest.hpp"
+#include "daqdataformats/ComponentRequest.hpp"
 #include "dfmessages/GeoID_serialization.hpp"
 
-DUNE_DAQ_SERIALIZE_NON_INTRUSIVE(dunedaq::dataformats, ComponentRequest, window_begin, window_end, component)
+DUNE_DAQ_SERIALIZE_NON_INTRUSIVE(dunedaq::daqdataformats, ComponentRequest, window_begin, window_end, component)
 
 #endif // DFMESSAGES_INCLUDE_DFMESSAGES_COMPONENTREQUEST_SERIALIZATION_HPP_

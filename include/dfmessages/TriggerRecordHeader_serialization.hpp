@@ -9,7 +9,7 @@
 #ifndef DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERRECORDHEADER_SERIALIZATION_HPP_
 #define DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERRECORDHEADER_SERIALIZATION_HPP_
 
-#include "dataformats/TriggerRecordHeader.hpp"
+#include "daqdataformats/TriggerRecordHeader.hpp"
 #include "serialization/Serialization.hpp"
 
 #include <vector>
@@ -22,10 +22,10 @@ MSGPACK_API_VERSION_NAMESPACE(MSGPACK_DEFAULT_API_NS)
   namespace adaptor {
 
   template<>
-  struct pack<dunedaq::dataformats::TriggerRecordHeader>
+  struct pack<dunedaq::daqdataformats::TriggerRecordHeader>
   {
     template<typename Stream>
-    packer<Stream>& operator()(msgpack::packer<Stream>& o, dunedaq::dataformats::TriggerRecordHeader const& trh) const
+    packer<Stream>& operator()(msgpack::packer<Stream>& o, dunedaq::daqdataformats::TriggerRecordHeader const& trh) const
     {
       size_t size = trh.get_total_size_bytes();
       o.pack_bin(size);                                                            // pack header and size
@@ -38,11 +38,11 @@ MSGPACK_API_VERSION_NAMESPACE(MSGPACK_DEFAULT_API_NS)
   // default constructible, so we have to use as<>. See:
   // https://github.com/msgpack/msgpack-c/wiki/v2_0_cpp_adaptor#non-default-constructible-class-support-c11-only-since-120
   template<>
-  struct as<dunedaq::dataformats::TriggerRecordHeader>
+  struct as<dunedaq::daqdataformats::TriggerRecordHeader>
   {
-    dunedaq::dataformats::TriggerRecordHeader operator()(msgpack::object const& o) const
+    dunedaq::daqdataformats::TriggerRecordHeader operator()(msgpack::object const& o) const
     {
-      return dunedaq::dataformats::TriggerRecordHeader(const_cast<char*>(o.via.bin.ptr), true);
+      return dunedaq::daqdataformats::TriggerRecordHeader(const_cast<char*>(o.via.bin.ptr), true);
     }
   };
 
@@ -56,11 +56,11 @@ MSGPACK_API_VERSION_NAMESPACE(MSGPACK_DEFAULT_API_NS)
 // https://nlohmann.github.io/json/features/arbitrary_types/#how-can-i-use-get-for-non-default-constructiblenon-copyable-types
 namespace nlohmann {
 template<>
-struct adl_serializer<dunedaq::dataformats::TriggerRecordHeader>
+struct adl_serializer<dunedaq::daqdataformats::TriggerRecordHeader>
 {
   // note: the return type is no longer 'void', and the method only takes
   // one argument
-  static dunedaq::dataformats::TriggerRecordHeader from_json(const json& j)
+  static dunedaq::daqdataformats::TriggerRecordHeader from_json(const json& j)
   {
     std::vector<uint8_t> tmp; // NOLINT(build/unsigned)
     for (auto const& it : j.items()) {
@@ -70,10 +70,10 @@ struct adl_serializer<dunedaq::dataformats::TriggerRecordHeader>
       }
       tmp.push_back(it.value().get<uint8_t>()); // NOLINT(build/unsigned)
     }
-    return dunedaq::dataformats::TriggerRecordHeader(tmp.data(), true);
+    return dunedaq::daqdataformats::TriggerRecordHeader(tmp.data(), true);
   }
 
-  static void to_json(json& j, const dunedaq::dataformats::TriggerRecordHeader& trh)
+  static void to_json(json& j, const dunedaq::daqdataformats::TriggerRecordHeader& trh)
   {
     const uint8_t* storage = static_cast<const uint8_t*>(trh.get_storage_location()); // NOLINT(build/unsigned)
     std::vector<uint8_t> bytes(storage, storage + trh.get_total_size_bytes());        // NOLINT(build/unsigned)
