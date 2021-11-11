@@ -9,10 +9,10 @@
 #ifndef DFMESSAGES_INCLUDE_DFMESSAGES_GEOID_SERIALIZATION_HPP_
 #define DFMESSAGES_INCLUDE_DFMESSAGES_GEOID_SERIALIZATION_HPP_
 
-#include "dataformats/GeoID.hpp"
+#include "daqdataformats/GeoID.hpp"
 #include "serialization/Serialization.hpp"
 
-MSGPACK_ADD_ENUM(dunedaq::dataformats::GeoID::SystemType)
-DUNE_DAQ_SERIALIZE_NON_INTRUSIVE(dunedaq::dataformats, GeoID, system_type, region_id, element_id)
+MSGPACK_ADD_ENUM(dunedaq::daqdataformats::GeoID::SystemType)
+DUNE_DAQ_SERIALIZE_NON_INTRUSIVE(dunedaq::daqdataformats, GeoID, system_type, region_id, element_id)
 
 #endif // DFMESSAGES_INCLUDE_DFMESSAGES_GEOID_SERIALIZATION_HPP_

@@ -20,7 +20,7 @@
 #include <utility>
 #include <vector>
 
-using namespace dunedaq::dataformats;
+using namespace dunedaq::daqdataformats;
 
 BOOST_AUTO_TEST_SUITE(Fragment_serialization_test)
 
