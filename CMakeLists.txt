@@ -5,7 +5,6 @@ find_package(daq-cmake REQUIRED)
 
 daq_setup_environment()
 
-find_package(Boost 1.70.0 COMPONENTS unit_test_framework REQUIRED)
 find_package(daqdataformats REQUIRED)
 find_package(serialization REQUIRED)
 find_package(nwqueueadapters REQUIRED)
