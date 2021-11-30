@@ -25,7 +25,8 @@ MSGPACK_API_VERSION_NAMESPACE(MSGPACK_DEFAULT_API_NS)
   struct pack<dunedaq::daqdataformats::TriggerRecordHeader>
   {
     template<typename Stream>
-    packer<Stream>& operator()(msgpack::packer<Stream>& o, dunedaq::daqdataformats::TriggerRecordHeader const& trh) const
+    packer<Stream>& operator()(msgpack::packer<Stream>& o,
+                               dunedaq::daqdataformats::TriggerRecordHeader const& trh) const
     {
       size_t size = trh.get_total_size_bytes();
       o.pack_bin(size);                                                            // pack header and size
