@@ -8,6 +8,7 @@ daq_setup_environment()
 find_package(daqdataformats REQUIRED)
 find_package(serialization REQUIRED)
 find_package(nwqueueadapters REQUIRED)
+find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
 # No sources, so we'll create an INTERFACE library
 daq_add_library(LINK_LIBRARIES daqdataformats::daqdataformats serialization::serialization)
