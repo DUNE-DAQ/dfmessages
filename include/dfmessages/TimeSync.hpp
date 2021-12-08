@@ -24,9 +24,9 @@ struct TimeSync
 {
   timestamp_t daq_time{ TypeDefaults::s_invalid_timestamp };        ///< The current DAQ time
   system_time_t system_time{ TypeDefaults::s_invalid_system_time }; ///< The current system time
-  run_number_t run_number{ 0 };
-  size_t sequence_number{ 0 };
-  size_t source_pid{ 0 };
+  uint64_t sequence_number{ 0 };                                    ///< Sequence Number of this message, for debugging
+  run_number_t run_number{ 0 };                                     ///< Run number at time of creation
+  uint32_t source_pid{ 0 };                                         ///< PID of the creating process, for debugging
 
   TimeSync() = default;
 
