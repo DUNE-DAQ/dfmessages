@@ -25,7 +25,9 @@ struct TriggerDecisionToken
     TypeDefaults::s_invalid_trigger_number
   }; ///< An optional trigger number that this token represents completion of
 
-  DUNE_DAQ_SERIALIZE(TriggerDecisionToken, run_number, trigger_number);
+  std::string decision_destination; ///< Connection name for TriggerDecisions sent to the Dataflow process originating this token
+
+  DUNE_DAQ_SERIALIZE(TriggerDecisionToken, run_number, trigger_number, decision_destination);
 };
 } // namespace dfmessages
 } // namespace dunedaq
