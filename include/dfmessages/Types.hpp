@@ -36,7 +36,7 @@ using trigger_number_t = daqdataformats::trigger_number_t; ///< Copy daqdataform
 /**
  * @brief A request number is represented using a 64-bit unsigned integer
  */
-using request_number_t = uint64_t;                        // NOLINT(build/unsigned)
+using request_number_t = uint64_t;                           // NOLINT(build/unsigned)
 using sequence_number_t = daqdataformats::sequence_number_t; ///< Copy daqdataformats::sequence_number_t
 
 using timestamp_t = daqdataformats::timestamp_t;           ///< Copy daqdataformats::timestamp_t

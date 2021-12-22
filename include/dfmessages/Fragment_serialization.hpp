@@ -49,7 +49,7 @@ MSGPACK_API_VERSION_NAMESPACE(MSGPACK_DEFAULT_API_NS)
       // Fragment might outlast the msgpack::object which owns/points
       // to the underlying data.
       return dunedaq::daqdataformats::Fragment(const_cast<char*>(o.via.bin.ptr),
-                                            dunedaq::daqdataformats::Fragment::BufferAdoptionMode::kCopyFromBuffer);
+                                               dunedaq::daqdataformats::Fragment::BufferAdoptionMode::kCopyFromBuffer);
     }
   };
 
@@ -108,7 +108,7 @@ struct adl_serializer<dunedaq::daqdataformats::Fragment>
       tmp.push_back(it.value().get<uint8_t>()); // NOLINT(build/unsigned)
     }
     return dunedaq::daqdataformats::Fragment(tmp.data(),
-                                          dunedaq::daqdataformats::Fragment::BufferAdoptionMode::kCopyFromBuffer);
+                                             dunedaq::daqdataformats::Fragment::BufferAdoptionMode::kCopyFromBuffer);
   }
 
   static void to_json(json& j, const dunedaq::daqdataformats::Fragment& frag)

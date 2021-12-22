@@ -24,6 +24,9 @@ struct TimeSync
 {
   timestamp_t daq_time{ TypeDefaults::s_invalid_timestamp };        ///< The current DAQ time
   system_time_t system_time{ TypeDefaults::s_invalid_system_time }; ///< The current system time
+  uint64_t sequence_number{ 0 };                                    ///< Sequence Number of this message, for debugging
+  run_number_t run_number{ 0 };                                     ///< Run number at time of creation
+  uint32_t source_pid{ 0 };                                         ///< PID of the creating process, for debugging
 
   TimeSync() = default;
 
@@ -50,7 +53,7 @@ struct TimeSync
     return static_cast<system_time_t>(tv.tv_sec) * 1000000 + tv.tv_usec;
   }
 
-  DUNE_DAQ_SERIALIZE(TimeSync, daq_time, system_time);
+  DUNE_DAQ_SERIALIZE(TimeSync, daq_time, system_time, run_number, sequence_number, source_pid);
 };
 } // namespace dfmessages
 } // namespace dunedaq
