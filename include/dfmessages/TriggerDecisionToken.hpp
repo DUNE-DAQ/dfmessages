@@ -13,6 +13,8 @@
 
 #include "serialization/Serialization.hpp"
 
+#include <string>
+
 namespace dunedaq {
 namespace dfmessages {
 /**
@@ -25,7 +27,8 @@ struct TriggerDecisionToken
     TypeDefaults::s_invalid_trigger_number
   }; ///< An optional trigger number that this token represents completion of
 
-  std::string decision_destination; ///< Connection name for TriggerDecisions sent to the Dataflow process originating this token
+  std::string
+    decision_destination; ///< Connection name for TriggerDecisions sent to the Dataflow process originating this token
 
   DUNE_DAQ_SERIALIZE(TriggerDecisionToken, run_number, trigger_number, decision_destination);
 };
