@@ -14,6 +14,10 @@
 
 #include <vector>
 
+namespace dunedaq {
+ERS_DECLARE_ISSUE(dfmessages, CannotDeserializeTriggerRecordHeader, "Cannot deserialize TriggerRecordHeader from JSON due to type mismatch",)
+}
+
 // MsgPack serialization functions (which just put the raw bytes of
 // the fragment array into a MsgPack message)
 namespace msgpack {
@@ -66,8 +70,7 @@ struct adl_serializer<dunedaq::daqdataformats::TriggerRecordHeader>
     std::vector<uint8_t> tmp; // NOLINT(build/unsigned)
     for (auto const& it : j.items()) {
       if (!it.value().is_number_integer()) {
-        // TODO, Eric Flumerfelt <eflumerf@fnal.gov> June-21-2021: Replace with ERS exception
-        throw std::runtime_error("Foo");
+        throw dunedaq::dfmessages::CannotDeserializeTriggerRecordHeader(ERS_HERE);
       }
       tmp.push_back(it.value().get<uint8_t>()); // NOLINT(build/unsigned)
     }
