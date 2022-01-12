@@ -17,8 +17,8 @@
 #include <vector>
 
 namespace dunedaq {
-ERS_DECLARE_ISSUE(dfmessages, CannotDeserializeFragment, "Cannot deserialize Fragment from JSON due to type mismatch",)
-}
+ERS_DECLARE_ISSUE(dfmessages, CannotDeserializeFragment, "Cannot deserialize Fragment from JSON due to type mismatch", )
+} // namespace dunedaq
 
 // MsgPack serialization functions (which just put the raw bytes of
 // the fragment array into a MsgPack message)
