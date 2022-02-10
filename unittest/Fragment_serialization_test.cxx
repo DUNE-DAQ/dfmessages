@@ -201,10 +201,10 @@ BOOST_AUTO_TEST_CASE(Bad_JSON)
   std::string test_string = "J{ \"test_value\": \"test string\" }";
   std::vector<unsigned char> bytes(test_string.begin(), test_string.end());
   BOOST_REQUIRE_EXCEPTION(
-    dunedaq::serialization::deserialize<Fragment>(bytes), std::runtime_error, [&](std::runtime_error) { return true; });
+    dunedaq::serialization::deserialize<Fragment>(bytes), dunedaq::dfmessages::CannotDeserializeFragment, [&](dunedaq::dfmessages::CannotDeserializeFragment) { return true; });
   BOOST_REQUIRE_EXCEPTION(dunedaq::serialization::deserialize<std::unique_ptr<Fragment>>(bytes),
-                          std::runtime_error,
-                          [&](std::runtime_error) { return true; });
+      dunedaq::dfmessages::CannotDeserializeFragment,
+                          [&](dunedaq::dfmessages::CannotDeserializeFragment) { return true; });
 }
 
 BOOST_AUTO_TEST_SUITE_END()
