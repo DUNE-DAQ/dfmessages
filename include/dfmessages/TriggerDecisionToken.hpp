@@ -33,6 +33,7 @@ struct TriggerDecisionToken
   DUNE_DAQ_SERIALIZE(TriggerDecisionToken, run_number, trigger_number, decision_destination);
 };
 } // namespace dfmessages
+DUNE_DAQ_SERIALIZABLE(dfmessages::TriggerDecisionToken);
 } // namespace dunedaq
 
 #endif // DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERDECISIONTOKEN_HPP_

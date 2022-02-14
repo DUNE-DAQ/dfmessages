@@ -50,6 +50,9 @@ struct HSIEvent
   DUNE_DAQ_SERIALIZE(HSIEvent, header, signal_map, timestamp, sequence_counter);
 };
 } // namespace dfmessages
+
+DUNE_DAQ_SERIALIZABLE(dfmessages::HSIEvent);
+
 } // namespace dunedaq
 
 #endif // DFMESSAGES_INCLUDE_DFMESSAGES_HSIEVENT_HPP_

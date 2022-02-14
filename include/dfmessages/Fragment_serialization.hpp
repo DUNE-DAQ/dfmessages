@@ -148,4 +148,7 @@ struct adl_serializer<std::unique_ptr<dunedaq::daqdataformats::Fragment>>
 };
 } // namespace nlohmann
 
+DUNE_DAQ_SERIALIZABLE(dunedaq::daqdataformats::Fragment);
+DUNE_DAQ_SERIALIZABLE(std::unique_ptr<dunedaq::daqdataformats::Fragment>);
+
 #endif // DFMESSAGES_INCLUDE_DFMESSAGES_FRAGMENT_SERIALIZATION_HPP_

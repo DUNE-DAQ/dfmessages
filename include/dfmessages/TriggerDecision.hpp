@@ -45,6 +45,9 @@ struct TriggerDecision
                      components);
 };
 } // namespace dfmessages
+
+DUNE_DAQ_SERIALIZABLE(dfmessages::TriggerDecision);
+
 } // namespace dunedaq
 
 #endif // DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERDECISION_HPP_

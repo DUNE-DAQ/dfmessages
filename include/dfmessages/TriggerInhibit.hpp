@@ -25,6 +25,7 @@ struct TriggerInhibit
   DUNE_DAQ_SERIALIZE(TriggerInhibit, busy, run_number);
 };
 } // namespace dfmessages
+DUNE_DAQ_SERIALIZABLE(dfmessages::TriggerInhibit);
 } // namespace dunedaq
 
 #endif // DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERINHIBIT_HPP_

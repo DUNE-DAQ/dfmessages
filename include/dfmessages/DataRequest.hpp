@@ -51,6 +51,9 @@ struct DataRequest
 };
 
 } // namespace dfmessages
+
+DUNE_DAQ_SERIALIZABLE(dfmessages::DataRequest);
+
 } // namespace dunedaq
 
 #endif // DFMESSAGES_INCLUDE_DFMESSAGES_DATAREQUEST_HPP_

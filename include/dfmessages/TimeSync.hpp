@@ -61,6 +61,7 @@ struct TimeSync
   DUNE_DAQ_SERIALIZE(TimeSync, daq_time, system_time, run_number, sequence_number, source_pid);
 };
 } // namespace dfmessages
+DUNE_DAQ_SERIALIZABLE(dfmessages::TimeSync);
 } // namespace dunedaq
 
 #endif // DFMESSAGES_INCLUDE_DFMESSAGES_TIMESYNC_HPP_
