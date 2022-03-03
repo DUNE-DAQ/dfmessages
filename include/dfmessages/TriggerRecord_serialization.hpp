@@ -14,6 +14,8 @@
 #include "dfmessages/TriggerRecordHeader_serialization.hpp"
 #include "serialization/Serialization.hpp"
 
+#include <memory>
+#include <utility>
 #include <vector>
 
 namespace dunedaq {
@@ -169,7 +171,7 @@ struct adl_serializer<std::unique_ptr<dunedaq::daqdataformats::TriggerRecord>>
     return tr;
   }
 
-  static void to_json(json& j, const std::unique_ptr<dunedaq::daqdataformats::TriggerRecord> & tr)
+  static void to_json(json& j, const std::unique_ptr<dunedaq::daqdataformats::TriggerRecord>& tr)
   {
     auto& trh = tr->get_header_ref();
     auto& frags = tr->get_fragments_ref();
@@ -183,4 +185,4 @@ struct adl_serializer<std::unique_ptr<dunedaq::daqdataformats::TriggerRecord>>
 };
 } // namespace nlohmann
 
-#endif // DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERRECORDHEADER_SERIALIZATION_HPP_
+#endif // DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERRECORD_SERIALIZATION_HPP_

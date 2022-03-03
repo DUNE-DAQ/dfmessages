@@ -19,7 +19,7 @@ namespace dfmessages {
  */
 struct TriggerInhibit
 {
-  bool busy = false; ///< Whether the system is busy
+  bool busy = false;           ///< Whether the system is busy
   run_number_t run_number = 0; ///< Current run number
 
   DUNE_DAQ_SERIALIZE(TriggerInhibit, busy, run_number);
