@@ -9,6 +9,7 @@
 #ifndef DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERINHIBIT_HPP_
 #define DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERINHIBIT_HPP_
 
+#include "dfmessages/Types.hpp"
 #include "serialization/Serialization.hpp"
 
 namespace dunedaq {
@@ -18,9 +19,10 @@ namespace dfmessages {
  */
 struct TriggerInhibit
 {
-  bool busy = false; ///< Whether the system is busy
+  bool busy = false;           ///< Whether the system is busy
+  run_number_t run_number = 0; ///< Current run number
 
-  DUNE_DAQ_SERIALIZE(TriggerInhibit, busy);
+  DUNE_DAQ_SERIALIZE(TriggerInhibit, busy, run_number);
 };
 } // namespace dfmessages
 } // namespace dunedaq

@@ -16,6 +16,10 @@
 #include <memory>
 #include <vector>
 
+namespace dunedaq {
+ERS_DECLARE_ISSUE(dfmessages, CannotDeserializeFragment, "Cannot deserialize Fragment from JSON due to type mismatch", )
+} // namespace dunedaq
+
 // MsgPack serialization functions (which just put the raw bytes of
 // the fragment array into a MsgPack message)
 namespace msgpack {
@@ -102,8 +106,7 @@ struct adl_serializer<dunedaq::daqdataformats::Fragment>
     std::vector<uint8_t> tmp; // NOLINT(build/unsigned)
     for (auto const& it : j.items()) {
       if (!it.value().is_number_integer()) {
-        // TODO, Eric Flumerfelt <eflumerf@fnal.gov> June-21-2021: Replace with ERS exception
-        throw std::runtime_error("Foo");
+        throw dunedaq::dfmessages::CannotDeserializeFragment(ERS_HERE);
       }
       tmp.push_back(it.value().get<uint8_t>()); // NOLINT(build/unsigned)
     }
@@ -128,8 +131,7 @@ struct adl_serializer<std::unique_ptr<dunedaq::daqdataformats::Fragment>>
     std::vector<uint8_t> tmp; // NOLINT(build/unsigned)
     for (auto const& it : j.items()) {
       if (!it.value().is_number_integer()) {
-        // TODO, Eric Flumerfelt <eflumerf@fnal.gov> June-21-2021: Replace with ERS exception
-        throw std::runtime_error("Foo");
+        throw dunedaq::dfmessages::CannotDeserializeFragment(ERS_HERE);
       }
       tmp.push_back(it.value().get<uint8_t>()); // NOLINT(build/unsigned)
     }
