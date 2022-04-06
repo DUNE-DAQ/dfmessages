@@ -14,6 +14,7 @@
 
 #include "serialization/Serialization.hpp"
 
+#include <cstddef>
 #include <limits>
 
 namespace dunedaq {
@@ -27,6 +28,7 @@ struct HSIEvent
   uint32_t signal_map{ 0 }; ///< Bit map of signals. 1 bit, 1 signal // NOLINT(build/unsigned)
   daqdataformats::timestamp_t timestamp{ dfmessages::TypeDefaults::s_invalid_timestamp }; ///< Timestamp of HSI event
   uint32_t sequence_counter{ 0 }; ///< Event sequence number // NOLINT(build/unsigned)
+  // uint32_t unused;
 
   HSIEvent() = default;
 
@@ -49,6 +51,11 @@ struct HSIEvent
 
   DUNE_DAQ_SERIALIZE(HSIEvent, header, signal_map, timestamp, sequence_counter);
 };
+static_assert(sizeof(HSIEvent) == 24, "HSIEvent size unexpected!");
+static_assert(offsetof(HSIEvent, header) == 0, "HSIEvent header field not at expected offset!");
+static_assert(offsetof(HSIEvent, signal_map) == 4, "HSIEvent signal_map field not at expected offset!");
+static_assert(offsetof(HSIEvent, timestamp) == 8, "HSIEvent timestamp field not at expected offset!");
+static_assert(offsetof(HSIEvent, sequence_counter) == 16, "HSIEvent sequence_counter field not at expected offset!");
 } // namespace dfmessages
 } // namespace dunedaq
 
