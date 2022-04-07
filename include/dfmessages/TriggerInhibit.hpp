@@ -12,6 +12,8 @@
 #include "dfmessages/Types.hpp"
 #include "serialization/Serialization.hpp"
 
+#include <cstddef>
+
 namespace dunedaq {
 namespace dfmessages {
 /**
@@ -24,6 +26,9 @@ struct TriggerInhibit
 
   DUNE_DAQ_SERIALIZE(TriggerInhibit, busy, run_number);
 };
+static_assert(sizeof(TriggerInhibit) == 8, "TriggerInhibit size unexpected!");
+static_assert(offsetof(TriggerInhibit, busy) == 0, "TriggerInhibit busy field not at expected offset!");
+static_assert(offsetof(TriggerInhibit, run_number) == 4, "TriggerInhibit run_number field not at expected offset!");
 } // namespace dfmessages
 } // namespace dunedaq
 
