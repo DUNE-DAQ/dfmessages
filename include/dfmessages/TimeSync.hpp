@@ -13,6 +13,7 @@
 
 #include "serialization/Serialization.hpp"
 
+#include <cstddef>
 #include <limits>
 
 namespace dunedaq {
@@ -60,6 +61,12 @@ struct TimeSync
 
   DUNE_DAQ_SERIALIZE(TimeSync, daq_time, system_time, run_number, sequence_number, source_pid);
 };
+static_assert(sizeof(TimeSync) == 32, "TimeSync size unexpected!");
+static_assert(offsetof(TimeSync, daq_time) == 0, "TimeSync daq_time field not at expected offset!");
+static_assert(offsetof(TimeSync, system_time) == 8, "TimeSync system_time field not at expected offset!");
+static_assert(offsetof(TimeSync, sequence_number) == 16, "TimeSync sequence_number field not at expected offset!");
+static_assert(offsetof(TimeSync, run_number) == 24, "TimeSync run_number field not at expected offset!");
+static_assert(offsetof(TimeSync, source_pid) == 28, "TimeSync source_pid field not at expected offset!");
 } // namespace dfmessages
 DUNE_DAQ_SERIALIZABLE(dfmessages::TimeSync);
 } // namespace dunedaq
