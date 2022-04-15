@@ -15,9 +15,11 @@
 #include <vector>
 
 namespace dunedaq {
+// Disable coverage collection LCOV_EXCL_START
 ERS_DECLARE_ISSUE(dfmessages,
                   CannotDeserializeTriggerRecordHeader,
                   "Cannot deserialize TriggerRecordHeader from JSON due to type mismatch", )
+// Re-enable coverage collection LCOV_EXCL_STOP
 } // namespace dunedaq
 
 // MsgPack serialization functions (which just put the raw bytes of
