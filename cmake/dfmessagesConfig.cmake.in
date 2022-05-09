@@ -5,7 +5,6 @@ include(CMakeFindDependencyMacro)
 
 find_dependency(daqdataformats)
 find_dependency(serialization)
-find_dependency(nwqueueadapters)
 
 # Figure out whether or not this dependency is an installed package or
 # in repo form

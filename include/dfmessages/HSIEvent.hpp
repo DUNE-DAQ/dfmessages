@@ -57,6 +57,9 @@ static_assert(offsetof(HSIEvent, signal_map) == 4, "HSIEvent signal_map field no
 static_assert(offsetof(HSIEvent, timestamp) == 8, "HSIEvent timestamp field not at expected offset!");
 static_assert(offsetof(HSIEvent, sequence_counter) == 16, "HSIEvent sequence_counter field not at expected offset!");
 } // namespace dfmessages
+
+DUNE_DAQ_SERIALIZABLE(dfmessages::HSIEvent);
+
 } // namespace dunedaq
 
 #endif // DFMESSAGES_INCLUDE_DFMESSAGES_HSIEVENT_HPP_

@@ -17,7 +17,9 @@
 #include <vector>
 
 namespace dunedaq {
+// Disable coverage collection LCOV_EXCL_START
 ERS_DECLARE_ISSUE(dfmessages, CannotDeserializeFragment, "Cannot deserialize Fragment from JSON due to type mismatch", )
+// Re-enable coverage collection LCOV_EXCL_STOP
 } // namespace dunedaq
 
 // MsgPack serialization functions (which just put the raw bytes of
@@ -147,5 +149,8 @@ struct adl_serializer<std::unique_ptr<dunedaq::daqdataformats::Fragment>>
   }
 };
 } // namespace nlohmann
+
+DUNE_DAQ_SERIALIZABLE(dunedaq::daqdataformats::Fragment);
+DUNE_DAQ_SERIALIZABLE(std::unique_ptr<dunedaq::daqdataformats::Fragment>);
 
 #endif // DFMESSAGES_INCLUDE_DFMESSAGES_FRAGMENT_SERIALIZATION_HPP_

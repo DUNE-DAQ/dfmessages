@@ -30,6 +30,7 @@ static_assert(sizeof(TriggerInhibit) == 8, "TriggerInhibit size unexpected!");
 static_assert(offsetof(TriggerInhibit, busy) == 0, "TriggerInhibit busy field not at expected offset!");
 static_assert(offsetof(TriggerInhibit, run_number) == 4, "TriggerInhibit run_number field not at expected offset!");
 } // namespace dfmessages
+DUNE_DAQ_SERIALIZABLE(dfmessages::TriggerInhibit);
 } // namespace dunedaq
 
 #endif // DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERINHIBIT_HPP_
