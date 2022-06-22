@@ -28,7 +28,7 @@ struct HSIEvent
   uint32_t signal_map{ 0 }; ///< Bit map of signals. 1 bit, 1 signal // NOLINT(build/unsigned)
   daqdataformats::timestamp_t timestamp{ dfmessages::TypeDefaults::s_invalid_timestamp }; ///< Timestamp of HSI event
   uint32_t sequence_counter{ 0 }; ///< Event sequence number // NOLINT(build/unsigned)
-  // uint32_t unused;
+  run_number_t run_number{ 0 };
 
   HSIEvent() = default;
 
@@ -38,24 +38,28 @@ struct HSIEvent
    * @param signal_map Bit map of signal(s) with detected edge(s)
    * @param timestamp Timestamp of edge(s)
    * @param sequence_counter Sequence counter of generated HSI messages
+   * @param run_number Run number in which the message is created
    */
   explicit HSIEvent(uint32_t head,    // NOLINT(build/unsigned)
                     uint32_t signals, // NOLINT(build/unsigned)
                     daqdataformats::timestamp_t ts,
-                    uint32_t seq_count) // NOLINT(build/unsigned)
+                    uint32_t seq_count, // NOLINT(build/unsigned)
+                    run_number_t run_num) // NOLINT(build/unsigned)
     : header(head)
     , signal_map(signals)
     , timestamp(ts)
     , sequence_counter(seq_count)
+    , run_number(run_num)
   {}
 
-  DUNE_DAQ_SERIALIZE(HSIEvent, header, signal_map, timestamp, sequence_counter);
+  DUNE_DAQ_SERIALIZE(HSIEvent, header, signal_map, timestamp, sequence_counter, run_number);
 };
 static_assert(sizeof(HSIEvent) == 24, "HSIEvent size unexpected!");
 static_assert(offsetof(HSIEvent, header) == 0, "HSIEvent header field not at expected offset!");
 static_assert(offsetof(HSIEvent, signal_map) == 4, "HSIEvent signal_map field not at expected offset!");
 static_assert(offsetof(HSIEvent, timestamp) == 8, "HSIEvent timestamp field not at expected offset!");
 static_assert(offsetof(HSIEvent, sequence_counter) == 16, "HSIEvent sequence_counter field not at expected offset!");
+static_assert(offsetof(HSIEvent, run_number) == 20, "HSIEvent run_number field not at expected offset!");
 } // namespace dfmessages
 
 DUNE_DAQ_SERIALIZABLE(dfmessages::HSIEvent);

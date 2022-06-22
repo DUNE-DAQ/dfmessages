@@ -38,11 +38,12 @@ BOOST_AUTO_TEST_CASE(DefaultConstructor)
   BOOST_REQUIRE_EQUAL(test_hsievent.signal_map, 0);
   BOOST_REQUIRE_EQUAL(test_hsievent.timestamp, TypeDefaults::s_invalid_timestamp);
   BOOST_REQUIRE_EQUAL(test_hsievent.sequence_counter, 0);
+  BOOST_REQUIRE_EQUAL(test_hsievent.run_number, 0);
 }
 
 BOOST_AUTO_TEST_CASE(SerDes_JSON)
 {
-  HSIEvent he(0x12345678, 0x11111111, 0x1234123456785678, 0x22222222);
+  HSIEvent he(0x12345678, 0x11111111, 0x1234123456785678, 0x22222222, 101);
 
   auto bytes = dunedaq::serialization::serialize(he, dunedaq::serialization::kJSON);
 
@@ -58,12 +59,13 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   BOOST_REQUIRE_EQUAL(he.signal_map, he_deserialized.signal_map);
   BOOST_REQUIRE_EQUAL(he.timestamp, he_deserialized.timestamp);
   BOOST_REQUIRE_EQUAL(he.sequence_counter, he_deserialized.sequence_counter);
+  BOOST_REQUIRE_EQUAL(he.run_number, he_deserialized.run_number);
 }
 
 BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
 {
 
-  HSIEvent he(0x12345678, 0x11111111, 0x1234123456785678, 0x22222222);
+  HSIEvent he(0x12345678, 0x11111111, 0x1234123456785678, 0x22222222, 102);
 
   auto bytes = dunedaq::serialization::serialize(he, dunedaq::serialization::kMsgPack);
   TLOG(TLVL_INFO) << "MsgPack message size: " << bytes.size() << " bytes";
@@ -74,6 +76,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   BOOST_REQUIRE_EQUAL(he.signal_map, he_deserialized.signal_map);
   BOOST_REQUIRE_EQUAL(he.timestamp, he_deserialized.timestamp);
   BOOST_REQUIRE_EQUAL(he.sequence_counter, he_deserialized.sequence_counter);
+  BOOST_REQUIRE_EQUAL(he.run_number, he_deserialized.run_number);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
