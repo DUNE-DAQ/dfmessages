@@ -40,21 +40,19 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   td.trigger_type = 4;
   td.readout_type = ReadoutType::kLocalized;
 
-  GeoID gid;
-  gid.system_type = GeoID::SystemType::kTPC;
-  gid.region_id = 1;
-  gid.element_id = 2;
+  SourceID sid;
+  sid.subsystem = SourceID::Subsystem::kDRO;
+  sid.id= 1;
   ComponentRequest cr;
-  cr.component = gid;
+  cr.component = sid;
   cr.window_begin = 5;
   cr.window_end = 6;
 
-  GeoID another_gid;
-  another_gid.system_type = GeoID::SystemType::kTPC;
-  another_gid.region_id = 2;
-  another_gid.element_id = 1;
+  SourceID another_sid;
+  another_sid.subsystem = SourceID::Subsystem::kDRO;
+  another_sid.id= 2;
   ComponentRequest another_cr;
-  another_cr.component = another_gid;
+  another_cr.component = another_sid;
   another_cr.window_begin = 7;
   another_cr.window_end = 8;
 
@@ -80,15 +78,13 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
 
   BOOST_REQUIRE_EQUAL(td.components.size(), td_deserialized.components.size());
 
-  BOOST_REQUIRE_EQUAL(td.components[0].component.system_type, td_deserialized.components[0].component.system_type);
-  BOOST_REQUIRE_EQUAL(td.components[0].component.region_id, td_deserialized.components[0].component.region_id);
-  BOOST_REQUIRE_EQUAL(td.components[0].component.element_id, td_deserialized.components[0].component.element_id);
+  BOOST_REQUIRE_EQUAL(td.components[0].component.subsystem, td_deserialized.components[0].component.subsystem);
+  BOOST_REQUIRE_EQUAL(td.components[0].component.id, td_deserialized.components[0].component.id);
   BOOST_REQUIRE_EQUAL(td.components[0].window_begin, td_deserialized.components[0].window_begin);
   BOOST_REQUIRE_EQUAL(td.components[0].window_end, td_deserialized.components[0].window_end);
 
-  BOOST_REQUIRE_EQUAL(td.components[1].component.system_type, td_deserialized.components[1].component.system_type);
-  BOOST_REQUIRE_EQUAL(td.components[1].component.region_id, td_deserialized.components[1].component.region_id);
-  BOOST_REQUIRE_EQUAL(td.components[1].component.element_id, td_deserialized.components[1].component.element_id);
+  BOOST_REQUIRE_EQUAL(td.components[1].component.subsystem, td_deserialized.components[1].component.subsystem);
+  BOOST_REQUIRE_EQUAL(td.components[1].component.id, td_deserialized.components[1].component.id);
   BOOST_REQUIRE_EQUAL(td.components[1].window_begin, td_deserialized.components[1].window_begin);
   BOOST_REQUIRE_EQUAL(td.components[1].window_end, td_deserialized.components[1].window_end);
 }
@@ -102,21 +98,19 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   td.trigger_type = 4;
   td.readout_type = ReadoutType::kLocalized;
 
-  GeoID gid;
-  gid.system_type = GeoID::SystemType::kTPC;
-  gid.region_id = 1;
-  gid.element_id = 2;
+  SourceID sid;
+  sid.subsystem = SourceID::Subsystem::kDRO;
+  sid.id= 1;
   ComponentRequest cr;
-  cr.component = gid;
+  cr.component = sid;
   cr.window_begin = 5;
   cr.window_end = 6;
 
-  GeoID another_gid;
-  another_gid.system_type = GeoID::SystemType::kTPC;
-  another_gid.region_id = 2;
-  another_gid.element_id = 1;
+  SourceID another_sid;
+  another_sid.subsystem = SourceID::Subsystem::kDRO;
+  another_sid.id= 2;
   ComponentRequest another_cr;
-  another_cr.component = another_gid;
+  another_cr.component = another_sid;
   another_cr.window_begin = 7;
   another_cr.window_end = 8;
 
@@ -136,15 +130,13 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
 
   BOOST_REQUIRE_EQUAL(td.components.size(), td_deserialized.components.size());
 
-  BOOST_REQUIRE_EQUAL(td.components[0].component.system_type, td_deserialized.components[0].component.system_type);
-  BOOST_REQUIRE_EQUAL(td.components[0].component.region_id, td_deserialized.components[0].component.region_id);
-  BOOST_REQUIRE_EQUAL(td.components[0].component.element_id, td_deserialized.components[0].component.element_id);
+  BOOST_REQUIRE_EQUAL(td.components[0].component.subsystem, td_deserialized.components[0].component.subsystem);
+  BOOST_REQUIRE_EQUAL(td.components[0].component.id, td_deserialized.components[0].component.id);
   BOOST_REQUIRE_EQUAL(td.components[0].window_begin, td_deserialized.components[0].window_begin);
   BOOST_REQUIRE_EQUAL(td.components[0].window_end, td_deserialized.components[0].window_end);
 
-  BOOST_REQUIRE_EQUAL(td.components[1].component.system_type, td_deserialized.components[1].component.system_type);
-  BOOST_REQUIRE_EQUAL(td.components[1].component.region_id, td_deserialized.components[1].component.region_id);
-  BOOST_REQUIRE_EQUAL(td.components[1].component.element_id, td_deserialized.components[1].component.element_id);
+  BOOST_REQUIRE_EQUAL(td.components[1].component.subsystem, td_deserialized.components[1].component.subsystem);
+  BOOST_REQUIRE_EQUAL(td.components[1].component.id, td_deserialized.components[1].component.id);
   BOOST_REQUIRE_EQUAL(td.components[1].window_begin, td_deserialized.components[1].window_begin);
   BOOST_REQUIRE_EQUAL(td.components[1].window_end, td_deserialized.components[1].window_end);
 }

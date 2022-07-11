@@ -10,7 +10,7 @@
 #define DFMESSAGES_INCLUDE_DFMESSAGES_TYPES_HPP_
 
 #include "daqdataformats/ComponentRequest.hpp"
-#include "daqdataformats/GeoID.hpp"
+#include "daqdataformats/SourceID.hpp"
 #include "daqdataformats/Types.hpp"
 
 #include "serialization/Serialization.hpp"
@@ -29,7 +29,7 @@ namespace dunedaq {
  * @brief Dataflow Messages
  */
 namespace dfmessages {
-using GeoID = daqdataformats::GeoID;                       ///< Copy daqdataformats::GeoID
+using SourceID = daqdataformats::SourceID;                       ///< Copy daqdataformats::SourceID
 using ComponentRequest = daqdataformats::ComponentRequest; ///< Copy daqdataformats::ComponentRequest
 using run_number_t = daqdataformats::run_number_t;         ///< Copy daqdataformats::run_number_t
 using trigger_number_t = daqdataformats::trigger_number_t; ///< Copy daqdataformats::trigger_number_t
