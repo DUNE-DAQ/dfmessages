@@ -29,12 +29,12 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   // Setup
   std::vector<ComponentRequest> components;
   components.emplace_back();
-  components.back().component.subsystem = SourceID::Subsystem::kDRO;
+  components.back().component.subsystem = SourceID::Subsystem::kDetectorReadout;
   components.back().component.id = 2;
   components.back().window_begin = 3;
   components.back().window_end = 4;
   components.emplace_back();
-  components.back().component.subsystem = SourceID::Subsystem::kDRO;
+  components.back().component.subsystem = SourceID::Subsystem::kDetectorReadout;
   components.back().component.id = 6;
   components.back().window_begin = 7;
   components.back().window_end = 8;
@@ -154,12 +154,12 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   // Setup
   std::vector<ComponentRequest> components;
   components.emplace_back();
-  components.back().component.subsystem = SourceID::Subsystem::kDRO;
+  components.back().component.subsystem = SourceID::Subsystem::kDetectorReadout;
   components.back().component.id = 2;
   components.back().window_begin = 3;
   components.back().window_end = 4;
   components.emplace_back();
-  components.back().component.subsystem = SourceID::Subsystem::kDRO;
+  components.back().component.subsystem = SourceID::Subsystem::kDetectorReadout;
   components.back().component.id = 6;
   components.back().window_begin = 7;
   components.back().window_end = 8;
@@ -278,12 +278,12 @@ BOOST_AUTO_TEST_CASE(Ptr_SerDes_MsgPack)
   // Setup
   std::vector<ComponentRequest> components;
   components.emplace_back();
-  components.back().component.subsystem = SourceID::Subsystem::kDRO;
+  components.back().component.subsystem = SourceID::Subsystem::kDetectorReadout;
   components.back().component.id = 2;
   components.back().window_begin = 3;
   components.back().window_end = 4;
   components.emplace_back();
-  components.back().component.subsystem = SourceID::Subsystem::kDRO;
+  components.back().component.subsystem = SourceID::Subsystem::kDetectorReadout;
   components.back().component.id = 6;
   components.back().window_begin = 7;
   components.back().window_end = 8;
@@ -403,12 +403,12 @@ BOOST_AUTO_TEST_CASE(Ptr_SerDes_JSON)
   // Setup
   std::vector<ComponentRequest> components;
   components.emplace_back();
-  components.back().component.subsystem = SourceID::Subsystem::kDRO;
+  components.back().component.subsystem = SourceID::Subsystem::kDetectorReadout;
   components.back().component.id = 2;
   components.back().window_begin = 3;
   components.back().window_end = 4;
   components.emplace_back();
-  components.back().component.subsystem = SourceID::Subsystem::kDRO;
+  components.back().component.subsystem = SourceID::Subsystem::kDetectorReadout;
   components.back().component.id = 6;
   components.back().window_begin = 7;
   components.back().window_end = 8;
@@ -527,12 +527,12 @@ BOOST_AUTO_TEST_CASE(SerDes_Ptr_to_TriggerRecord)
   // Setup
   std::vector<ComponentRequest> components;
   components.emplace_back();
-  components.back().component.subsystem = SourceID::Subsystem::kDRO;
+  components.back().component.subsystem = SourceID::Subsystem::kDetectorReadout;
   components.back().component.id = 2;
   components.back().window_begin = 3;
   components.back().window_end = 4;
   components.emplace_back();
-  components.back().component.subsystem = SourceID::Subsystem::kDRO;
+  components.back().component.subsystem = SourceID::Subsystem::kDetectorReadout;
   components.back().component.id = 6;
   components.back().window_begin = 7;
   components.back().window_end = 8;
@@ -651,12 +651,12 @@ BOOST_AUTO_TEST_CASE(SerDes_TriggerRecord_to_Ptr)
   // Setup
   std::vector<ComponentRequest> components;
   components.emplace_back();
-  components.back().component.subsystem = SourceID::Subsystem::kDRO;
+  components.back().component.subsystem = SourceID::Subsystem::kDetectorReadout;
   components.back().component.id = 2;
   components.back().window_begin = 3;
   components.back().window_end = 4;
   components.emplace_back();
-  components.back().component.subsystem = SourceID::Subsystem::kDRO;
+  components.back().component.subsystem = SourceID::Subsystem::kDetectorReadout;
   components.back().component.id = 6;
   components.back().window_begin = 7;
   components.back().window_end = 8;

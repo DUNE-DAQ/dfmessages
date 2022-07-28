@@ -40,12 +40,12 @@ BOOST_AUTO_TEST_CASE(ExistingHeader)
 {
   std::vector<ComponentRequest> components;
   components.emplace_back();
-  components.back().component.subsystem = SourceID::Subsystem::kDRO;
+  components.back().component.subsystem = SourceID::Subsystem::kDetectorReadout;
   components.back().component.id = 2;
   components.back().window_begin = 3;
   components.back().window_end = 4;
   components.emplace_back();
-  components.back().component.subsystem = SourceID::Subsystem::kDRO;
+  components.back().component.subsystem = SourceID::Subsystem::kDetectorReadout;
   components.back().component.id = 6;
   components.back().window_begin = 7;
   components.back().window_end = 8;
@@ -121,12 +121,12 @@ BOOST_AUTO_TEST_CASE(HeaderFields)
 {
   std::vector<ComponentRequest> components;
   components.emplace_back();
-  components.back().component.subsystem = SourceID::Subsystem::kDRO;
+  components.back().component.subsystem = SourceID::Subsystem::kDetectorReadout;
   components.back().component.id = 2;
   components.back().window_begin = 3;
   components.back().window_end = 4;
   components.emplace_back();
-  components.back().component.subsystem = SourceID::Subsystem::kDRO;
+  components.back().component.subsystem = SourceID::Subsystem::kDetectorReadout;
   components.back().component.id = 6;
   components.back().window_begin = 7;
   components.back().window_end = 8;
@@ -161,12 +161,12 @@ BOOST_AUTO_TEST_CASE(Header_SerDes_MsgPack)
 {
   std::vector<ComponentRequest> components;
   components.emplace_back();
-  components.back().component.subsystem = SourceID::Subsystem::kDRO;
+  components.back().component.subsystem = SourceID::Subsystem::kDetectorReadout;
   components.back().component.id = 2;
   components.back().window_begin = 3;
   components.back().window_end = 4;
   components.emplace_back();
-  components.back().component.subsystem = SourceID::Subsystem::kDRO;
+  components.back().component.subsystem = SourceID::Subsystem::kDetectorReadout;
   components.back().component.id = 6;
   components.back().window_begin = 7;
   components.back().window_end = 8;
@@ -201,12 +201,12 @@ BOOST_AUTO_TEST_CASE(Header_SerDes_JSON)
 {
   std::vector<ComponentRequest> components;
   components.emplace_back();
-  components.back().component.subsystem = SourceID::Subsystem::kDRO;
+  components.back().component.subsystem = SourceID::Subsystem::kDetectorReadout;
   components.back().component.id = 2;
   components.back().window_begin = 3;
   components.back().window_end = 4;
   components.emplace_back();
-  components.back().component.subsystem = SourceID::Subsystem::kDRO;
+  components.back().component.subsystem = SourceID::Subsystem::kDetectorReadout;
   components.back().component.id = 6;
   components.back().window_begin = 7;
   components.back().window_end = 8;

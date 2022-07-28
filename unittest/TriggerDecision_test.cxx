@@ -41,7 +41,7 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   td.readout_type = ReadoutType::kLocalized;
 
   SourceID sid;
-  sid.subsystem = SourceID::Subsystem::kDRO;
+  sid.subsystem = SourceID::Subsystem::kDetectorReadout;
   sid.id= 1;
   ComponentRequest cr;
   cr.component = sid;
@@ -49,7 +49,7 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   cr.window_end = 6;
 
   SourceID another_sid;
-  another_sid.subsystem = SourceID::Subsystem::kDRO;
+  another_sid.subsystem = SourceID::Subsystem::kDetectorReadout;
   another_sid.id= 2;
   ComponentRequest another_cr;
   another_cr.component = another_sid;
@@ -99,7 +99,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   td.readout_type = ReadoutType::kLocalized;
 
   SourceID sid;
-  sid.subsystem = SourceID::Subsystem::kDRO;
+  sid.subsystem = SourceID::Subsystem::kDetectorReadout;
   sid.id= 1;
   ComponentRequest cr;
   cr.component = sid;
@@ -107,7 +107,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   cr.window_end = 6;
 
   SourceID another_sid;
-  another_sid.subsystem = SourceID::Subsystem::kDRO;
+  another_sid.subsystem = SourceID::Subsystem::kDetectorReadout;
   another_sid.id= 2;
   ComponentRequest another_cr;
   another_cr.component = another_sid;

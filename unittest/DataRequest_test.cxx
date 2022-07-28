@@ -38,7 +38,7 @@ BOOST_AUTO_TEST_CASE(SerDes_JSON)
   dr.trigger_number = 2;
   dr.trigger_timestamp = 3;
   SourceID sid;
-  sid.subsystem = SourceID::Subsystem::kDRO;
+  sid.subsystem = SourceID::Subsystem::kDetectorReadout;
   sid.id = 1;
   ComponentRequest cr;
   cr.component = sid;
@@ -80,7 +80,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   dr.trigger_number = 2;
   dr.trigger_timestamp = 3;
   SourceID sid;
-  sid.subsystem = SourceID::Subsystem::kDRO;
+  sid.subsystem = SourceID::Subsystem::kDetectorReadout;
   sid.id = 1;
   ComponentRequest cr;
   cr.component = sid;

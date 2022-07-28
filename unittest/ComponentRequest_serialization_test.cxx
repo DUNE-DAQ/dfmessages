@@ -26,7 +26,7 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
 BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
 {
   ComponentRequest component_request;
-  component_request.component = SourceID{ SourceID::Subsystem::kDRO, 1 };
+  component_request.component = SourceID{ SourceID::Subsystem::kDetectorReadout, 1 };
   component_request.window_begin = 12345;
   component_request.window_end = 45678;
   auto bytes = dunedaq::serialization::serialize(component_request, dunedaq::serialization::kMsgPack);
@@ -42,7 +42,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
 BOOST_AUTO_TEST_CASE(SerDes_JSON)
 {
   ComponentRequest component_request;
-  component_request.component = SourceID{ SourceID::Subsystem::kDRO, 1 };
+  component_request.component = SourceID{ SourceID::Subsystem::kDetectorReadout, 1 };
   component_request.window_begin = 12345;
   component_request.window_end = 45678;
   auto bytes = dunedaq::serialization::serialize(component_request, dunedaq::serialization::kJSON);
