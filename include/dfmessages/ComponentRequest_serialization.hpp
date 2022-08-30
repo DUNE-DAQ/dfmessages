@@ -10,7 +10,7 @@
 #define DFMESSAGES_INCLUDE_DFMESSAGES_COMPONENTREQUEST_SERIALIZATION_HPP_
 
 #include "daqdataformats/ComponentRequest.hpp"
-#include "dfmessages/GeoID_serialization.hpp"
+#include "dfmessages/SourceID_serialization.hpp"
 
 DUNE_DAQ_SERIALIZE_NON_INTRUSIVE(dunedaq::daqdataformats, ComponentRequest, window_begin, window_end, component)
 
