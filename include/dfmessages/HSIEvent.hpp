@@ -43,7 +43,7 @@ struct HSIEvent
   explicit HSIEvent(uint32_t head,    // NOLINT(build/unsigned)
                     uint32_t signals, // NOLINT(build/unsigned)
                     daqdataformats::timestamp_t ts,
-                    uint32_t seq_count, // NOLINT(build/unsigned)
+                    uint32_t seq_count,   // NOLINT(build/unsigned)
                     run_number_t run_num) // NOLINT(build/unsigned)
     : header(head)
     , signal_map(signals)
