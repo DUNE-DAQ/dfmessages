@@ -42,7 +42,7 @@ public:
 };
 
 } // namespace dfmessages
-DUNE_DAQ_SERIALIZABLE(dfmessages::TRMonRequest);
+DUNE_DAQ_SERIALIZABLE(dfmessages::TRMonRequest, "TRMonRequest");
 } // namespace dunedaq
 
 #endif // DFMESSAGES_INCLUDE_DFMESSAGES_TRMONREQUEST_HPP_

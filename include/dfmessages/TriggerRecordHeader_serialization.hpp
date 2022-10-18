@@ -90,6 +90,6 @@ struct adl_serializer<dunedaq::daqdataformats::TriggerRecordHeader>
 };
 } // namespace nlohmann
 
-DUNE_DAQ_SERIALIZABLE(dunedaq::daqdataformats::TriggerRecordHeader);
+DUNE_DAQ_SERIALIZABLE(dunedaq::daqdataformats::TriggerRecordHeader, "TriggerRecordHeader");
 
 #endif // DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERRECORDHEADER_SERIALIZATION_HPP_

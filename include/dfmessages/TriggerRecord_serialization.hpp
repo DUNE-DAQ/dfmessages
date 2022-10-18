@@ -186,7 +186,7 @@ struct adl_serializer<std::unique_ptr<dunedaq::daqdataformats::TriggerRecord>>
   }
 };
 } // namespace nlohmann
-DUNE_DAQ_SERIALIZABLE(dunedaq::daqdataformats::TriggerRecord);
-DUNE_DAQ_SERIALIZABLE(std::unique_ptr<dunedaq::daqdataformats::TriggerRecord>);
+DUNE_DAQ_SERIALIZABLE(dunedaq::daqdataformats::TriggerRecord, "TriggerRecord");
+DUNE_DAQ_SERIALIZABLE(std::unique_ptr<dunedaq::daqdataformats::TriggerRecord>, "TriggerRecord");
 
 #endif // DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERRECORD_SERIALIZATION_HPP_
