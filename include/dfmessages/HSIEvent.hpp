@@ -62,7 +62,7 @@ static_assert(offsetof(HSIEvent, sequence_counter) == 16, "HSIEvent sequence_cou
 static_assert(offsetof(HSIEvent, run_number) == 20, "HSIEvent run_number field not at expected offset!");
 } // namespace dfmessages
 
-DUNE_DAQ_SERIALIZABLE(dfmessages::HSIEvent);
+DUNE_DAQ_SERIALIZABLE(dfmessages::HSIEvent, "HSIEvent");
 
 } // namespace dunedaq
 

@@ -52,7 +52,7 @@ struct DataRequest
 
 } // namespace dfmessages
 
-DUNE_DAQ_SERIALIZABLE(dfmessages::DataRequest);
+DUNE_DAQ_SERIALIZABLE(dfmessages::DataRequest, "DataRequest");
 
 } // namespace dunedaq
 
