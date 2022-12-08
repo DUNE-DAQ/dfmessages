@@ -2,4 +2,4 @@
 
 These classes are for internal use in the DataFlow system.
 
-![Class Diagrams](https://github.com/DUNE-DAQ/dfmessages/raw/develop/docs/dune_dataflow_messages.png)
+![Class Diagrams](https://github.com/DUNE-DAQ/dfmessages/raw/develop/docs/dfmessages.png)
