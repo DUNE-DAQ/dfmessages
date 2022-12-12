@@ -44,7 +44,8 @@ struct TimeSync
   explicit TimeSync(timestamp_t daq_time, system_time_t sys_time = gettimeofday_us())
     : daq_time(daq_time)
     , system_time(sys_time)
-  {}
+  {
+  }
 
   /**
    * @brief Get the current system time
