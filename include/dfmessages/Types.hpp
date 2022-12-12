@@ -29,7 +29,7 @@ namespace dunedaq {
  * @brief Dataflow Messages
  */
 namespace dfmessages {
-using SourceID = daqdataformats::SourceID;                       ///< Copy daqdataformats::SourceID
+using SourceID = daqdataformats::SourceID;                 ///< Copy daqdataformats::SourceID
 using ComponentRequest = daqdataformats::ComponentRequest; ///< Copy daqdataformats::ComponentRequest
 using run_number_t = daqdataformats::run_number_t;         ///< Copy daqdataformats::run_number_t
 using trigger_number_t = daqdataformats::trigger_number_t; ///< Copy daqdataformats::trigger_number_t
