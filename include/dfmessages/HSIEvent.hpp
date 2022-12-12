@@ -50,8 +50,7 @@ struct HSIEvent
     , timestamp(ts)
     , sequence_counter(seq_count)
     , run_number(run_num)
-  {
-  }
+  {}
 
   DUNE_DAQ_SERIALIZE(HSIEvent, header, signal_map, timestamp, sequence_counter, run_number);
 };
