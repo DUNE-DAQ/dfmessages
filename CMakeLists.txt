@@ -13,6 +13,8 @@ find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 daq_add_library(LINK_LIBRARIES daqdataformats::daqdataformats serialization::serialization)
 
 daq_add_unit_test(DataRequest_test LINK_LIBRARIES daqdataformats::daqdataformats serialization::serialization)
+daq_add_unit_test(DataflowHeartbeat_test LINK_LIBRARIES daqdataformats::daqdataformats serialization::serialization)
+daq_add_unit_test(DFODecision_test LINK_LIBRARIES daqdataformats::daqdataformats serialization::serialization)
 daq_add_unit_test(HSIEvent_test LINK_LIBRARIES daqdataformats::daqdataformats serialization::serialization)
 daq_add_unit_test(TimeSync_test LINK_LIBRARIES daqdataformats::daqdataformats serialization::serialization)
 daq_add_unit_test(TriggerDecision_test LINK_LIBRARIES daqdataformats::daqdataformats serialization::serialization)
