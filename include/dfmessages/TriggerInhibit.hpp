@@ -23,10 +23,10 @@ struct TriggerInhibit
 {
   bool busy = false;           ///< Whether the system is busy
   run_number_t run_number = 0; ///< Current run number
+  std::string dfo_id{ "UNKNOWN_DFO" };
 
-  DUNE_DAQ_SERIALIZE(TriggerInhibit, busy, run_number);
+  DUNE_DAQ_SERIALIZE(TriggerInhibit, busy, run_number, dfo_id);
 };
-static_assert(sizeof(TriggerInhibit) == 8, "TriggerInhibit size unexpected!");
 static_assert(offsetof(TriggerInhibit, busy) == 0, "TriggerInhibit busy field not at expected offset!");
 static_assert(offsetof(TriggerInhibit, run_number) == 4, "TriggerInhibit run_number field not at expected offset!");
 } // namespace dfmessages
