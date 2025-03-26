@@ -17,12 +17,6 @@
 #include <memory>
 #include <vector>
 
-namespace dunedaq {
-// Disable coverage collection LCOV_EXCL_START
-ERS_DECLARE_ISSUE(dfmessages, CannotDeserializeFragment, "Cannot deserialize Fragment from JSON due to type mismatch", )
-// Re-enable coverage collection LCOV_EXCL_STOP
-} // namespace dunedaq
-
 // MsgPack serialization functions (which just put the raw bytes of
 // the fragment array into a MsgPack message)
 namespace msgpack {
@@ -93,63 +87,6 @@ MSGPACK_API_VERSION_NAMESPACE(MSGPACK_DEFAULT_API_NS)
   } // namespace adaptor
 } // namespace MSGPACK_DEFAULT_API_NS
 } // namespace msgpack
-
-// nlohmann::json serialization function. As with MsgPack, we have to
-// do something special here because Fragment isn't default
-// constructible. See
-// https://nlohmann.github.io/json/features/arbitrary_types/#how-can-i-use-get-for-non-default-constructiblenon-copyable-types
-namespace nlohmann {
-template<>
-struct adl_serializer<dunedaq::daqdataformats::Fragment>
-{
-  // note: the return type is no longer 'void', and the method only takes
-  // one argument
-  static dunedaq::daqdataformats::Fragment from_json(const json& j)
-  {
-    std::vector<uint8_t> tmp; // NOLINT(build/unsigned)
-    for (auto const& it : j.items()) {
-      if (!it.value().is_number_integer()) {
-        throw dunedaq::dfmessages::CannotDeserializeFragment(ERS_HERE);
-      }
-      tmp.push_back(it.value().get<uint8_t>()); // NOLINT(build/unsigned)
-    }
-    return dunedaq::daqdataformats::Fragment(tmp.data(),
-                                             dunedaq::daqdataformats::Fragment::BufferAdoptionMode::kCopyFromBuffer);
-  }
-
-  static void to_json(json& j, const dunedaq::daqdataformats::Fragment& frag)
-  {
-    const uint8_t* storage = static_cast<const uint8_t*>(frag.get_storage_location()); // NOLINT(build/unsigned)
-    std::vector<uint8_t> bytes(storage, storage + frag.get_size());                    // NOLINT(build/unsigned)
-    j = bytes;
-  }
-};
-template<>
-struct adl_serializer<std::unique_ptr<dunedaq::daqdataformats::Fragment>>
-{
-  // note: the return type is no longer 'void', and the method only takes
-  // one argument
-  static std::unique_ptr<dunedaq::daqdataformats::Fragment> from_json(const json& j)
-  {
-    std::vector<uint8_t> tmp; // NOLINT(build/unsigned)
-    for (auto const& it : j.items()) {
-      if (!it.value().is_number_integer()) {
-        throw dunedaq::dfmessages::CannotDeserializeFragment(ERS_HERE);
-      }
-      tmp.push_back(it.value().get<uint8_t>()); // NOLINT(build/unsigned)
-    }
-    return std::make_unique<dunedaq::daqdataformats::Fragment>(
-      tmp.data(), dunedaq::daqdataformats::Fragment::BufferAdoptionMode::kCopyFromBuffer);
-  }
-
-  static void to_json(json& j, const std::unique_ptr<dunedaq::daqdataformats::Fragment>& frag)
-  {
-    const uint8_t* storage = static_cast<const uint8_t*>(frag->get_storage_location()); // NOLINT(build/unsigned)
-    std::vector<uint8_t> bytes(storage, storage + frag->get_size());                    // NOLINT(build/unsigned)
-    j = bytes;
-  }
-};
-} // namespace nlohmann
 
 DUNE_DAQ_SERIALIZABLE(dunedaq::daqdataformats::Fragment, "Fragment");
 DUNE_DAQ_SERIALIZABLE(std::unique_ptr<dunedaq::daqdataformats::Fragment>, "Fragment");

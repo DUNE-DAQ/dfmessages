@@ -41,27 +41,6 @@ BOOST_AUTO_TEST_CASE(DefaultConstructor)
   BOOST_REQUIRE_EQUAL(test_hsievent.run_number, 0);
 }
 
-BOOST_AUTO_TEST_CASE(SerDes_JSON)
-{
-  HSIEvent he(0x12345678, 0x11111111, 0x1234123456785678, 0x22222222, 101);
-
-  auto bytes = dunedaq::serialization::serialize(he, dunedaq::serialization::kJSON);
-
-  std::ostringstream ostr;
-  for (auto& b : bytes) {
-    ostr << static_cast<char>(b);
-  }
-  TLOG(TLVL_INFO) << "Serialized string: " << ostr.str();
-
-  HSIEvent he_deserialized = dunedaq::serialization::deserialize<HSIEvent>(bytes);
-
-  BOOST_REQUIRE_EQUAL(he.header, he_deserialized.header);
-  BOOST_REQUIRE_EQUAL(he.signal_map, he_deserialized.signal_map);
-  BOOST_REQUIRE_EQUAL(he.timestamp, he_deserialized.timestamp);
-  BOOST_REQUIRE_EQUAL(he.sequence_counter, he_deserialized.sequence_counter);
-  BOOST_REQUIRE_EQUAL(he.run_number, he_deserialized.run_number);
-}
-
 BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
 {
 

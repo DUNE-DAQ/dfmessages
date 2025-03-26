@@ -34,24 +34,6 @@ BOOST_AUTO_TEST_CASE(CopyAndMoveSemantics)
   BOOST_REQUIRE(std::is_move_assignable_v<TriggerInhibit>);
 }
 
-BOOST_AUTO_TEST_CASE(SerDes_JSON)
-{
-  TriggerInhibit ti;
-  ti.busy = true;
-
-  auto bytes = dunedaq::serialization::serialize(ti, dunedaq::serialization::kJSON);
-
-  std::ostringstream ostr;
-  for (auto& b : bytes) {
-    ostr << static_cast<char>(b);
-  }
-  TLOG(TLVL_INFO) << "Serialized string: " << ostr.str();
-
-  TriggerInhibit ti_deserialized = dunedaq::serialization::deserialize<TriggerInhibit>(bytes);
-
-  BOOST_REQUIRE_EQUAL(ti.busy, ti_deserialized.busy);
-}
-
 BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
 {
 

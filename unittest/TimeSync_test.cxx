@@ -31,24 +31,6 @@ BOOST_AUTO_TEST_CASE(CopyAndMoveSemantics)
   BOOST_REQUIRE(std::is_move_assignable_v<TimeSync>);
 }
 
-BOOST_AUTO_TEST_CASE(SerDes_JSON)
-{
-  TimeSync ts(0x123456789ABCDEF0);
-
-  auto bytes = dunedaq::serialization::serialize(ts, dunedaq::serialization::kJSON);
-
-  std::ostringstream ostr;
-  for (auto& b : bytes) {
-    ostr << static_cast<char>(b);
-  }
-  TLOG(TLVL_INFO) << "Serialized string: " << ostr.str();
-
-  TimeSync ts_deserialized = dunedaq::serialization::deserialize<TimeSync>(bytes);
-
-  BOOST_REQUIRE_EQUAL(ts.daq_time, ts_deserialized.daq_time);
-  BOOST_REQUIRE_EQUAL(ts.system_time, ts_deserialized.system_time);
-}
-
 BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
 {
 
