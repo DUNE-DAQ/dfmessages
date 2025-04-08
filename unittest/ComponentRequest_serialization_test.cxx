@@ -39,20 +39,4 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   BOOST_REQUIRE_EQUAL(component_request.component.id, cr_deserialized.component.id);
 }
 
-BOOST_AUTO_TEST_CASE(SerDes_JSON)
-{
-  ComponentRequest component_request;
-  component_request.component = SourceID{ SourceID::Subsystem::kDetectorReadout, 1 };
-  component_request.window_begin = 12345;
-  component_request.window_end = 45678;
-  auto bytes = dunedaq::serialization::serialize(component_request, dunedaq::serialization::kJSON);
-
-  ComponentRequest cr_deserialized = dunedaq::serialization::deserialize<ComponentRequest>(bytes);
-
-  BOOST_REQUIRE_EQUAL(component_request.window_begin, cr_deserialized.window_begin);
-  BOOST_REQUIRE_EQUAL(component_request.window_end, cr_deserialized.window_end);
-  BOOST_REQUIRE_EQUAL(component_request.component.subsystem, cr_deserialized.component.subsystem);
-  BOOST_REQUIRE_EQUAL(component_request.component.id, cr_deserialized.component.id);
-}
-
 BOOST_AUTO_TEST_SUITE_END()

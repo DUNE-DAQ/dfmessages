@@ -41,26 +41,6 @@ BOOST_AUTO_TEST_CASE(DefaultConstruction)
   BOOST_REQUIRE_EQUAL(tdt.trigger_number, TypeDefaults::s_invalid_trigger_number);
 }
 
-BOOST_AUTO_TEST_CASE(SerDes_JSON)
-{
-  TriggerDecisionToken tdt;
-  tdt.run_number = 1;
-  tdt.trigger_number = 2;
-
-  auto bytes = dunedaq::serialization::serialize(tdt, dunedaq::serialization::kJSON);
-
-  std::ostringstream ostr;
-  for (auto& b : bytes) {
-    ostr << static_cast<char>(b);
-  }
-  TLOG(TLVL_INFO) << "Serialized string: " << ostr.str();
-
-  TriggerDecisionToken tdt_deserialized = dunedaq::serialization::deserialize<TriggerDecisionToken>(bytes);
-
-  BOOST_REQUIRE_EQUAL(tdt.run_number, tdt_deserialized.run_number);
-  BOOST_REQUIRE_EQUAL(tdt.trigger_number, tdt_deserialized.trigger_number);
-}
-
 BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
 {
   TriggerDecisionToken tdt;

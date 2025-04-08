@@ -31,30 +31,6 @@ BOOST_AUTO_TEST_CASE(CopyAndMoveSemantics)
   BOOST_REQUIRE(std::is_move_assignable_v<TRMonRequest>);
 }
 
-BOOST_AUTO_TEST_CASE(SerDes_JSON)
-{
-  TRMonRequest dr;
-  dr.request_number = 1;
-  dr.trigger_type = TRMonTriggerTypes::s_any_trigger_type;
-  dr.run_number = 3;
-  dr.data_destination = "test";
-
-  auto bytes = dunedaq::serialization::serialize(dr, dunedaq::serialization::kJSON);
-
-  std::ostringstream ostr;
-  for (auto& b : bytes) {
-    ostr << static_cast<char>(b);
-  }
-  TLOG(TLVL_INFO) << "Serialized string: " << ostr.str();
-
-  TRMonRequest dr_deserialized = dunedaq::serialization::deserialize<TRMonRequest>(bytes);
-
-  BOOST_REQUIRE_EQUAL(dr.request_number, dr_deserialized.request_number);
-  BOOST_REQUIRE_EQUAL(dr.trigger_type, dr_deserialized.trigger_type);
-  BOOST_REQUIRE_EQUAL(dr.run_number, dr_deserialized.run_number);
-  BOOST_REQUIRE_EQUAL(dr.data_destination, dr_deserialized.data_destination);
-}
-
 BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
 {
 

@@ -60,37 +60,6 @@ MSGPACK_API_VERSION_NAMESPACE(MSGPACK_DEFAULT_API_NS)
 } // namespace MSGPACK_DEFAULT_API_NS
 } // namespace msgpack
 
-// nlohmann::json serialization function. As with MsgPack, we have to
-// do something special here because TriggerRecordHeader isn't default
-// constructible. See
-// https://nlohmann.github.io/json/features/arbitrary_types/#how-can-i-use-get-for-non-default-constructiblenon-copyable-types
-namespace nlohmann {
-template<>
-struct adl_serializer<dunedaq::daqdataformats::TriggerRecordHeader>
-{
-  // note: the return type is no longer 'void', and the method only takes
-  // one argument
-  static dunedaq::daqdataformats::TriggerRecordHeader from_json(const json& j)
-  {
-    std::vector<uint8_t> tmp; // NOLINT(build/unsigned)
-    for (auto const& it : j.items()) {
-      if (!it.value().is_number_integer()) {
-        throw dunedaq::dfmessages::CannotDeserializeTriggerRecordHeader(ERS_HERE);
-      }
-      tmp.push_back(it.value().get<uint8_t>()); // NOLINT(build/unsigned)
-    }
-    return dunedaq::daqdataformats::TriggerRecordHeader(tmp.data(), true);
-  }
-
-  static void to_json(json& j, const dunedaq::daqdataformats::TriggerRecordHeader& trh)
-  {
-    const uint8_t* storage = static_cast<const uint8_t*>(trh.get_storage_location()); // NOLINT(build/unsigned)
-    std::vector<uint8_t> bytes(storage, storage + trh.get_total_size_bytes());        // NOLINT(build/unsigned)
-    j = bytes;
-  }
-};
-} // namespace nlohmann
-
 DUNE_DAQ_SERIALIZABLE(dunedaq::daqdataformats::TriggerRecordHeader, "TriggerRecordHeader");
 
 #endif // DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERRECORDHEADER_SERIALIZATION_HPP_
