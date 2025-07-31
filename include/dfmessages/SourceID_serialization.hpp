@@ -12,7 +12,7 @@
 #include "daqdataformats/SourceID.hpp"
 #include "serialization/Serialization.hpp"
 
-MSGPACK_ADD_ENUM(dunedaq::daqdataformats::SourceID::Subsystem)
+DUNE_DAQ_SERIALIZE_ENUM(dunedaq::daqdataformats::SourceID::Subsystem)
 DUNE_DAQ_SERIALIZE_NON_INTRUSIVE(dunedaq::daqdataformats, SourceID, version, subsystem, id)
 
 #endif // DFMESSAGES_INCLUDE_DFMESSAGES_SOURCEID_SERIALIZATION_HPP_

@@ -75,6 +75,6 @@ public:
 } // namespace dfmessages
 } // namespace dunedaq
 
-MSGPACK_ADD_ENUM(dunedaq::dfmessages::ReadoutType)
+DUNE_DAQ_SERIALIZE_ENUM(dunedaq::dfmessages::ReadoutType)
 
 #endif // DFMESSAGES_INCLUDE_DFMESSAGES_TYPES_HPP_
