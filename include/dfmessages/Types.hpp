@@ -42,6 +42,12 @@ using sequence_number_t = daqdataformats::sequence_number_t; ///< Copy daqdatafo
 using timestamp_t = daqdataformats::timestamp_t;           ///< Copy daqdataformats::timestamp_t
 using timestamp_diff_t = daqdataformats::timestamp_diff_t; ///< Copy daqdataformats::timestamp_diff_t
 
+/**
+ * @brief Copy daqdataforamts::trigger_type_t
+ *
+ * Note that this is a bitset, mapping to this enum:
+ * https://github.com/DUNE-DAQ/trgdataformats/blob/develop/include/trgdataformats/TriggerCandidateData.hpp#L22
+ */
 using trigger_type_t = daqdataformats::trigger_type_t; ///< Copy daqdataformats::trigger_type_t
 
 /**
