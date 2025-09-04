@@ -48,7 +48,7 @@ using timestamp_diff_t = daqdataformats::timestamp_diff_t; ///< Copy daqdataform
  * Note that this is a bitset, mapping to this enum:
  * https://github.com/DUNE-DAQ/trgdataformats/blob/develop/include/trgdataformats/TriggerCandidateData.hpp#L22
  */
-using trigger_type_t = daqdataformats::trigger_type_t; ///< Copy daqdataformats::trigger_type_t
+using trigger_type_t = daqdataformats::trigger_type_t;
 
 /**
  * @brief Which type of readout to use for TriggerDecision and DataRequest
