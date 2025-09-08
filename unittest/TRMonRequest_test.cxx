@@ -36,7 +36,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
 
   TRMonRequest dr;
   dr.request_number = 1;
-  dr.trigger_type = 2;
+  dr.trigger_type_mask = 2;
   dr.run_number = 3;
   dr.data_destination = "test";
 
@@ -45,7 +45,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   TRMonRequest dr_deserialized = dunedaq::serialization::deserialize<TRMonRequest>(bytes);
 
   BOOST_REQUIRE_EQUAL(dr.request_number, dr_deserialized.request_number);
-  BOOST_REQUIRE_EQUAL(dr.trigger_type, dr_deserialized.trigger_type);
+  BOOST_REQUIRE_EQUAL(dr.trigger_type_mask, dr_deserialized.trigger_type_mask);
   BOOST_REQUIRE_EQUAL(dr.run_number, dr_deserialized.run_number);
   BOOST_REQUIRE_EQUAL(dr.data_destination, dr_deserialized.data_destination);
 }
