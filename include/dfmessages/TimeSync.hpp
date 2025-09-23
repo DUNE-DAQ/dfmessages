@@ -32,7 +32,7 @@ struct TimeSync
   /// Run number at time of creation
   run_number_t run_number{ 0 };
   /// SourceID::id of the creating DAQModule, for debugging
-  uint32_t source_id; // NOLINT(build/unsigned)
+  uint32_t source_id{ 0 }; // NOLINT(build/unsigned)
 
   TimeSync() = default;
 
