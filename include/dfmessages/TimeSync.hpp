@@ -9,7 +9,6 @@
 #ifndef DFMESSAGES_INCLUDE_DFMESSAGES_TIMESYNC_HPP_
 #define DFMESSAGES_INCLUDE_DFMESSAGES_TIMESYNC_HPP_
 
-#include "dfmessages/SourceID_serialization.hpp"
 #include "dfmessages/Types.hpp"
 
 #include "serialization/Serialization.hpp"
@@ -32,8 +31,8 @@ struct TimeSync
   uint64_t sequence_number{ 0 }; // NOLINT(build/unsigned)
   /// Run number at time of creation
   run_number_t run_number{ 0 };
-  /// SourceID of the creating DAQModule, for debugging
-  SourceID source_id;
+  /// SourceID::id of the creating DAQModule, for debugging
+  uint32_t source_id; // NOLINT(build/unsigned)
 
   TimeSync() = default;
 
@@ -62,7 +61,7 @@ struct TimeSync
 
   DUNE_DAQ_SERIALIZE(TimeSync, daq_time, system_time, run_number, sequence_number, source_id);
 };
-static_assert(sizeof(TimeSync) == 40, "TimeSync size unexpected!");
+static_assert(sizeof(TimeSync) == 32, "TimeSync size unexpected!");
 static_assert(offsetof(TimeSync, daq_time) == 0, "TimeSync daq_time field not at expected offset!");
 static_assert(offsetof(TimeSync, system_time) == 8, "TimeSync system_time field not at expected offset!");
 static_assert(offsetof(TimeSync, sequence_number) == 16, "TimeSync sequence_number field not at expected offset!");
