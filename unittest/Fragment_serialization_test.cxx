@@ -53,7 +53,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   BOOST_REQUIRE_EQUAL(frag_deserialized.get_window_end(), test_frag.get_window_end());
   BOOST_REQUIRE_EQUAL(frag_deserialized.get_element_id().subsystem, test_frag.get_element_id().subsystem);
   BOOST_REQUIRE_EQUAL(frag_deserialized.get_element_id().id, test_frag.get_element_id().id);
-  BOOST_REQUIRE_EQUAL(frag_deserialized.get_error_bits(), test_frag.get_error_bits());
+  BOOST_REQUIRE_EQUAL(frag_deserialized.get_status_bits(), test_frag.get_status_bits());
   BOOST_REQUIRE_EQUAL(frag_deserialized.get_fragment_type_code(), test_frag.get_fragment_type_code());
   BOOST_REQUIRE_EQUAL(frag_deserialized.get_size(), test_frag.get_size());
 
@@ -94,7 +94,7 @@ BOOST_AUTO_TEST_CASE(Ptr_SerDes_MsgPack)
   BOOST_REQUIRE_EQUAL(frag_deserialized->get_window_end(), test_frag->get_window_end());
   BOOST_REQUIRE_EQUAL(frag_deserialized->get_element_id().subsystem, test_frag->get_element_id().subsystem);
   BOOST_REQUIRE_EQUAL(frag_deserialized->get_element_id().id, test_frag->get_element_id().id);
-  BOOST_REQUIRE_EQUAL(frag_deserialized->get_error_bits(), test_frag->get_error_bits());
+  BOOST_REQUIRE_EQUAL(frag_deserialized->get_status_bits(), test_frag->get_status_bits());
   BOOST_REQUIRE_EQUAL(frag_deserialized->get_fragment_type_code(), test_frag->get_fragment_type_code());
   BOOST_REQUIRE_EQUAL(frag_deserialized->get_size(), test_frag->get_size());
 
@@ -135,7 +135,7 @@ BOOST_AUTO_TEST_CASE(Ptr_to_Fragment)
   BOOST_REQUIRE_EQUAL(frag_deserialized.get_window_end(), test_frag->get_window_end());
   BOOST_REQUIRE_EQUAL(frag_deserialized.get_element_id().subsystem, test_frag->get_element_id().subsystem);
   BOOST_REQUIRE_EQUAL(frag_deserialized.get_element_id().id, test_frag->get_element_id().id);
-  BOOST_REQUIRE_EQUAL(frag_deserialized.get_error_bits(), test_frag->get_error_bits());
+  BOOST_REQUIRE_EQUAL(frag_deserialized.get_status_bits(), test_frag->get_status_bits());
   BOOST_REQUIRE_EQUAL(frag_deserialized.get_fragment_type_code(), test_frag->get_fragment_type_code());
   BOOST_REQUIRE_EQUAL(frag_deserialized.get_size(), test_frag->get_size());
 
@@ -176,7 +176,7 @@ BOOST_AUTO_TEST_CASE(Fragment_to_Ptr)
   BOOST_REQUIRE_EQUAL(frag_deserialized->get_window_end(), test_frag.get_window_end());
   BOOST_REQUIRE_EQUAL(frag_deserialized->get_element_id().subsystem, test_frag.get_element_id().subsystem);
   BOOST_REQUIRE_EQUAL(frag_deserialized->get_element_id().id, test_frag.get_element_id().id);
-  BOOST_REQUIRE_EQUAL(frag_deserialized->get_error_bits(), test_frag.get_error_bits());
+  BOOST_REQUIRE_EQUAL(frag_deserialized->get_status_bits(), test_frag.get_status_bits());
   BOOST_REQUIRE_EQUAL(frag_deserialized->get_fragment_type_code(), test_frag.get_fragment_type_code());
   BOOST_REQUIRE_EQUAL(frag_deserialized->get_size(), test_frag.get_size());
 
