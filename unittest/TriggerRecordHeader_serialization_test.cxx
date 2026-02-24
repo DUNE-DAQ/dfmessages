@@ -55,8 +55,8 @@ BOOST_AUTO_TEST_CASE(ExistingHeader)
   header->set_trigger_number(10);
   header->set_trigger_timestamp(11);
   header->set_trigger_type(12);
-  header->set_error_bit(TriggerRecordErrorBits::kMismatch, true);
-  header->set_error_bit(TriggerRecordErrorBits::kUnassigned3, true);
+  header->set_status_bit(TriggerRecordStatusBits::kMismatch, true);
+  header->set_status_bit(TriggerRecordStatusBits::kUnassigned3, true);
 
   BOOST_REQUIRE_THROW(header->at(header->get_header().num_requested_components), std::range_error);
   BOOST_REQUIRE_THROW((*header)[header->get_header().num_requested_components], std::range_error);
@@ -69,9 +69,9 @@ BOOST_AUTO_TEST_CASE(ExistingHeader)
   delete header; // NOLINT(build/raw_ownership)
 
   BOOST_REQUIRE_EQUAL(copy_header.get_run_number(), 9);
-  BOOST_REQUIRE_EQUAL(copy_header.get_error_bit(static_cast<TriggerRecordErrorBits>(0)), false);
-  BOOST_REQUIRE_EQUAL(copy_header.get_error_bit(static_cast<TriggerRecordErrorBits>(1)), true);
-  BOOST_REQUIRE_EQUAL(copy_header.get_header().error_bits, 10);
+  BOOST_REQUIRE_EQUAL(copy_header.get_status_bit(static_cast<TriggerRecordStatusBits>(0)), false);
+  BOOST_REQUIRE_EQUAL(copy_header.get_status_bit(static_cast<TriggerRecordStatusBits>(1)), true);
+  BOOST_REQUIRE_EQUAL(copy_header.get_header().status_bits, 10);
   BOOST_REQUIRE_EQUAL(copy_header.at(0).window_begin, 3);
   BOOST_REQUIRE_EQUAL(copy_header[1].window_begin, 7);
 
@@ -79,9 +79,9 @@ BOOST_AUTO_TEST_CASE(ExistingHeader)
     // Test copy constructor
     TriggerRecordHeader copy_copy_header(copy_header);
     BOOST_REQUIRE_EQUAL(copy_copy_header.get_run_number(), 9);
-    BOOST_REQUIRE_EQUAL(copy_copy_header.get_error_bit(static_cast<TriggerRecordErrorBits>(0)), false);
-    BOOST_REQUIRE_EQUAL(copy_copy_header.get_error_bit(static_cast<TriggerRecordErrorBits>(1)), true);
-    BOOST_REQUIRE_EQUAL(copy_copy_header.get_header().error_bits, 10);
+    BOOST_REQUIRE_EQUAL(copy_copy_header.get_status_bit(static_cast<TriggerRecordStatusBits>(0)), false);
+    BOOST_REQUIRE_EQUAL(copy_copy_header.get_status_bit(static_cast<TriggerRecordStatusBits>(1)), true);
+    BOOST_REQUIRE_EQUAL(copy_copy_header.get_header().status_bits, 10);
     BOOST_REQUIRE_EQUAL(copy_copy_header.at(0).window_begin, 3);
     BOOST_REQUIRE_EQUAL(copy_copy_header[1].window_begin, 7);
   }
@@ -89,9 +89,9 @@ BOOST_AUTO_TEST_CASE(ExistingHeader)
     // Test copy assignment
     TriggerRecordHeader copy_assign_header = copy_header;
     BOOST_REQUIRE_EQUAL(copy_assign_header.get_run_number(), 9);
-    BOOST_REQUIRE_EQUAL(copy_assign_header.get_error_bit(static_cast<TriggerRecordErrorBits>(0)), false);
-    BOOST_REQUIRE_EQUAL(copy_assign_header.get_error_bit(static_cast<TriggerRecordErrorBits>(1)), true);
-    BOOST_REQUIRE_EQUAL(copy_assign_header.get_header().error_bits, 10);
+    BOOST_REQUIRE_EQUAL(copy_assign_header.get_status_bit(static_cast<TriggerRecordStatusBits>(0)), false);
+    BOOST_REQUIRE_EQUAL(copy_assign_header.get_status_bit(static_cast<TriggerRecordStatusBits>(1)), true);
+    BOOST_REQUIRE_EQUAL(copy_assign_header.get_header().status_bits, 10);
     BOOST_REQUIRE_EQUAL(copy_assign_header.at(0).window_begin, 3);
     BOOST_REQUIRE_EQUAL(copy_assign_header[1].window_begin, 7);
   }
@@ -101,9 +101,9 @@ BOOST_AUTO_TEST_CASE(ExistingHeader)
     TriggerRecordHeader buffer_header(buff, false);
 
     BOOST_REQUIRE_EQUAL(buffer_header.get_run_number(), 9);
-    BOOST_REQUIRE_EQUAL(buffer_header.get_error_bit(static_cast<TriggerRecordErrorBits>(0)), false);
-    BOOST_REQUIRE_EQUAL(buffer_header.get_error_bit(static_cast<TriggerRecordErrorBits>(1)), true);
-    BOOST_REQUIRE_EQUAL(buffer_header.get_header().error_bits, 10);
+    BOOST_REQUIRE_EQUAL(buffer_header.get_status_bit(static_cast<TriggerRecordStatusBits>(0)), false);
+    BOOST_REQUIRE_EQUAL(buffer_header.get_status_bit(static_cast<TriggerRecordStatusBits>(1)), true);
+    BOOST_REQUIRE_EQUAL(buffer_header.get_header().status_bits, 10);
     BOOST_REQUIRE_EQUAL(buffer_header.at(0).window_begin, 3);
     BOOST_REQUIRE_EQUAL(buffer_header[1].window_begin, 7);
   }
@@ -136,8 +136,8 @@ BOOST_AUTO_TEST_CASE(HeaderFields)
   header->set_trigger_number(10);
   header->set_trigger_timestamp(11);
   header->set_trigger_type(12);
-  header->set_error_bit(TriggerRecordErrorBits::kMismatch, true);
-  header->set_error_bit(TriggerRecordErrorBits::kUnassigned3, true);
+  header->set_status_bit(TriggerRecordStatusBits::kMismatch, true);
+  header->set_status_bit(TriggerRecordStatusBits::kUnassigned3, true);
 
   auto header_data = header->get_header();
   BOOST_REQUIRE_EQUAL(header->get_run_number(), header_data.run_number);
@@ -176,8 +176,8 @@ BOOST_AUTO_TEST_CASE(Header_SerDes_MsgPack)
   header->set_trigger_number(10);
   header->set_trigger_timestamp(11);
   header->set_trigger_type(12);
-  header->set_error_bit(TriggerRecordErrorBits::kMismatch, true);
-  header->set_error_bit(TriggerRecordErrorBits::kUnassigned3, true);
+  header->set_status_bit(TriggerRecordStatusBits::kMismatch, true);
+  header->set_status_bit(TriggerRecordStatusBits::kUnassigned3, true);
 
   auto bytes = dunedaq::serialization::serialize(*header, dunedaq::serialization::kMsgPack);
   TriggerRecordHeader& header_orig = *header;
@@ -187,7 +187,7 @@ BOOST_AUTO_TEST_CASE(Header_SerDes_MsgPack)
   BOOST_REQUIRE_EQUAL(header_orig.get_trigger_timestamp(), header_deserialized.get_trigger_timestamp());
   BOOST_REQUIRE_EQUAL(header_orig.get_num_requested_components(), header_deserialized.get_num_requested_components());
   BOOST_REQUIRE_EQUAL(header_orig.get_run_number(), header_deserialized.get_run_number());
-  BOOST_REQUIRE_EQUAL(header_orig.get_error_bits(), header_deserialized.get_error_bits());
+  BOOST_REQUIRE_EQUAL(header_orig.get_status_bits(), header_deserialized.get_status_bits());
   BOOST_REQUIRE_EQUAL(header_orig.get_trigger_type(), header_deserialized.get_trigger_type());
   BOOST_REQUIRE_EQUAL(header_orig.get_total_size_bytes(), header_deserialized.get_total_size_bytes());
   BOOST_REQUIRE_EQUAL(header_orig.at(0).window_begin, header_deserialized.at(0).window_begin);
