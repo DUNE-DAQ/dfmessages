@@ -75,7 +75,7 @@ BOOST_AUTO_TEST_CASE(ExistingHeader)
 
   {
     // Test copy constructor
-    TriggerRecordHeader copy_copy_header(copy_header);
+    TriggerRecordHeader copy_copy_header(copy_header); // NOLINT // performance-unnecessary-copy-initialization
     BOOST_REQUIRE_EQUAL(copy_copy_header.get_run_number(), 9);
     BOOST_REQUIRE_EQUAL(copy_copy_header.get_status_bit(static_cast<TriggerRecordStatusBits>(0)), false);
     BOOST_REQUIRE_EQUAL(copy_copy_header.get_status_bit(static_cast<TriggerRecordStatusBits>(1)), true);
@@ -84,7 +84,7 @@ BOOST_AUTO_TEST_CASE(ExistingHeader)
   }
   {
     // Test copy assignment
-    TriggerRecordHeader copy_assign_header = copy_header;
+    TriggerRecordHeader copy_assign_header = copy_header; // NOLINT // performance-unnecessary-copy-initialization
     BOOST_REQUIRE_EQUAL(copy_assign_header.get_run_number(), 9);
     BOOST_REQUIRE_EQUAL(copy_assign_header.get_status_bit(static_cast<TriggerRecordStatusBits>(0)), false);
     BOOST_REQUIRE_EQUAL(copy_assign_header.get_status_bit(static_cast<TriggerRecordStatusBits>(1)), true);
