@@ -26,11 +26,10 @@ struct TriggerDecisionToken
   trigger_number_t trigger_number{
     TypeDefaults::s_invalid_trigger_number
   }; ///< An optional trigger number that this token represents completion of
+  std::string writer_identifier;
+  size_t data_size{ 0 };
 
-  std::string
-    decision_destination; ///< Connection name for TriggerDecisions sent to the Dataflow process originating this token
-
-  DUNE_DAQ_SERIALIZE(TriggerDecisionToken, run_number, trigger_number, decision_destination);
+  DUNE_DAQ_SERIALIZE(TriggerDecisionToken, run_number, trigger_number, writer_identifier, data_size);
 };
 } // namespace dfmessages
 DUNE_DAQ_SERIALIZABLE(dfmessages::TriggerDecisionToken, "TriggerDecisionToken");

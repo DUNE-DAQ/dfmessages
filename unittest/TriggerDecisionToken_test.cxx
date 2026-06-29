@@ -39,6 +39,8 @@ BOOST_AUTO_TEST_CASE(DefaultConstruction)
   TriggerDecisionToken tdt;
   BOOST_REQUIRE_EQUAL(tdt.run_number, TypeDefaults::s_invalid_run_number);
   BOOST_REQUIRE_EQUAL(tdt.trigger_number, TypeDefaults::s_invalid_trigger_number);
+  BOOST_REQUIRE_EQUAL(tdt.writer_identifier, "");
+  BOOST_REQUIRE_EQUAL(tdt.data_size, 0);
 }
 
 BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
@@ -46,6 +48,8 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   TriggerDecisionToken tdt;
   tdt.run_number = 1;
   tdt.trigger_number = 2;
+  tdt.writer_identifier = "test_writer";
+  tdt.data_size = 12345;
 
   auto bytes = dunedaq::serialization::serialize(tdt, dunedaq::serialization::kMsgPack);
   TLOG(TLVL_INFO) << "MsgPack message size: " << bytes.size() << " bytes";
@@ -53,6 +57,8 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
 
   BOOST_REQUIRE_EQUAL(tdt.run_number, tdt_deserialized.run_number);
   BOOST_REQUIRE_EQUAL(tdt.trigger_number, tdt_deserialized.trigger_number);
+  BOOST_REQUIRE_EQUAL(tdt.writer_identifier, tdt_deserialized.writer_identifier);
+  BOOST_REQUIRE_EQUAL(tdt.data_size, tdt_deserialized.data_size);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

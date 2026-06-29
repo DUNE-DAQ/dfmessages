@@ -19,6 +19,9 @@ daq_add_unit_test(TriggerDecision_test LINK_LIBRARIES daqdataformats::daqdatafor
 daq_add_unit_test(TriggerDecisionToken_test LINK_LIBRARIES daqdataformats::daqdataformats serialization::serialization)
 daq_add_unit_test(TriggerInhibit_test LINK_LIBRARIES daqdataformats::daqdataformats serialization::serialization)
 daq_add_unit_test(TRMonRequest_test LINK_LIBRARIES daqdataformats::daqdataformats serialization::serialization)
+daq_add_unit_test(TRBCompletion_test LINK_LIBRARIES daqdataformats::daqdataformats serialization::serialization)
+daq_add_unit_test(DataflowStatus_test LINK_LIBRARIES daqdataformats::daqdataformats serialization::serialization)
+daq_add_unit_test(DataflowStatusRequest_test LINK_LIBRARIES daqdataformats::daqdataformats serialization::serialization)
 
 daq_add_unit_test(Fragment_serialization_test LINK_LIBRARIES daqdataformats::daqdataformats serialization::serialization)
 daq_add_unit_test(TriggerRecord_serialization_test LINK_LIBRARIES daqdataformats::daqdataformats serialization::serialization)
