@@ -25,6 +25,7 @@ struct DataflowStatus
     TypeDefaults::s_invalid_trigger_number
   }; ///< The trigger number associated with this state
   std::string decision_destination{}; ///< The connection name for the TriggerDecision destination
+  std::string request_destination{};  ///< The connection name for the DataflowStatusRequest destination
 
   trigger_type_t trigger_type_mask{ 0 };
 
@@ -42,6 +43,7 @@ struct DataflowStatus
                      run_number,
                      trigger_number,
                      decision_destination,
+                     request_destination,
                      trigger_type_mask,
                      is_busy,
                      busy_threshold,
