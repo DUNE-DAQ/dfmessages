@@ -9,8 +9,8 @@
 #ifndef DFMESSAGES_INCLUDE_DFMESSAGES_TRBCOMPLETION_HPP_
 #define DFMESSAGES_INCLUDE_DFMESSAGES_TRBCOMPLETION_HPP_
 
-
 #include "dfmessages/SourceID_serialization.hpp"
+#include "dfmessages/TriggerId.hpp"
 #include "dfmessages/Types.hpp"
 #include "serialization/Serialization.hpp"
 
@@ -20,12 +20,12 @@ namespace dfmessages {
 
 struct TRBCompletion
 {
-  run_number_t run_number{ TypeDefaults::s_invalid_run_number }; ///< The current run number
-  trigger_number_t trigger_number{
-    TypeDefaults::s_invalid_trigger_number
-  }; ///< The trigger number assigned to this TriggerDecision
-  daqdataformats::SourceID source_id;                            ///< The SourceID of the TRB
-  DUNE_DAQ_SERIALIZE(TRBCompletion, run_number, trigger_number, source_id);
+  TriggerId trigger_id;               ///< The TriggerId of the completed TriggerRecord
+  daqdataformats::SourceID source_id; ///< The SourceID of the TRB
+  sequence_number_t trigger_record_max_sequence_number{
+    TypeDefaults::s_invalid_sequence_number
+  }; ///< The max sequence number for this TriggerRecord
+  DUNE_DAQ_SERIALIZE(TRBCompletion, trigger_id, source_id, trigger_record_max_sequence_number);
 };
 } // namespace dfmessages
 DUNE_DAQ_SERIALIZABLE(dfmessages::TRBCompletion, "TRBCompletion");

@@ -17,6 +17,7 @@ daq_add_unit_test(HSIEvent_test LINK_LIBRARIES daqdataformats::daqdataformats se
 daq_add_unit_test(TimeSync_test LINK_LIBRARIES daqdataformats::daqdataformats serialization::serialization)
 daq_add_unit_test(TriggerDecision_test LINK_LIBRARIES daqdataformats::daqdataformats serialization::serialization)
 daq_add_unit_test(TriggerDecisionToken_test LINK_LIBRARIES daqdataformats::daqdataformats serialization::serialization)
+daq_add_unit_test(TriggerId_test LINK_LIBRARIES daqdataformats::daqdataformats serialization::serialization)
 daq_add_unit_test(TriggerInhibit_test LINK_LIBRARIES daqdataformats::daqdataformats serialization::serialization)
 daq_add_unit_test(TRMonRequest_test LINK_LIBRARIES daqdataformats::daqdataformats serialization::serialization)
 daq_add_unit_test(TRBCompletion_test LINK_LIBRARIES daqdataformats::daqdataformats serialization::serialization)

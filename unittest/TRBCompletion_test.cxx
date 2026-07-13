@@ -37,25 +37,27 @@ BOOST_AUTO_TEST_CASE(CopyAndMoveSemantics)
 BOOST_AUTO_TEST_CASE(DefaultConstruction)
 {
   TRBCompletion tc;
-  BOOST_REQUIRE_EQUAL(tc.run_number, TypeDefaults::s_invalid_run_number);
-  BOOST_REQUIRE_EQUAL(tc.trigger_number, TypeDefaults::s_invalid_trigger_number);
+  BOOST_REQUIRE_EQUAL(tc.trigger_id, TriggerId());
   BOOST_REQUIRE_EQUAL(tc.source_id, dunedaq::daqdataformats::SourceID());
+  BOOST_REQUIRE_EQUAL(tc.trigger_record_max_sequence_number, TypeDefaults::s_invalid_sequence_number);
 }
 
 BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
 {
   TRBCompletion tc;
-  tc.run_number = 1;
-  tc.trigger_number = 2;
-  tc.source_id = dunedaq::daqdataformats::SourceID(dunedaq::daqdataformats::SourceID::Subsystem::kTRBuilder, 3);
+  tc.trigger_id.run_number = 1;
+  tc.trigger_id.trigger_number = 2;
+  tc.trigger_id.sequence_number = 3;
+  tc.source_id = dunedaq::daqdataformats::SourceID(dunedaq::daqdataformats::SourceID::Subsystem::kTRBuilder, 4);
+  tc.trigger_record_max_sequence_number = 5;
 
   auto bytes = dunedaq::serialization::serialize(tc, dunedaq::serialization::kMsgPack);
   TLOG(TLVL_INFO) << "MsgPack message size: " << bytes.size() << " bytes";
   TRBCompletion tc_deserialized = dunedaq::serialization::deserialize<TRBCompletion>(bytes);
 
-  BOOST_REQUIRE_EQUAL(tc.run_number, tc_deserialized.run_number);
-  BOOST_REQUIRE_EQUAL(tc.trigger_number, tc_deserialized.trigger_number);
+  BOOST_REQUIRE_EQUAL(tc.trigger_id, tc_deserialized.trigger_id);
   BOOST_REQUIRE_EQUAL(tc.source_id.id, tc_deserialized.source_id.id);
+  BOOST_REQUIRE_EQUAL(tc.trigger_record_max_sequence_number, tc_deserialized.trigger_record_max_sequence_number);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
