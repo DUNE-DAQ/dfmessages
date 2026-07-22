@@ -38,13 +38,17 @@ BOOST_AUTO_TEST_CASE(DefaultConstruction)
 {
   DataflowStatusRequest dsr;
   BOOST_REQUIRE_EQUAL(dsr.run_number, TypeDefaults::s_invalid_run_number);
+  BOOST_REQUIRE_EQUAL(dsr.trigger_number, TypeDefaults::s_invalid_trigger_number);
   BOOST_REQUIRE_EQUAL(dsr.reply_destination, "");
+  BOOST_REQUIRE_EQUAL(dsr.iteration_number, 0);
 }
 
 BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
 {
   DataflowStatusRequest dsr;
   dsr.run_number = 1;
+  dsr.trigger_number = 42;
+  dsr.iteration_number = 3;
   dsr.reply_destination = "test_destination";
 
   auto bytes = dunedaq::serialization::serialize(dsr, dunedaq::serialization::kMsgPack);
@@ -52,6 +56,8 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   DataflowStatusRequest dsr_deserialized = dunedaq::serialization::deserialize<DataflowStatusRequest>(bytes);
 
   BOOST_REQUIRE_EQUAL(dsr.run_number, dsr_deserialized.run_number);
+  BOOST_REQUIRE_EQUAL(dsr.trigger_number, dsr_deserialized.trigger_number);
+  BOOST_REQUIRE_EQUAL(dsr.iteration_number, dsr_deserialized.iteration_number);
   BOOST_REQUIRE_EQUAL(dsr.reply_destination, dsr_deserialized.reply_destination);
 }
 

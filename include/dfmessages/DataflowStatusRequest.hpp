@@ -23,11 +23,13 @@ struct DataflowStatusRequest
   trigger_number_t trigger_number{
     TypeDefaults::s_invalid_trigger_number
   }; ///< The trigger number associated with this request
+  size_t iteration_number{ 0 }; ///< The iteration number associated with this request
   std::string reply_destination = "";
 
   DUNE_DAQ_SERIALIZE(DataflowStatusRequest,
                      run_number,
                      trigger_number,
+        iteration_number,
                      reply_destination);
 };
 } // namespace dfmessages

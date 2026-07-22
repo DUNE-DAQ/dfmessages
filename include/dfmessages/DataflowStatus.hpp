@@ -24,6 +24,7 @@ struct DataflowStatus
   trigger_number_t trigger_number{
     TypeDefaults::s_invalid_trigger_number
   }; ///< The trigger number associated with this state
+  size_t iteration_number{ 0 };       ///< The iteration number associated with this state
   std::string decision_destination{}; ///< The connection name for the TriggerDecision destination
   std::string request_destination{};  ///< The connection name for the DataflowStatusRequest destination
 
@@ -42,6 +43,7 @@ struct DataflowStatus
   DUNE_DAQ_SERIALIZE(DataflowStatus,
                      run_number,
                      trigger_number,
+                     iteration_number,
                      decision_destination,
                      request_destination,
                      trigger_type_mask,
