@@ -23,12 +23,11 @@ struct TriggerInhibit
 {
   bool busy = false;           ///< Whether the system is busy
   run_number_t run_number = 0; ///< Current run number
+  std::string decision_destination; ///< Destination for TriggerDecision messages
 
-  DUNE_DAQ_SERIALIZE(TriggerInhibit, busy, run_number);
+  DUNE_DAQ_SERIALIZE(TriggerInhibit, busy, run_number, decision_destination);
 };
-static_assert(sizeof(TriggerInhibit) == 8, "TriggerInhibit size unexpected!");
-static_assert(offsetof(TriggerInhibit, busy) == 0, "TriggerInhibit busy field not at expected offset!");
-static_assert(offsetof(TriggerInhibit, run_number) == 4, "TriggerInhibit run_number field not at expected offset!");
+
 } // namespace dfmessages
 DUNE_DAQ_SERIALIZABLE(dfmessages::TriggerInhibit, "TriggerInhibit");
 } // namespace dunedaq
