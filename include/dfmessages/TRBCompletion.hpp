@@ -20,12 +20,11 @@ namespace dfmessages {
 
 struct TRBCompletion
 {
-  TriggerId trigger_id;               ///< The TriggerId of the completed TriggerRecord
-  daqdataformats::SourceID source_id; ///< The SourceID of the TRB
-  sequence_number_t trigger_record_max_sequence_number{
-    TypeDefaults::s_invalid_sequence_number
-  }; ///< The max sequence number for this TriggerRecord
-  DUNE_DAQ_SERIALIZE(TRBCompletion, trigger_id, source_id, trigger_record_max_sequence_number);
+  TriggerId trigger_id;                                      ///< The TriggerId of the completed TriggerRecord
+  sequence_number_t sequence_number{ 0 };                    ///< The sequence number of the completed TriggerRecord
+  daqdataformats::SourceID source_id;                        ///< The SourceID of the TRB
+  sequence_number_t trigger_record_max_sequence_number{ 0 }; ///< The max sequence number for this TriggerRecord
+  DUNE_DAQ_SERIALIZE(TRBCompletion, trigger_id, sequence_number, source_id, trigger_record_max_sequence_number);
 };
 } // namespace dfmessages
 DUNE_DAQ_SERIALIZABLE(dfmessages::TRBCompletion, "TRBCompletion");

@@ -9,8 +9,8 @@
 #ifndef DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERDECISIONTOKEN_HPP_
 #define DFMESSAGES_INCLUDE_DFMESSAGES_TRIGGERDECISIONTOKEN_HPP_
 
-#include "dfmessages/Types.hpp"
 #include "dfmessages/TriggerId.hpp"
+#include "dfmessages/Types.hpp"
 
 #include "serialization/Serialization.hpp"
 
@@ -23,12 +23,12 @@ namespace dfmessages {
  */
 struct TriggerDecisionToken
 {
-  run_number_t run_number{ TypeDefaults::s_invalid_run_number }; ///< The run number that this token corresponds to
-  TriggerId trigger_id; ///< An optional trigger ID that this token represents completion of
+  TriggerId trigger_id;                   ///< An optional trigger ID that this token represents completion of
+  sequence_number_t sequence_number{ 0 }; ///< The sequence number of the TriggerRecord that has been completed
   std::string writer_identifier;
   size_t data_size{ 0 };
 
-  DUNE_DAQ_SERIALIZE(TriggerDecisionToken, run_number, trigger_id, writer_identifier, data_size);
+  DUNE_DAQ_SERIALIZE(TriggerDecisionToken, trigger_id, sequence_number, writer_identifier, data_size);
 };
 } // namespace dfmessages
 DUNE_DAQ_SERIALIZABLE(dfmessages::TriggerDecisionToken, "TriggerDecisionToken");

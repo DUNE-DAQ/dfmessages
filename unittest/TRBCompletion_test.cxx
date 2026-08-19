@@ -38,8 +38,9 @@ BOOST_AUTO_TEST_CASE(DefaultConstruction)
 {
   TRBCompletion tc;
   BOOST_REQUIRE_EQUAL(tc.trigger_id, TriggerId());
+  BOOST_REQUIRE_EQUAL(tc.sequence_number, 0);
   BOOST_REQUIRE_EQUAL(tc.source_id, dunedaq::daqdataformats::SourceID());
-  BOOST_REQUIRE_EQUAL(tc.trigger_record_max_sequence_number, TypeDefaults::s_invalid_sequence_number);
+  BOOST_REQUIRE_EQUAL(tc.trigger_record_max_sequence_number, 0);
 }
 
 BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
@@ -47,7 +48,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   TRBCompletion tc;
   tc.trigger_id.run_number = 1;
   tc.trigger_id.trigger_number = 2;
-  tc.trigger_id.sequence_number = 3;
+  tc.sequence_number = 3;
   tc.source_id = dunedaq::daqdataformats::SourceID(dunedaq::daqdataformats::SourceID::Subsystem::kTRBuilder, 4);
   tc.trigger_record_max_sequence_number = 5;
 
@@ -56,6 +57,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   TRBCompletion tc_deserialized = dunedaq::serialization::deserialize<TRBCompletion>(bytes);
 
   BOOST_REQUIRE_EQUAL(tc.trigger_id, tc_deserialized.trigger_id);
+  BOOST_REQUIRE_EQUAL(tc.sequence_number, tc_deserialized.sequence_number);
   BOOST_REQUIRE_EQUAL(tc.source_id.id, tc_deserialized.source_id.id);
   BOOST_REQUIRE_EQUAL(tc.trigger_record_max_sequence_number, tc_deserialized.trigger_record_max_sequence_number);
 }

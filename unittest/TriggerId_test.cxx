@@ -39,7 +39,6 @@ BOOST_AUTO_TEST_CASE(DefaultConstruction)
   TriggerId tc;
   BOOST_REQUIRE_EQUAL(tc.run_number, TypeDefaults::s_invalid_run_number);
   BOOST_REQUIRE_EQUAL(tc.trigger_number, TypeDefaults::s_invalid_trigger_number);
-  BOOST_REQUIRE_EQUAL(tc.sequence_number, TypeDefaults::s_invalid_sequence_number);
 }
 
 BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
@@ -47,7 +46,6 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   TriggerId tid;
   tid.run_number = 1;
   tid.trigger_number = 2;
-  tid.sequence_number = 3;
 
   auto bytes = dunedaq::serialization::serialize(tid, dunedaq::serialization::kMsgPack);
   TLOG(TLVL_INFO) << "MsgPack message size: " << bytes.size() << " bytes";
@@ -55,7 +53,6 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
 
   BOOST_REQUIRE_EQUAL(tid.run_number, tid_deserialized.run_number);
   BOOST_REQUIRE_EQUAL(tid.trigger_number, tid_deserialized.trigger_number);
-  BOOST_REQUIRE_EQUAL(tid.sequence_number, tid_deserialized.sequence_number);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
