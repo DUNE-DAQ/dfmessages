@@ -76,7 +76,7 @@ struct TriggerId
 
   friend std::istream& operator>>(std::istream& in, TriggerId& id)
   {
-    char t1;
+    char t1 = '\0';
     in >> id.trigger_number >> t1 >> id.run_number;
     return in;
   }

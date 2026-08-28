@@ -13,6 +13,7 @@
 #include "serialization/Serialization.hpp"
 
 #include <cstddef>
+#include <string>
 
 namespace dunedaq {
 namespace dfmessages {

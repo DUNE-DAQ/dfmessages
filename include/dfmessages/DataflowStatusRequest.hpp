@@ -14,6 +14,8 @@
 #include "dfmessages/Types.hpp"
 #include "serialization/Serialization.hpp"
 
+#include <string>
+
 namespace dunedaq {
 
 namespace dfmessages {
