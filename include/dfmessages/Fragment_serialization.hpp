@@ -11,15 +11,15 @@
 #define DFMESSAGES_INCLUDE_DFMESSAGES_FRAGMENT_SERIALIZATION_HPP_
 
 #include "daqdataformats/Fragment.hpp"
-#include "serialization/Serialization.hpp"
 #include "logging/Logging.hpp" // NOTE: if ISSUES ARE DECLARED BEFORE include logging/Logging.hpp, TLOG_DEBUG<<issue wont work.
+#include "serialization/Serialization.hpp"
 
 #include <memory>
 #include <vector>
 
 // MsgPack serialization functions (which just put the raw bytes of
 // the fragment array into a MsgPack message)
-namespace msgpack {
+namespace msgpack { // NOLINT(modernize-concat-nested-namespaces)
 MSGPACK_API_VERSION_NAMESPACE(MSGPACK_DEFAULT_API_NS)
 {
   namespace adaptor {
@@ -49,7 +49,7 @@ MSGPACK_API_VERSION_NAMESPACE(MSGPACK_DEFAULT_API_NS)
       // here would be faster, but we have to copy, since the returned
       // Fragment might outlast the msgpack::object which owns/points
       // to the underlying data.
-      return dunedaq::daqdataformats::Fragment(const_cast<char*>(o.via.bin.ptr),
+      return dunedaq::daqdataformats::Fragment(const_cast<char*>(o.via.bin.ptr), // NOLINT
                                                dunedaq::daqdataformats::Fragment::BufferAdoptionMode::kCopyFromBuffer);
     }
   };
@@ -81,7 +81,8 @@ MSGPACK_API_VERSION_NAMESPACE(MSGPACK_DEFAULT_API_NS)
       // Fragment might outlast the msgpack::object which owns/points
       // to the underlying data.
       return std::make_unique<dunedaq::daqdataformats::Fragment>(
-        const_cast<char*>(o.via.bin.ptr), dunedaq::daqdataformats::Fragment::BufferAdoptionMode::kCopyFromBuffer);
+        const_cast<char*>(o.via.bin.ptr), // NOLINT
+        dunedaq::daqdataformats::Fragment::BufferAdoptionMode::kCopyFromBuffer);
     }
   };
   } // namespace adaptor
