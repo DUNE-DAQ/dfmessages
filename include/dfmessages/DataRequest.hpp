@@ -28,7 +28,7 @@ struct DataRequest
   request_number_t request_number{ TypeDefaults::s_invalid_request_number }; ///< The number of the request
   trigger_number_t trigger_number{
     TypeDefaults::s_invalid_trigger_number
-  };                                                             ///< Trigger number the request corresponds to
+  }; ///< Trigger number the request corresponds to
   run_number_t run_number{ TypeDefaults::s_invalid_run_number }; ///< The current run number
 
   timestamp_t trigger_timestamp{ TypeDefaults::s_invalid_timestamp }; ///< Timestamp of trigger

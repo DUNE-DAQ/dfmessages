@@ -12,8 +12,8 @@
 #include "daqdataformats/TriggerRecord.hpp"
 #include "dfmessages/Fragment_serialization.hpp"
 #include "dfmessages/TriggerRecordHeader_serialization.hpp"
-#include "serialization/Serialization.hpp"
 #include "logging/Logging.hpp" // NOTE: if ISSUES ARE DECLARED BEFORE include logging/Logging.hpp, TLOG_DEBUG<<issue wont work.
+#include "serialization/Serialization.hpp"
 
 #include <memory>
 #include <utility>

@@ -25,8 +25,10 @@ struct TRMonRequest
 {
 
   request_number_t request_number{ TypeDefaults::s_invalid_request_number }; ///< The number of the request
-  trigger_type_t trigger_type_mask{ TypeDefaults::s_invalid_trigger_type }; ///< The trigger type(s) that are being requested
-  run_number_t run_number{ TypeDefaults::s_invalid_run_number };       ///< The current run number
+  trigger_type_t trigger_type_mask{
+    TypeDefaults::s_invalid_trigger_type
+  };                                                             ///< The trigger type(s) that are being requested
+  run_number_t run_number{ TypeDefaults::s_invalid_run_number }; ///< The current run number
   std::string data_destination; ///< The Monitoring destination that the TR should be sent to
 
   DUNE_DAQ_SERIALIZE(TRMonRequest, request_number, trigger_type_mask, run_number, data_destination);
