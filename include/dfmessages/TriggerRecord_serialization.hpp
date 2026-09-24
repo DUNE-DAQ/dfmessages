@@ -60,7 +60,8 @@ MSGPACK_API_VERSION_NAMESPACE(MSGPACK_DEFAULT_API_NS)
   {
     dunedaq::daqdataformats::TriggerRecord operator()(msgpack::object const& o) const
     {
-      dunedaq::daqdataformats::TriggerRecord tr(o.via.array.ptr[0].as<dunedaq::daqdataformats::TriggerRecordHeader>()); // NOLINT
+      dunedaq::daqdataformats::TriggerRecord tr(
+        o.via.array.ptr[0].as<dunedaq::daqdataformats::TriggerRecordHeader>()); // NOLINT
 
       for (size_t ii = 1; ii < o.via.array.size; ++ii) {
         auto fragptr = o.via.array.ptr[ii].as<std::unique_ptr<dunedaq::daqdataformats::Fragment>>(); // NOLINT
