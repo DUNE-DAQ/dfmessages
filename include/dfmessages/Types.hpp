@@ -21,14 +21,7 @@
 #include <sys/time.h>
 #include <utility>
 
-/**
- * @brief The DUNE-DAQ namespace
- */
-namespace dunedaq {
-/**
- * @brief Dataflow Messages
- */
-namespace dfmessages {
+namespace dunedaq::dfmessages {
 using SourceID = daqdataformats::SourceID;                 ///< Copy daqdataformats::SourceID
 using ComponentRequest = daqdataformats::ComponentRequest; ///< Copy daqdataformats::ComponentRequest
 using run_number_t = daqdataformats::run_number_t;         ///< Copy daqdataformats::run_number_t
@@ -78,8 +71,7 @@ public:
   static constexpr system_time_t s_invalid_system_time = 0; ///< An invalid system time
 };
 
-} // namespace dfmessages
-} // namespace dunedaq
+} // namespace dunedaq::dfmessages
 
 DUNE_DAQ_SERIALIZE_ENUM(dunedaq::dfmessages::ReadoutType)
 
