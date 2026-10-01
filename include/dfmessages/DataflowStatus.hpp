@@ -35,9 +35,9 @@ struct DataflowStatus
   std::set<TriggerId> triggers_building;
   std::set<TriggerId> triggers_writing;
   std::set<TriggerId> recently_completed_triggers; ///< The set of trigger numbers that have recently completed
-                                                          ///< (i.e. have been written to disk)
-  size_t trigger_records_processed{ 0 }; ///< The total number of TriggerRecords processed for the current run
-  size_t data_size_written{ 0 };         ///< The total size of data written for the current run, in bytes
+                                                   ///< (i.e. have been written to disk)
+  size_t trigger_records_processed{ 0 };           ///< The total number of TriggerRecords processed for the current run
+  size_t data_size_written{ 0 };                   ///< The total size of data written for the current run, in bytes
 
   DUNE_DAQ_SERIALIZE(DataflowStatus,
                      trigger_id,

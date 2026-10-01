@@ -53,14 +53,12 @@ struct TriggerId
 
   bool operator<(const TriggerId& other) const noexcept
   {
-    return std::tuple(trigger_number, run_number) <
-           std::tuple(other.trigger_number, other.run_number);
+    return std::tuple(trigger_number, run_number) < std::tuple(other.trigger_number, other.run_number);
   }
 
   bool operator==(const TriggerId& other) const noexcept
   {
-    return std::tie(trigger_number,  run_number) ==
-           std::tie(other.trigger_number, other.run_number);
+    return std::tie(trigger_number, run_number) == std::tie(other.trigger_number, other.run_number);
   }
 
   friend std::ostream& operator<<(std::ostream& out, const TriggerId& id) noexcept
