@@ -29,7 +29,7 @@ ERS_DECLARE_ISSUE(dfmessages,
 
 // MsgPack serialization functions (which just put the raw bytes of
 // the fragment array into a MsgPack message)
-namespace msgpack {
+namespace msgpack { // NOLINT(modernize-concat-nested-namespaces)
 MSGPACK_API_VERSION_NAMESPACE(MSGPACK_DEFAULT_API_NS)
 {
   namespace adaptor {
@@ -60,10 +60,11 @@ MSGPACK_API_VERSION_NAMESPACE(MSGPACK_DEFAULT_API_NS)
   {
     dunedaq::daqdataformats::TriggerRecord operator()(msgpack::object const& o) const
     {
-      dunedaq::daqdataformats::TriggerRecord tr(o.via.array.ptr[0].as<dunedaq::daqdataformats::TriggerRecordHeader>());
+      dunedaq::daqdataformats::TriggerRecord tr(
+        o.via.array.ptr[0].as<dunedaq::daqdataformats::TriggerRecordHeader>()); // NOLINT
 
       for (size_t ii = 1; ii < o.via.array.size; ++ii) {
-        auto fragptr = o.via.array.ptr[ii].as<std::unique_ptr<dunedaq::daqdataformats::Fragment>>();
+        auto fragptr = o.via.array.ptr[ii].as<std::unique_ptr<dunedaq::daqdataformats::Fragment>>(); // NOLINT
         tr.add_fragment(std::move(fragptr));
       }
 
@@ -99,10 +100,10 @@ MSGPACK_API_VERSION_NAMESPACE(MSGPACK_DEFAULT_API_NS)
     std::unique_ptr<dunedaq::daqdataformats::TriggerRecord> operator()(msgpack::object const& o) const
     {
       auto tr = std::make_unique<dunedaq::daqdataformats::TriggerRecord>(
-        o.via.array.ptr[0].as<dunedaq::daqdataformats::TriggerRecordHeader>());
+        o.via.array.ptr[0].as<dunedaq::daqdataformats::TriggerRecordHeader>()); // NOLINT
 
       for (size_t ii = 1; ii < o.via.array.size; ++ii) {
-        auto fragptr = o.via.array.ptr[ii].as<std::unique_ptr<dunedaq::daqdataformats::Fragment>>();
+        auto fragptr = o.via.array.ptr[ii].as<std::unique_ptr<dunedaq::daqdataformats::Fragment>>(); // NOLINT
         tr->add_fragment(std::move(fragptr));
       }
 

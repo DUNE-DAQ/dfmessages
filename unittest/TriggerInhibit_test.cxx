@@ -39,12 +39,16 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
 
   TriggerInhibit ti;
   ti.busy = true;
+  ti.run_number = 42;
+  ti.decision_destination = "test_destination";
 
   auto bytes = dunedaq::serialization::serialize(ti, dunedaq::serialization::kMsgPack);
   TLOG(TLVL_INFO) << "MsgPack message size: " << bytes.size() << " bytes";
   TriggerInhibit ti_deserialized = dunedaq::serialization::deserialize<TriggerInhibit>(bytes);
 
   BOOST_REQUIRE_EQUAL(ti.busy, ti_deserialized.busy);
+  BOOST_REQUIRE_EQUAL(ti.run_number, ti_deserialized.run_number);
+  BOOST_REQUIRE_EQUAL(ti.decision_destination, ti_deserialized.decision_destination);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
