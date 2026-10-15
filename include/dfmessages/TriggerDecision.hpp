@@ -34,7 +34,7 @@ struct TriggerDecision
   trigger_type_t trigger_type{ TypeDefaults::s_invalid_trigger_type }; ///< The type of the trigger
   ReadoutType readout_type{ ReadoutType::kInvalid }; ///< The type of readout to use (i.e. where to route data)
 
-  std::vector<ComponentRequest> components; ///< The DAQ components which should be read out to create the TriggerRecord
+  std::vector<ComponentRequest> components{}; ///< The DAQ components which should be read out to create the TriggerRecord
 
   DUNE_DAQ_SERIALIZE(TriggerDecision,
                      trigger_number,

@@ -60,11 +60,11 @@ BOOST_AUTO_TEST_CASE(ExistingHeader)
 
   BOOST_REQUIRE_THROW(header->at(header->get_header().num_requested_components), std::range_error);
 
-  void* buff = malloc(header->get_total_size_bytes());
+  void* buff = malloc(header->get_total_size_bytes()); // NOLINT
   memcpy(buff, header->get_storage_location(), header->get_total_size_bytes());
 
   // Constructor should copy header
-  TriggerRecordHeader copy_header(const_cast<void*>(header->get_storage_location()), true);
+  TriggerRecordHeader copy_header(const_cast<void*>(header->get_storage_location()), true); // NOLINT
   delete header; // NOLINT(build/raw_ownership)
 
   BOOST_REQUIRE_EQUAL(copy_header.get_run_number(), 9);
@@ -106,7 +106,7 @@ BOOST_AUTO_TEST_CASE(ExistingHeader)
   BOOST_REQUIRE_EQUAL(*reinterpret_cast<uint32_t*>(buff), // NOLINT
                       TriggerRecordHeaderData::s_trigger_record_header_magic);
 
-  free(buff);
+  free(buff); // NOLINT
 }
 
 /**
@@ -147,6 +147,8 @@ BOOST_AUTO_TEST_CASE(HeaderFields)
   header->set_run_number(10);
   BOOST_REQUIRE(header_ptr->run_number != header_data.run_number);
   BOOST_REQUIRE_EQUAL(header_ptr->run_number, 10);
+
+  delete header; // NOLINT(build/raw_ownership)
 }
 
 /**

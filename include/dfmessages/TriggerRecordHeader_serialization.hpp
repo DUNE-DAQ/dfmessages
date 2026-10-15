@@ -25,7 +25,7 @@ ERS_DECLARE_ISSUE(dfmessages,
 
 // MsgPack serialization functions (which just put the raw bytes of
 // the fragment array into a MsgPack message)
-namespace msgpack {
+namespace msgpack { // NOLINT(modernize-concat-nested-namespaces)
 MSGPACK_API_VERSION_NAMESPACE(MSGPACK_DEFAULT_API_NS)
 {
   namespace adaptor {
@@ -52,7 +52,7 @@ MSGPACK_API_VERSION_NAMESPACE(MSGPACK_DEFAULT_API_NS)
   {
     dunedaq::daqdataformats::TriggerRecordHeader operator()(msgpack::object const& o) const
     {
-      return dunedaq::daqdataformats::TriggerRecordHeader(const_cast<char*>(o.via.bin.ptr), true);
+      return dunedaq::daqdataformats::TriggerRecordHeader(const_cast<char*>(o.via.bin.ptr), true); // NOLINT
     }
   };
 
