@@ -32,14 +32,14 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   header.trigger_timestamp = 2;
   header.run_number = 3;
 
-  auto frag = malloc(sizeof(FragmentHeader) + 4);
+  auto frag = malloc(sizeof(FragmentHeader) + 4); // NOLINT
   memcpy(frag, &header, sizeof(FragmentHeader));
 
-  uint8_t one = 1, two = 2, three = 3, four = 4;                               // NOLINT(build/unsigned)
-  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader), &one, 1);       // NOLINT(build/unsigned)
-  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader) + 1, &two, 1);   // NOLINT(build/unsigned)
-  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader) + 2, &three, 1); // NOLINT(build/unsigned)
-  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader) + 3, &four, 1);  // NOLINT(build/unsigned)
+  uint8_t one = 1, two = 2, three = 3, four = 4;                               // NOLINT
+  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader), &one, 1);       // NOLINT
+  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader) + 1, &two, 1);   // NOLINT
+  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader) + 2, &three, 1); // NOLINT
+  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader) + 3, &four, 1);  // NOLINT
 
   Fragment test_frag(frag, Fragment::BufferAdoptionMode::kTakeOverBuffer);
   auto bytes = dunedaq::serialization::serialize(test_frag, dunedaq::serialization::kMsgPack);
@@ -57,12 +57,12 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   BOOST_REQUIRE_EQUAL(frag_deserialized.get_fragment_type_code(), test_frag.get_fragment_type_code());
   BOOST_REQUIRE_EQUAL(frag_deserialized.get_size(), test_frag.get_size());
 
-  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized.get_data()) + 0), // NOLINT(build/unsigned)
-                      *(static_cast<uint8_t*>(test_frag.get_data()) + 0));        // NOLINT(build/unsigned)
-  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized.get_data()) + 1), // NOLINT(build/unsigned)
-                      *(static_cast<uint8_t*>(test_frag.get_data()) + 1));        // NOLINT(build/unsigned)
-  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized.get_data()) + 2), // NOLINT(build/unsigned)
-                      *(static_cast<uint8_t*>(test_frag.get_data()) + 2));        // NOLINT(build/unsigned)
+  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized.get_data()) + 0), // NOLINT
+                      *(static_cast<uint8_t*>(test_frag.get_data()) + 0));        // NOLINT
+  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized.get_data()) + 1), // NOLINT
+                      *(static_cast<uint8_t*>(test_frag.get_data()) + 1));        // NOLINT
+  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized.get_data()) + 2), // NOLINT
+                      *(static_cast<uint8_t*>(test_frag.get_data()) + 2));        // NOLINT
 }
 
 BOOST_AUTO_TEST_CASE(Ptr_SerDes_MsgPack)
@@ -73,14 +73,14 @@ BOOST_AUTO_TEST_CASE(Ptr_SerDes_MsgPack)
   header.trigger_timestamp = 2;
   header.run_number = 3;
 
-  auto frag = malloc(sizeof(FragmentHeader) + 4);
+  auto frag = malloc(sizeof(FragmentHeader) + 4); // NOLINT
   memcpy(frag, &header, sizeof(FragmentHeader));
 
-  uint8_t one = 1, two = 2, three = 3, four = 4;                               // NOLINT(build/unsigned)
-  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader), &one, 1);       // NOLINT(build/unsigned)
-  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader) + 1, &two, 1);   // NOLINT(build/unsigned)
-  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader) + 2, &three, 1); // NOLINT(build/unsigned)
-  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader) + 3, &four, 1);  // NOLINT(build/unsigned)
+  uint8_t one = 1, two = 2, three = 3, four = 4;                               // NOLINT
+  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader), &one, 1);       // NOLINT
+  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader) + 1, &two, 1);   // NOLINT
+  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader) + 2, &three, 1); // NOLINT
+  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader) + 3, &four, 1);  // NOLINT
 
   auto test_frag = std::make_unique<Fragment>(frag, Fragment::BufferAdoptionMode::kTakeOverBuffer);
   auto bytes = dunedaq::serialization::serialize(test_frag, dunedaq::serialization::kMsgPack);
@@ -98,12 +98,12 @@ BOOST_AUTO_TEST_CASE(Ptr_SerDes_MsgPack)
   BOOST_REQUIRE_EQUAL(frag_deserialized->get_fragment_type_code(), test_frag->get_fragment_type_code());
   BOOST_REQUIRE_EQUAL(frag_deserialized->get_size(), test_frag->get_size());
 
-  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized->get_data()) + 0), // NOLINT(build/unsigned)
-                      *(static_cast<uint8_t*>(test_frag->get_data()) + 0));        // NOLINT(build/unsigned)
-  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized->get_data()) + 1), // NOLINT(build/unsigned)
-                      *(static_cast<uint8_t*>(test_frag->get_data()) + 1));        // NOLINT(build/unsigned)
-  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized->get_data()) + 2), // NOLINT(build/unsigned)
-                      *(static_cast<uint8_t*>(test_frag->get_data()) + 2));        // NOLINT(build/unsigned)
+  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized->get_data()) + 0), // NOLINT
+                      *(static_cast<uint8_t*>(test_frag->get_data()) + 0));        // NOLINT
+  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized->get_data()) + 1), // NOLINT
+                      *(static_cast<uint8_t*>(test_frag->get_data()) + 1));        // NOLINT
+  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized->get_data()) + 2), // NOLINT
+                      *(static_cast<uint8_t*>(test_frag->get_data()) + 2));        // NOLINT
 }
 
 BOOST_AUTO_TEST_CASE(Ptr_to_Fragment)
@@ -114,14 +114,14 @@ BOOST_AUTO_TEST_CASE(Ptr_to_Fragment)
   header.trigger_timestamp = 2;
   header.run_number = 3;
 
-  auto frag = malloc(sizeof(FragmentHeader) + 4);
+  auto frag = malloc(sizeof(FragmentHeader) + 4); // NOLINT
   memcpy(frag, &header, sizeof(FragmentHeader));
 
-  uint8_t one = 1, two = 2, three = 3, four = 4;                               // NOLINT(build/unsigned)
-  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader), &one, 1);       // NOLINT(build/unsigned)
-  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader) + 1, &two, 1);   // NOLINT(build/unsigned)
-  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader) + 2, &three, 1); // NOLINT(build/unsigned)
-  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader) + 3, &four, 1);  // NOLINT(build/unsigned)
+  uint8_t one = 1, two = 2, three = 3, four = 4;                               // NOLINT
+  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader), &one, 1);       // NOLINT
+  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader) + 1, &two, 1);   // NOLINT
+  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader) + 2, &three, 1); // NOLINT
+  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader) + 3, &four, 1);  // NOLINT
 
   auto test_frag = std::make_unique<Fragment>(frag, Fragment::BufferAdoptionMode::kTakeOverBuffer);
   auto bytes = dunedaq::serialization::serialize(test_frag, dunedaq::serialization::kMsgPack);
@@ -139,12 +139,12 @@ BOOST_AUTO_TEST_CASE(Ptr_to_Fragment)
   BOOST_REQUIRE_EQUAL(frag_deserialized.get_fragment_type_code(), test_frag->get_fragment_type_code());
   BOOST_REQUIRE_EQUAL(frag_deserialized.get_size(), test_frag->get_size());
 
-  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized.get_data()) + 0), // NOLINT(build/unsigned)
-                      *(static_cast<uint8_t*>(test_frag->get_data()) + 0));       // NOLINT(build/unsigned)
-  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized.get_data()) + 1), // NOLINT(build/unsigned)
-                      *(static_cast<uint8_t*>(test_frag->get_data()) + 1));       // NOLINT(build/unsigned)
-  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized.get_data()) + 2), // NOLINT(build/unsigned)
-                      *(static_cast<uint8_t*>(test_frag->get_data()) + 2));       // NOLINT(build/unsigned)
+  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized.get_data()) + 0), // NOLINT
+                      *(static_cast<uint8_t*>(test_frag->get_data()) + 0));       // NOLINT
+  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized.get_data()) + 1), // NOLINT
+                      *(static_cast<uint8_t*>(test_frag->get_data()) + 1));       // NOLINT
+  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized.get_data()) + 2), // NOLINT
+                      *(static_cast<uint8_t*>(test_frag->get_data()) + 2));       // NOLINT
 }
 
 BOOST_AUTO_TEST_CASE(Fragment_to_Ptr)
@@ -155,14 +155,14 @@ BOOST_AUTO_TEST_CASE(Fragment_to_Ptr)
   header.trigger_timestamp = 2;
   header.run_number = 3;
 
-  auto frag = malloc(sizeof(FragmentHeader) + 4);
+  auto frag = malloc(sizeof(FragmentHeader) + 4); // NOLINT
   memcpy(frag, &header, sizeof(FragmentHeader));
 
-  uint8_t one = 1, two = 2, three = 3, four = 4;                               // NOLINT(build/unsigned)
-  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader), &one, 1);       // NOLINT(build/unsigned)
-  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader) + 1, &two, 1);   // NOLINT(build/unsigned)
-  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader) + 2, &three, 1); // NOLINT(build/unsigned)
-  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader) + 3, &four, 1);  // NOLINT(build/unsigned)
+  uint8_t one = 1, two = 2, three = 3, four = 4;                               // NOLINT
+  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader), &one, 1);       // NOLINT
+  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader) + 1, &two, 1);   // NOLINT
+  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader) + 2, &three, 1); // NOLINT
+  memcpy(static_cast<uint8_t*>(frag) + sizeof(FragmentHeader) + 3, &four, 1);  // NOLINT
 
   Fragment test_frag(frag, Fragment::BufferAdoptionMode::kTakeOverBuffer);
   auto bytes = dunedaq::serialization::serialize(test_frag, dunedaq::serialization::kMsgPack);
@@ -180,12 +180,12 @@ BOOST_AUTO_TEST_CASE(Fragment_to_Ptr)
   BOOST_REQUIRE_EQUAL(frag_deserialized->get_fragment_type_code(), test_frag.get_fragment_type_code());
   BOOST_REQUIRE_EQUAL(frag_deserialized->get_size(), test_frag.get_size());
 
-  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized->get_data()) + 0), // NOLINT(build/unsigned)
-                      *(static_cast<uint8_t*>(test_frag.get_data()) + 0));         // NOLINT(build/unsigned)
-  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized->get_data()) + 1), // NOLINT(build/unsigned)
-                      *(static_cast<uint8_t*>(test_frag.get_data()) + 1));         // NOLINT(build/unsigned)
-  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized->get_data()) + 2), // NOLINT(build/unsigned)
-                      *(static_cast<uint8_t*>(test_frag.get_data()) + 2));         // NOLINT(build/unsigned)
+  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized->get_data()) + 0), // NOLINT
+                      *(static_cast<uint8_t*>(test_frag.get_data()) + 0));         // NOLINT
+  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized->get_data()) + 1), // NOLINT
+                      *(static_cast<uint8_t*>(test_frag.get_data()) + 1));         // NOLINT
+  BOOST_REQUIRE_EQUAL(*(static_cast<uint8_t*>(frag_deserialized->get_data()) + 2), // NOLINT
+                      *(static_cast<uint8_t*>(test_frag.get_data()) + 2));         // NOLINT
 }
 
 BOOST_AUTO_TEST_SUITE_END()
