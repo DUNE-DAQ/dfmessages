@@ -60,9 +60,9 @@ enum class ReadoutType : uint16_t // NOLINT(build/unsigned)
 enum class TriggerRecordErrorFlags : uint16_t // NOLINT(build/unsigned)
 {
   kTRBDataRequestFailure = 0x1, ///< The TRB encountered a failure sending DataRequests to data sources
-  kTRBTimeout = 0x2, ///< The TRB encountered a timeout waiting for Fragments
-  kTRBFailedToSend = 0x4, ///< The TRB failed to send the TriggerRecord to the DataWriter
-  kDataWriterDisabled = 0x8, ///< The DataWriter disk-writing was disabled and did not write the TriggerRecord to disk
+  kTRBTimeout = 0x2,            ///< The TRB encountered a timeout waiting for Fragments
+  kTRBFailedToSend = 0x4,       ///< The TRB failed to send the TriggerRecord to the DataWriter
+  kDataWriterDisabled = 0x8,   ///< The DataWriter disk-writing was disabled and did not write the TriggerRecord to disk
   kDataWriterPrescaled = 0x10, ///< The DataWriter prescaled the TriggerRecord and did not write it to disk
   kDataWriterFailedToWrite = 0x20, ///< The DataWriter failed to write the TriggerRecord to disk
 };

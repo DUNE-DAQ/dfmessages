@@ -21,7 +21,7 @@
 namespace dunedaq {
 namespace dfmessages {
 
-  struct DataflowStatus
+struct DataflowStatus
 {
 
   TriggerId trigger_id{};             ///< The TriggerId of the TriggerRecord that this status is associated with
@@ -31,15 +31,16 @@ namespace dfmessages {
 
   trigger_type_t trigger_type_mask{ 0 };
 
-  bool is_busy{ false }; ///< Whether the dataflow is currently busy (i.e. above the high water mark)
+  bool is_busy{ false };  ///< Whether the dataflow is currently busy (i.e. above the high water mark)
+  bool in_error{ false }; ///< Whether the dataflow should be considered to be in an error state
   size_t busy_threshold{ 0 };
   size_t free_threshold{ 0 };
   std::set<TriggerId> triggers_building;
   std::set<TriggerId> triggers_writing;
-  std::map<TriggerId, uint16_t> recently_completed_triggers; ///< The set of trigger numbers that have recently completed
-                                                   ///< (i.e. have been written to disk)
-  size_t trigger_records_processed{ 0 };           ///< The total number of TriggerRecords processed for the current run
-  size_t data_size_written{ 0 };                   ///< The total size of data written for the current run, in bytes
+  std::map<TriggerId, uint16_t> recently_completed_triggers; ///< The set of trigger numbers that have recently
+                                                             ///< completed (i.e. have been written to disk)
+  size_t trigger_records_processed{ 0 }; ///< The total number of TriggerRecords processed for the current run
+  size_t data_size_written{ 0 };         ///< The total size of data written for the current run, in bytes
 
   DUNE_DAQ_SERIALIZE(DataflowStatus,
                      trigger_id,
@@ -48,6 +49,7 @@ namespace dfmessages {
                      request_destination,
                      trigger_type_mask,
                      is_busy,
+                     in_error,
                      busy_threshold,
                      free_threshold,
                      triggers_building,

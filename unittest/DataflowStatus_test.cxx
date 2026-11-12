@@ -66,7 +66,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   ds.free_threshold = 2;
   ds.triggers_building = { { 1, 10 }, { 1, 11 }, { 1, 12 } };
   ds.triggers_writing = { { 1, 20 }, { 1, 21 } };
-  ds.recently_completed_triggers = { {{ 1, 30 }, 0}, {{ 1, 31 }, 0}, {{ 1, 32 }, 0}, {{ 1, 33 } , 0 }};
+  ds.recently_completed_triggers = { { { 1, 30 }, 0 }, { { 1, 31 }, 0 }, { { 1, 32 }, 0 }, { { 1, 33 }, 0 } };
   ds.trigger_records_processed = 100;
   ds.data_size_written = 1234567;
   auto bytes = dunedaq::serialization::serialize(ds, dunedaq::serialization::kMsgPack);
@@ -84,7 +84,8 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   BOOST_REQUIRE_EQUAL(ds.triggers_writing.size(), ds_deserialized.triggers_writing.size());
   BOOST_REQUIRE_EQUAL(*ds.triggers_writing.begin(), *ds_deserialized.triggers_writing.begin());
   BOOST_REQUIRE_EQUAL(ds.recently_completed_triggers.size(), ds_deserialized.recently_completed_triggers.size());
-  BOOST_REQUIRE_EQUAL(ds.recently_completed_triggers.begin()->first, ds_deserialized.recently_completed_triggers.begin()->first);
+  BOOST_REQUIRE_EQUAL(ds.recently_completed_triggers.begin()->first,
+                      ds_deserialized.recently_completed_triggers.begin()->first);
   BOOST_REQUIRE_EQUAL(ds.trigger_records_processed, ds_deserialized.trigger_records_processed);
   BOOST_REQUIRE_EQUAL(ds.data_size_written, ds_deserialized.data_size_written);
 }
