@@ -16,12 +16,14 @@
 
 #include <set>
 #include <string>
+#include <vector>
 
 namespace dunedaq {
 namespace dfmessages {
 
-struct DataflowStatus
+  struct DataflowStatus
 {
+
   TriggerId trigger_id{};             ///< The TriggerId of the TriggerRecord that this status is associated with
   size_t iteration_number{ 0 };       ///< The iteration number associated with this state
   std::string decision_destination{}; ///< The connection name for the TriggerDecision destination
@@ -34,7 +36,7 @@ struct DataflowStatus
   size_t free_threshold{ 0 };
   std::set<TriggerId> triggers_building;
   std::set<TriggerId> triggers_writing;
-  std::set<TriggerId> recently_completed_triggers; ///< The set of trigger numbers that have recently completed
+  std::map<TriggerId, uint16_t> recently_completed_triggers; ///< The set of trigger numbers that have recently completed
                                                    ///< (i.e. have been written to disk)
   size_t trigger_records_processed{ 0 };           ///< The total number of TriggerRecords processed for the current run
   size_t data_size_written{ 0 };                   ///< The total size of data written for the current run, in bytes

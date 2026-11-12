@@ -55,6 +55,19 @@ enum class ReadoutType : uint16_t // NOLINT(build/unsigned)
 };
 
 /**
+ * @brief The status of a TriggerRecord when the DFApplication is done with it
+ */
+enum class TriggerRecordErrorFlags : uint16_t // NOLINT(build/unsigned)
+{
+  kTRBDataRequestFailure = 0x1, ///< The TRB encountered a failure sending DataRequests to data sources
+  kTRBTimeout = 0x2, ///< The TRB encountered a timeout waiting for Fragments
+  kTRBFailedToSend = 0x4, ///< The TRB failed to send the TriggerRecord to the DataWriter
+  kDataWriterDisabled = 0x8, ///< The DataWriter disk-writing was disabled and did not write the TriggerRecord to disk
+  kDataWriterPrescaled = 0x10, ///< The DataWriter prescaled the TriggerRecord and did not write it to disk
+  kDataWriterFailedToWrite = 0x20, ///< The DataWriter failed to write the TriggerRecord to disk
+};
+
+/**
  * @brief System times are represented using a 64-bit unsigned integer
  * This number is defined as the number of microseconds since the system epoch
  */
@@ -74,5 +87,6 @@ public:
 } // namespace dunedaq::dfmessages
 
 DUNE_DAQ_SERIALIZE_ENUM(dunedaq::dfmessages::ReadoutType)
+DUNE_DAQ_SERIALIZE_ENUM(dunedaq::dfmessages::TriggerRecordErrorFlags)
 
 #endif // DFMESSAGES_INCLUDE_DFMESSAGES_TYPES_HPP_
