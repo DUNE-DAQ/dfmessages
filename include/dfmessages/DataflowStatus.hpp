@@ -14,6 +14,7 @@
 #include "dfmessages/Types.hpp"
 #include "serialization/Serialization.hpp"
 
+#include <map>
 #include <set>
 #include <string>
 #include <vector>
@@ -37,6 +38,7 @@ struct DataflowStatus
   size_t free_threshold{ 0 };
   std::set<TriggerId> triggers_building;
   std::set<TriggerId> triggers_writing;
+  // NOLINTNEXTLINE(build/unsigned)
   std::map<TriggerId, uint16_t> recently_completed_triggers; ///< The set of trigger numbers that have recently
                                                              ///< completed (i.e. have been written to disk)
   size_t trigger_records_processed{ 0 }; ///< The total number of TriggerRecords processed for the current run

@@ -24,6 +24,7 @@ struct TRBCompletion
   sequence_number_t sequence_number{ 0 };                    ///< The sequence number of the completed TriggerRecord
   daqdataformats::SourceID source_id;                        ///< The SourceID of the TRB
   sequence_number_t trigger_record_max_sequence_number{ 0 }; ///< The max sequence number for this TriggerRecord
+  // NOLINTNEXTLINE(build/unsigned)
   uint16_t error_flags{ 0 }; ///< Whether the TriggerRecord was built successfully or not
   DUNE_DAQ_SERIALIZE(TRBCompletion,
                      trigger_id,
