@@ -43,6 +43,7 @@ BOOST_AUTO_TEST_CASE(DefaultConstruction)
   BOOST_REQUIRE_EQUAL(ds.request_destination, "");
   BOOST_REQUIRE_EQUAL(ds.trigger_type_mask, 0);
   BOOST_REQUIRE_EQUAL(ds.is_busy, false);
+  BOOST_REQUIRE_EQUAL(ds.in_error, false);
   BOOST_REQUIRE_EQUAL(ds.busy_threshold, 0);
   BOOST_REQUIRE_EQUAL(ds.free_threshold, 0);
   BOOST_REQUIRE(ds.triggers_building.empty());
@@ -62,6 +63,7 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   ds.request_destination = "request_conn";
   ds.trigger_type_mask = 0xF;
   ds.is_busy = true;
+  ds.in_error = false;
   ds.busy_threshold = 5;
   ds.free_threshold = 2;
   ds.triggers_building = { { 1, 10 }, { 1, 11 }, { 1, 12 } };
@@ -79,6 +81,9 @@ BOOST_AUTO_TEST_CASE(SerDes_MsgPack)
   BOOST_REQUIRE_EQUAL(ds.request_destination, ds_deserialized.request_destination);
   BOOST_REQUIRE_EQUAL(ds.trigger_type_mask, ds_deserialized.trigger_type_mask);
   BOOST_REQUIRE_EQUAL(ds.is_busy, ds_deserialized.is_busy);
+  BOOST_REQUIRE_EQUAL(ds.in_error, ds_deserialized.in_error);
+  BOOST_REQUIRE_EQUAL(ds.busy_threshold, ds_deserialized.busy_threshold);
+  BOOST_REQUIRE_EQUAL(ds.free_threshold, ds_deserialized.free_threshold);
   BOOST_REQUIRE_EQUAL(ds.triggers_building.size(), ds_deserialized.triggers_building.size());
   BOOST_REQUIRE_EQUAL(*ds.triggers_building.begin(), *ds_deserialized.triggers_building.begin());
   BOOST_REQUIRE_EQUAL(ds.triggers_writing.size(), ds_deserialized.triggers_writing.size());
